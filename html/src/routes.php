@@ -1,5 +1,4 @@
 <?php
-// Routes
 
 /*
 Random bitstring generation for hash salting
