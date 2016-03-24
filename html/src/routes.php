@@ -1,5 +1,6 @@
 <?php
-// Routes
+//Allows CORS by adding localhost to list of trusted IPs
+header ('Access-Control-Allow-Origin: localhost');
 
 /*
 Random bitstring generation for hash salting
