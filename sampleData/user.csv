@@ -1,6 +1,7 @@
-name,id,salt,hash
-ljbrown,1,2EMeJa,oKecfOwSX
-paigecraig,2,D1klLDn9r,DRI0mLFZ8
-katiehegarty,3,MDIY1cn57nT8,tppIKf
-iqbalkhan,4,Ydrnoz7lbYx,JQLoqpyLT2J
-ianjohnson,5,hWlrJCex,ekXGNvI
+name,id,email,salt,hash
+ljbrown,1,ljbrown@something.edu,2EMeJa,oKecfOwSX
+paigecraig,2,paigecraig@something.edu,D1klLDn9r,DRI0mLFZ8
+katiehegarty,3,katiehegarty@something.edu,MDIY1cn57nT8,tppIKf
+iqbalkhan,4,iykhan@smu.edu,Ydrnoz7lbYx,JQLoqpyLT2J
+ianjohnson,5,ianjohnson@something.edu,hWlrJCex,ekXGNvI
+
