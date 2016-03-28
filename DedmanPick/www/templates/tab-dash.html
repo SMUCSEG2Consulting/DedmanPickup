@@ -10,12 +10,14 @@
   <label class="item item-input item-stacked-label">
     <span class="input-label">Sport</span>
     <select>
-            <option>Basketball</option>
+      <div ng-repeat = "sport in sports">
+            <option>{{sport.id}} , {{sport.name}}</option>
             <option>Soccer</option>
             <option>Tennis</option>  
             <option>Ping Pong</option>
             <option>Pool</option>
             <option>Sand Volleyball</option>
+        </div>
     </label>
   </select>
 </div>
@@ -39,7 +41,7 @@
         </label>
       </div>
 
-
+      <form ng-submit ="createGame()" ng-controller = "CreateGameCtrl">
       <button class="button button-full button-calm">
       CREATE NEW GAME!!
       </button>

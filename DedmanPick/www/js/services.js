@@ -31,6 +31,30 @@ angular.module('starter.services', [])
     face: 'img/mike.png'
   }];
 
+  var sports = [{
+    id: 0,
+    name: 'Basketball'
+  }, {
+    id: 1,
+    name: 'Soccer'
+  }, {
+    id: 2,
+    name: 'Tennis',
+    
+  }, {
+    id: 3,
+    name: 'Ping Pong'
+  }, {
+    id: 4,
+    name: 'Pool'  
+  },{
+    id: 5,
+    name: 'Sand Volleyball'
+  },{
+    id: 1,
+    name: 'Other'
+  }];
+
   return {
     all: function() {
       return chats;
