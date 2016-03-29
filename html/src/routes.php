@@ -37,6 +37,16 @@ $app->get('/games',
 	}
 );
 
+$app->get('/gamesByUserPref/{username}',
+	function($request, $response, $args) {
+		$db = $this->dbConn;
+		$statement = $db->prepare('SELECT * FROM game WHERE date >= CURDATE() AND sport IN (SELECT sport FROM sportPreference WHERE username = :usr)');
+		$statement->execute(array('usr'=>$args['username']));
+		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $response->write(json_encode($arr));
+	}
+);
+
 $app->get('/game/{id}',
 	function ($request, $response, $args){
 		$db = $this->dbConn;
