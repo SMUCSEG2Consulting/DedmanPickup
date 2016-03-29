@@ -60,7 +60,7 @@ $app->get('/game/{id}',
 	}
 );
 
-$app->get('/newUser/{name}/{pwd}',
+$app->get('/newUser/{name}/{pwd}/{email}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
@@ -74,11 +74,12 @@ $app->get('/newUser/{name}/{pwd}',
 		$salt = randomBitString();
 		$hash = hash('sha256', $args['pwd'] . $salt);
 
-		$statement = $db->prepare('INSERT INTO user(name, salt, hash) values(:usr, :sl, :hs)');
+		$statement = $db->prepare('INSERT INTO user(name, salt, hash, email) values(:usr, :sl, :hs, :em)');
 		$statement->execute(array(
 			'usr' => $args['name'],
 			'sl' => $salt,
-			'hs' => $hash
+			'hs' => $hash,
+			'em' => $args['email']
 		));
 
 		return $response->write($args['name']);
@@ -88,7 +89,7 @@ $app->get('/newUser/{name}/{pwd}',
 $app->get('/users',
 	function($request, $response, $args){
 		$db = $this->dbConn;
-		$statement = $db->prepare('SELECT name, id FROM user');
+		$statement = $db->prepare('SELECT name, id, email FROM user');
 		$statement->execute();
 		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $response->write(json_encode($arr));
