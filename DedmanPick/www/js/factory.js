@@ -1,8 +1,9 @@
-var app = angular.module('starter.controllers', []);
-app.factory('addGameFactory', function ()
+angular.module('starter.factories', [])
+
+.factory('addGameFactory', function ()
 {
   return {
-    addGame: function(chat){
+    addGame : function(chat){
       console.log('in factory');}
     }
 });

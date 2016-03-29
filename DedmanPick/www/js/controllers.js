@@ -28,13 +28,13 @@ angular.module('starter.controllers', [])
   console.log()
   $state.go('tab.chats');};
 })
-.controller('JoinGameCtrl', function($scope, $state) {
+.controller('JoinGameCtrl', function($scope, $state, addGameFactory) {
   
   $scope.joinGame = function joinGame(chat){
   console.log(chat.name);
   console.log('game joined');
   
-  $scope.fromFactory = AddGameFactory.addGame(chat);
+  $scope.fromFactory = addGameFactory.addGame(chat);
   $state.go('tab.account', chat);};
 })
 
@@ -63,9 +63,9 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
-});
+})
 
-module.factory('addGameFactory', function ()
+.factory('addGameFactory', function ()
 {
   return {
     addGame : function(chat){
