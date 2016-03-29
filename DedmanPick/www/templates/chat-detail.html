@@ -6,12 +6,21 @@
 -->
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
+    <img ng-src="{{chat.image}}" style="width: 64px; height: 64px">
     <p>
-      {{chat.lastText}}
+      Place of game:
+      {{chat.place}}
     </p>
+
+    <p>
+      Time of game:
+      {{chat.time}}
+    </p>
+    <form ng-submit ="joinGame(chat)" ng-controller = "JoinGameCtrl">
     <button class="button button-calm">
+
   Join this game!
 </button>
+</form>
   </ion-content>
 </ion-view>

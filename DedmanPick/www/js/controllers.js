@@ -1,23 +1,43 @@
 angular.module('starter.controllers', [])
 
 
-
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-  
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
 })
+.controller('CreateGameCtrl', function($scope, $state) {
+  $scope.createGame = function createGame(){
+    /*var params={}
+    if($scope.form.abv)
+    {
+        params.abv=$scope.form.abv;
+      }    
+      if($scope.form.name)
+    {
+        params.name=$scope.form.name;
+      }    
+      if($scope.form.ibu)
+    {
+        params.ibu=$scope.form.ibu;
+      }    */
+  console.log('game created');
+  console.log()
+  $state.go('tab.chats');};
+})
+.controller('JoinGameCtrl', function($scope, $state, addGameFactory) {
+  
+  $scope.joinGame = function joinGame(chat){
+  console.log(chat.name);
+  console.log('game joined');
+  
+  $scope.fromFactory = addGameFactory.addGame(chat);
+  $state.go('tab.account', chat);};
+})
+
 
 .controller('GameDetailCtrl', function($scope, $stateParams, GameData) {
   $scope.chat = Chats.get($stateParams.chatId);
@@ -30,7 +50,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('GameLobbyCtrl', function($scope, $stateParams, Chats) {
+.controller('GameLobbyCtrl', function($scope, $stateParams, GameData) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
@@ -39,7 +59,18 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
+  //console.log(chat.name);
   $scope.settings = {
     enableFriends: true
   };
+})
+
+.factory('addGameFactory', function ()
+{
+  return {
+    addGame : function(chat){
+      console.log('in factory');}
+    }
 });
+
+
