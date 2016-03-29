@@ -8,7 +8,9 @@ CREATE TABLE user(
 name VARCHAR(100),
 id INT auto_increment PRIMARY KEY,
 salt VARCHAR(256),
-hash VARCHAR(64)
+hash VARCHAR(64),
+email VARCHAR(100),
+lastLogin DATETIME
 );
 
 CREATE TABLE sportPreference(

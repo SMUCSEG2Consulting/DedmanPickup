@@ -264,6 +264,10 @@ $app->get('/login/{name}/{pwd}',
 		$hash = hash('sha256', $args['pwd'] . $salt);
 
 		if($hash == $item['hash']){
+
+			$statement = $db->prepare('UPDATE user SET lastLogin = NOW() WHERE name=:usr');
+			$statement->execute(array('usr'=>$args['name']));
+
 			return $response->write("success");
 		} else {
 			return $response->write('failed');
