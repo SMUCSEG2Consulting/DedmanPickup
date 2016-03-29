@@ -1,4 +1,4 @@
-var app = angular.module('starter.controllers', [])
+angular.module('starter.controllers', [])
 
 
 .controller('DashCtrl', function($scope) {})
@@ -11,7 +11,21 @@ var app = angular.module('starter.controllers', [])
 })
 .controller('CreateGameCtrl', function($scope, $state) {
   $scope.createGame = function createGame(){
+    /*var params={}
+    if($scope.form.abv)
+    {
+        params.abv=$scope.form.abv;
+      }    
+      if($scope.form.name)
+    {
+        params.name=$scope.form.name;
+      }    
+      if($scope.form.ibu)
+    {
+        params.ibu=$scope.form.ibu;
+      }    */
   console.log('game created');
+  console.log()
   $state.go('tab.chats');};
 })
 .controller('JoinGameCtrl', function($scope, $state) {
@@ -49,6 +63,14 @@ var app = angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+});
+
+module.factory('addGameFactory', function ()
+{
+  return {
+    addGame : function(chat){
+      console.log('in factory');}
+    }
 });
 
 
