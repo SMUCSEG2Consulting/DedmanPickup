@@ -3,3 +3,5 @@ urls:
   -server ips: 
       Staging: 104.236.10.218
       Production: 104.236.33.141
+  -temporary API: https://docs.google.com/spreadsheets/d/11sWmBDVOPLoK4NHyRNBO9gS2spcrMC17kGgEzQ24vDE/edit#gid=0
+  
