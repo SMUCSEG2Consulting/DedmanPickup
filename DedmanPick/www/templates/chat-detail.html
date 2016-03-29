@@ -11,12 +11,16 @@
       Place of game:
       {{chat.place}}
     </p>
+
     <p>
       Time of game:
       {{chat.time}}
     </p>
+    <form ng-submit ="joinGame()" ng-controller = "JoinGameCtrl">
     <button class="button button-calm">
+
   Join this game!
 </button>
+</form>
   </ion-content>
 </ion-view>

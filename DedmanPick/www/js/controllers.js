@@ -23,6 +23,12 @@ angular.module('starter.controllers', [])
   console.log('game created');
   $state.go('tab.chats');};
 })
+.controller('JoinGameCtrl', function($scope, $state) {
+  console.log('here in CTRL');
+  $scope.joinGame = function joinGame(){
+  console.log('game joined');
+  $state.go('tab.account');};
+})
 
 
 .controller('GameDetailCtrl', function($scope, $stateParams, GameData) {
