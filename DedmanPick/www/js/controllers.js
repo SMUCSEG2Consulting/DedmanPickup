@@ -18,6 +18,12 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   };
 })
+.controller('CreateGameCtrl', function($scope, $state) {
+  $scope.createGame = function createGame(){
+  console.log('game created');
+  $state.go('tab.chats');};
+})
+
 
 .controller('GameDetailCtrl', function($scope, $stateParams, GameData) {
   $scope.chat = Chats.get($stateParams.chatId);
@@ -30,7 +36,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('GameLobbyCtrl', function($scope, $stateParams, Chats) {
+.controller('GameLobbyCtrl', function($scope, $stateParams, GameData) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
