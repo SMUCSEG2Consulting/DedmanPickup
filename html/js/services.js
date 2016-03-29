@@ -1,7 +1,11 @@
 angular.module('starter.services', [])
 
 .factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+  return $resource// this will be where we have the json file("")
+
+  update: {
+    method: 'PUT'
+  }
 
   // Some fake testing data
   var chats = [{
