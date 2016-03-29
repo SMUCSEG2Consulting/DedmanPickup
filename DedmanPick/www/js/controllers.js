@@ -1,18 +1,9 @@
-angular.module('starter.controllers', [])
-
+var app = angular.module('starter.controllers', [])
 
 
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-  
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -24,10 +15,13 @@ angular.module('starter.controllers', [])
   $state.go('tab.chats');};
 })
 .controller('JoinGameCtrl', function($scope, $state) {
-  console.log('here in CTRL');
-  $scope.joinGame = function joinGame(){
+  
+  $scope.joinGame = function joinGame(chat){
+  console.log(chat.name);
   console.log('game joined');
-  $state.go('tab.account');};
+  
+  $scope.fromFactory = AddGameFactory.addGame(chat);
+  $state.go('tab.account', chat);};
 })
 
 
@@ -51,7 +45,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
+  //console.log(chat.name);
   $scope.settings = {
     enableFriends: true
   };
 });
+
+
