@@ -9,12 +9,12 @@ name VARCHAR(100),
 id INT auto_increment PRIMARY KEY,
 salt VARCHAR(256),
 hash VARCHAR(64),
-email VARCHAR(100),
+email VARCHAR(100)
 );
 
 CREATE TABLE login(
 login DATETIME,
-username INT
+username VARCHAR(100),
 PRIMARY KEY(login, username)
 );
 
@@ -37,7 +37,7 @@ time TIME,
 date DATE,
 playerCount INT,
 location VARCHAR(100),
-status INT
+full TINYINT
 );
 
 CREATE TABLE enlist(
@@ -50,10 +50,10 @@ INSERT INTO user(name, salt, hash) values("ianjohnson", "1jo5OFAVDpC6xaEgt8sSuHc
 INSERT INTO user(name, salt, hash) values("iqbalkhan", "NqXpTZAb6McBvLGf1V3LeBqmlcH16lRpC2xnyefHj5sM3cH2QggKIxXIMKjmVVJNgesAWvCRIGC0Iuxr2uCvqBWMGiEkyrg4puXQ7DBjrqthquNmEzzN9OVWFX257hI1M2CZYUwwPOtqEnku3G3IzSBv9YbcCArb2sUzRxvo1BeAGikPCM8YHysSXZVRQ35wHifpczfp7xoi9ImorJlTIlWoVagaG3fITe93mijTEHwN1w6LURp7Fxr7U78CSHeP", "7b0115f26b32e84008c7f0b4ff973e5529fae472590afd5862b48c85b9b41831");
 INSERT INTO user(name, salt, hash) values("ljbrown", "fUFqiFM8lbnzj7ZFV2bCUzG0TUNQeR3bcc2vO430J14VmEWfjruqMusm3TjWjQ3cq0zLVrbwKEFVjUKJlJnwXtujUqYjxObLxrZwUG6gsCSeCOYDNiEV8XqAqgcXf6c71BumYBquzKVXinLvrcsZNI4Jfv3aSyrItz3ugaan2ZtnieV1jDHsXQs05r52kyqByfHMgE71QR9xXU2cYhYyO3UxgOvMoaGmBlDOwPVc3JsPIomOkGH3fh7o3hqjFlkp", "e5b3e63a86512dfd05271fdcfcc72a4dee8c63670dbf2c66b0d9cb6885aa926f");
 
-INSERT INTO game(sport, time, date, playerCount, location) values('basketball', '12:30:00', '2016-2-14' , 8, 'Dedman');
-INSERT INTO game(sport, time, date, playerCount, location) values('soccer', '03:00:00', '2016-6-12' , 20, 'Intramural Fields');
-INSERT INTO game(sport, time, date, playerCount, location) values('racquetball', '05:30:00', '2016-5-25' , 2, 'Dedman');
-INSERT INTO game(sport, time, date, playerCount, location) values('basketball', '08:00:00', '2016-7-28' , 6, 'Dedman');
+INSERT INTO game(sport, time, date, playerCount, location, full) values('basketball', '12:30:00', '2016-2-14' , 8, 'Dedman', FALSE);
+INSERT INTO game(sport, time, date, playerCount, location, full) values('soccer', '03:00:00', '2016-6-12' , 20, 'Intramural Fields', FALSE);
+INSERT INTO game(sport, time, date, playerCount, location, full) values('racquetball', '05:30:00', '2016-5-25' , 2, 'Dedman', FALSE);
+INSERT INTO game(sport, time, date, playerCount, location, full) values('basketball', '08:00:00', '2016-7-28' , 6, 'Dedman', FALSE);
 
 INSERT INTO sportPreference(username, sport) values('ianjohnson', "Soccer");
 INSERT INTO sportPreference(username, sport) values('ianjohnson', "Basketball");

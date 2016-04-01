@@ -30,7 +30,7 @@ $app->get('/json/{id}',
 $app->get('/games',
 	function($request, $response, $args) {
 		$db = $this->dbConn;
-		$statement = $db->prepare('SELECT * FROM game WHERE date >= CURDATE()');
+		$statement = $db->prepare('SELECT * FROM game WHERE date >= CURDATE() AND full = FALSE');
 		$statement->execute();
 		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $response->write(json_encode($arr));
@@ -40,7 +40,7 @@ $app->get('/games',
 $app->get('/gamesByUserPref/{username}',
 	function($request, $response, $args) {
 		$db = $this->dbConn;
-		$statement = $db->prepare('SELECT * FROM game WHERE date >= CURDATE() AND sport IN (SELECT sport FROM sportPreference WHERE username = :usr)');
+		$statement = $db->prepare('SELECT * FROM game WHERE date >= CURDATE() AND sport IN (SELECT sport FROM sportPreference WHERE username = :usr AND full = FALSE)');
 		$statement->execute(array('usr'=>$args['username']));
 		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
 		return $response->write(json_encode($arr));
@@ -295,6 +295,19 @@ $app->get('/addUserToGame/{gameID}/{username}',
 				'username' => $args['username'],
 				'gameID' => $args['gameID']
 		));
+
+		$statement = $db->prepare('SELECT count(playerName) FROM enlist WHERE gameID = :gameID');
+		$statement->execute(array(
+				'gameID' => $args['gameID']
+		));
+		$count = $statement->fetch(PDO::FETCH_ASSOC);
+
+		$statement = $db->prepare('UPDATE game SET full = TRUE WHERE id = :gameID AND playerCount <= :count');
+		$statement->execute(array(
+				'count' => $count,
+				'gameID' => $args['gameID']
+		));
+
 		return $response->write(json_encode($args));
 	}
 );
