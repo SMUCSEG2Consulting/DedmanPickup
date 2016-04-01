@@ -10,7 +10,17 @@ id INT auto_increment PRIMARY KEY,
 salt VARCHAR(256),
 hash VARCHAR(64),
 email VARCHAR(100),
-lastLogin DATETIME
+);
+
+CREATE TABLE login(
+login DATETIME,
+user_id INT
+);
+
+CREATE TABLE friend(
+friender VARCHAR(100),
+friendee VARCHAR(100),
+PRIMARY KEY(friender, friendee)
 );
 
 CREATE TABLE sportPreference(
@@ -25,7 +35,8 @@ sport VARCHAR(100),
 time TIME,
 date DATE,
 playerCount INT,
-location VARCHAR(100)
+location VARCHAR(100),
+status INT
 );
 
 CREATE TABLE enlist(
