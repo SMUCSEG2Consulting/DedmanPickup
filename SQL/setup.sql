@@ -14,7 +14,7 @@ email VARCHAR(100),
 
 CREATE TABLE login(
 login DATETIME,
-user_id INT
+username INT
 );
 
 CREATE TABLE friend(

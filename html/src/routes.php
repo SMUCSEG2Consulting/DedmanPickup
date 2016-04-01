@@ -276,7 +276,7 @@ $app->get('/login/{name}/{pwd}',
 
 		if($hash == $item['hash']){
 
-			$statement = $db->prepare('UPDATE user SET lastLogin = NOW() WHERE name=:usr');
+			$statement = $db->prepare('INSERT into login(login, username) values(NOW(), :usr)');
 			$statement->execute(array('usr'=>$args['name']));
 
 			return $response->write("success");
