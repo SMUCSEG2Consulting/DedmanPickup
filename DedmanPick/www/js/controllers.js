@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.factories'])
 
 
 .controller('DashCtrl', function($scope) {})
@@ -28,8 +28,13 @@ angular.module('starter.controllers', [])
   console.log()
   $state.go('tab.chats');};
 })
-.controller('JoinGameCtrl', function($scope, $state, addGameFactory) {
-  
+
+.controller('JoinGameCtrl', function($scope, $state, games) {
+
+  games.getGames().then(function(response){
+    console.log(response);
+  })
+   
   $scope.joinGame = function joinGame(chat){
   console.log(chat.name);
   console.log('game joined');
@@ -65,7 +70,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.factory('addGameFactory', function ()
+.factory('games', function ()
 {
   return {
     addGame : function(chat){

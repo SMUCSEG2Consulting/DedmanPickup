@@ -1,6 +1,6 @@
 <?php
 //Allows for CORS by adding localhost as trusted IP.
-header('Access-Control-Allow-Origin: localhost');
+header('Access-Control-Allow-Origin: *');
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
     // something which should probably be served as a static file
