@@ -341,8 +341,8 @@ $app->post('/addUserToGame',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
-		$username = $request->params('username');
-		$id = $request->params('id');
+		$username = $request->getParam('username');
+		$id = $request->getParam('id');
 
 		$statement = $db->prepare('INSERT into enlist(playerName, gameID) values(:username, :gameID)');
 		$statement->execute(array(
