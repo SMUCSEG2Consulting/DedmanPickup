@@ -337,7 +337,7 @@ $app->get('/addUserToGame/{gameID}/{username}',
 	}
 );
 
-$app->post('/addUserToGame/{gameID}/{username}',
+$app->post('/addUserToGame',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
