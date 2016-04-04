@@ -2,8 +2,8 @@
 //Headers to remove CORS errors:
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Origin: GET, POST, OPTIONS');
-header('Access-Control-Allow-Origin: Content-Typeasjkdas');
-//header('Access-Control-Allow-Origin: X-Requested-With');
+header('Access-Control-Allow-Origin: Content-Tkjgjks');
+header('Access-Control-Allow-Origin: X-quested-With');
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
     // something which should probably be served as a static file
