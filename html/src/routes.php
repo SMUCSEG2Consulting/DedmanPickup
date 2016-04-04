@@ -362,7 +362,7 @@ $app->post('/addUserToGame',
 				'gameID' => $id
 		));
 
-		return $response->write(json_encode($args));
+		return $response->write("Success!");
 	}
 );
 
