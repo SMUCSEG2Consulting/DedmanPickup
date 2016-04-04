@@ -1,6 +1,6 @@
 <?php
 //Headers to remove CORS errors:
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://localhost');
 header('Access-Control-Allow-Origin: GET, POST, OPTIONS');
 header('Access-Control-Allow-Origin: Content-Type');
 header('Access-Control-Allow-Origin: X-Requested-With');
