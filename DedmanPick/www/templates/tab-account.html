@@ -1,14 +1,47 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    Games you've joined:
+    
+    <div class = "container">
+        <h1> Welcome, John </h2>
 
-    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-    {{chat.name}}
-    {{chat.time}}
-    {{chat.place}}
+        <div class="col-xs-6 m-t-2">
+            <div class="card">
+                <h2> Make sure you start stretching! </h2>
+  <img class="card-img-top" img src="http://1.bp.blogspot.com/-yFxieKeNw8U/VVrA-tqloOI/AAAAAAAAAEI/kYI-C-spExg/s1600/modest-man-stretching.jpg" width = 405px height = 250px>
+  <div class="card-block">
+    <h4 class="card-title">Here's your upcoming games: </h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    
+    <li class="list-group-item">{{gamesJoined()[0].name}}
+        <a href=" " title=" Game start at {{gamesJoined()[0].time}}, and will be played at {{gamesJoined()[0].place}}."> 
+            <span class="label label-pill label-info pull-md-right">Game Details</span> </a>
+    </li>
+
+
+    <li class="list-group-item">{{gamesJoined()[1].name}}
+        <a href=" " title=" Game start at {{gamesJoined()[1].time}}, and will be played at {{gamesJoined()[1].place}}."> 
+            <span class="label label-pill label-info pull-md-right">Game Details</span></a></li>
+    <li class="list-group-item"> {{gamesJoined()[2].name}}
+        <a href=" " title=" Game start at {{gamesJoined()[2].time}}, and will be played at {{gamesJoined()[2].place}}."> 
+            <span class="label label-pill label-info pull-md-right">Game Details</span></a></li>
+  </ul>
+  
+</div>
+        </div>
+        <div class="col-xs-6 m-t-3" ></div>
+            <div class="card">
+                <h3> Your sport preferences: </h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" > 1. Basketball </li>
+                    <li class="list-group-item"> 2. Soccer </li>
+                    <li class="list-group-item"> 3. Tennis </li>
+                </ul>
+            </div>
 
     </ion-toggle>
+    </div>
     </ion-list>
   </ion-content>
 </ion-view>
