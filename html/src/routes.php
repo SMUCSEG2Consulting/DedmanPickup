@@ -244,10 +244,10 @@ $app->post('/createGame',
 		$db = $this->dbConn;
 		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date) values (:sport, :time, :count, :loc, CURDATE())');
 		$statement->execute(array(
-				'sport' => $request->params('sport'),
-				'time' => $request->params('time'),
-				'loc' => $request->params('location'),
-				'count' => $request->params('playerCount')
+				'sport' => $request->getParam('sport'),
+				'time' => $request->getParam('time'),
+				'loc' => $request->getParam('location'),
+				'count' => $request->getParam('playerCount')
 		));
 
 		$select = $db->prepare('SELECT max(id) from game');
@@ -256,7 +256,7 @@ $app->post('/createGame',
 
 		$statement = $db->prepare('INSERT INTO enlist(playerName, gameID) values(:name, :id)');
 		$statement->execute(array(
-				'name' => $request->params('hostName'),
+				'name' => $request->getParam('hostName'),
 				'id' => $id
 		));
 
