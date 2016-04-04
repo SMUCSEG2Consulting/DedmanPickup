@@ -9,6 +9,7 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   };
 })
+
 .controller('CreateGameCtrl', function($scope, $state) {
   $scope.createGame = function createGame(){
     /*var params={}
@@ -28,12 +29,10 @@ angular.module('starter.controllers', [])
   console.log()
   $state.go('tab.chats');};
 })
+
 .controller('JoinGameCtrl', function($scope, $state, addGameFactory) {
   
   $scope.joinGame = function joinGame(chat){
-  console.log(chat.name);
-  console.log('game joined');
-  
   $scope.fromFactory = addGameFactory.addGame(chat);
   $state.go('tab.account', chat);};
 })
@@ -45,9 +44,7 @@ angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($scope) {
   
-  $scope.reroute = function (e) {
-   $state.go('tab.dash');
-  };
+  console.log('login');
 })
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData) {
@@ -58,19 +55,34 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  //console.log(chat.name);
-  $scope.settings = {
-    enableFriends: true
+.controller('AccountCtrl', function($scope, $state, addGameFactory) {
+  console.log('acct ctrl');
+  $scope.gameData = function getData(){
+    console.log('here');
   };
+
+
+  $scope.gamesJoined = function getGame(){
+    return addGameFactory.getGames();
+  };
+  
 })
 
 .factory('addGameFactory', function ()
 {
+  var gamesJoined = [];
   return {
     addGame : function(chat){
-      console.log('in factory');}
+      console.log("add game: " + chat.name);
+      gamesJoined.push(chat);
+    },
+
+    getGames : function(){
+      return gamesJoined;
     }
+}
+
+
 });
 
 
