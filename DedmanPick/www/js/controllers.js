@@ -8,8 +8,13 @@ angular.module('starter.controllers', ['starter.factories'])
     Chats.remove(chat);
   };
 })
-.controller('CreateGameCtrl', function($scope, $state) {
+.controller('CreateGameCtrl', function($scope, $state, games) {
   $scope.createGame = function createGame(){
+
+//ask matthew about this
+    games.createGame().then(function(response){
+      console.log(response);
+    })
     /*var params={}
     if($scope.form.abv)
     {
@@ -28,10 +33,14 @@ angular.module('starter.controllers', ['starter.factories'])
   $state.go('tab.chats');};
 })
 
-.controller('JoinGameCtrl', function($scope, $state, games) {
+.controller('JoinGameCtrl', function($scope, $state, games, users) {
 
    games.getGames().then(function(response){
     console.log(response);
+    //response obejct conains all info about games
+    chats= response;
+
+
   })
    
   $scope.joinGame = function joinGame(chat){
