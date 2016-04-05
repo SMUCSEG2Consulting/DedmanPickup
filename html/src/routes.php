@@ -120,6 +120,20 @@ $app->get('/addSportForUser/{username}/{sport}',
 	}
 );
 
+$app->post('/addSportForUser',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		
+		$statement = $db->prepare('INSERT INTO sportPreference(username, sport) values(:usr, :spr)');
+		$statement->execute(array(
+			'usr' => $request->getParam('username'),
+			'spr' => $request->getParam('sport')
+		));
+
+		return $response->write('Success!');
+	}
+);
+
 $app->get('/removeSportForUser/{username}/{sport}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
