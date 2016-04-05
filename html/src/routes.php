@@ -239,6 +239,31 @@ $app->get('/createGame/{hostName}/{time}/{sport}/{location}/{playerCount}',
 	}
 );
 
+$app->post('/createGame',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date) values (:sport, :time, :count, :loc, CURDATE())');
+		$statement->execute(array(
+				'sport' => $request->getParam('sport'),
+				'time' => $request->getParam('time'),
+				'loc' => $request->getParam('location'),
+				'count' => $request->getParam('playerCount')
+		));
+
+		$select = $db->prepare('SELECT max(id) from game');
+		$select->execute();
+		$id = $select->fetch(PDO::FETCH_ASSOC)['max(id)'];
+
+		$statement = $db->prepare('INSERT INTO enlist(playerName, gameID) values(:name, :id)');
+		$statement->execute(array(
+				'name' => $request->getParam('hostName'),
+				'id' => $id
+		));
+
+		return $response->write("Success!");
+	}
+);
+
 $app->get('/updateUser/{usr}/{s1}/{s2}/{s3}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
@@ -309,6 +334,35 @@ $app->get('/addUserToGame/{gameID}/{username}',
 		));
 
 		return $response->write(json_encode($args));
+	}
+);
+
+$app->post('/addUserToGame',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+
+		$username = $request->getParam('username');
+		$id = $request->getParam('id');
+
+		$statement = $db->prepare('INSERT into enlist(playerName, gameID) values(:username, :gameID)');
+		$statement->execute(array(
+				'username' => $username,
+				'gameID' => $id
+		));
+
+		$statement = $db->prepare('SELECT count(playerName) FROM enlist WHERE gameID = :gameID');
+		$statement->execute(array(
+				'gameID' => $id
+		));
+		$count = $statement->fetch(PDO::FETCH_ASSOC);
+
+		$statement = $db->prepare('UPDATE game SET full = TRUE WHERE id = :gameID AND playerCount <= :count');
+		$statement->execute(array(
+				'count' => $count,
+				'gameID' => $id
+		));
+
+		return $response->write("Success!");
 	}
 );
 
