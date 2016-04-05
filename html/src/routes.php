@@ -242,7 +242,7 @@ $app->get('/createGame/{hostName}/{time}/{sport}/{location}/{playerCount}',
 $app->post('/createGame',
 	function($request, $response, $args){
 		$db = $this->dbConn;
-		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date) values (:sport, :time, :count, :loc, CURDATE())');
+		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date, full) values (:sport, :time, :count, :loc, CURDATE(), FALSE)');
 		$statement->execute(array(
 				'sport' => $request->getParam('sport'),
 				'time' => $request->getParam('time'),
@@ -260,7 +260,7 @@ $app->post('/createGame',
 				'id' => $id
 		));
 
-		return $response->write("Success!");
+		return $response->write(json_encode($request->getParams()) . "Success!");
 	}
 );
 
