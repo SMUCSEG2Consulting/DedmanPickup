@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
 
 .controller('ChatsCtrl', function($scope, $http, Chats) {
 
-
+console.log('in chats');
  
   var chats = Chats.all();
 
@@ -21,6 +21,12 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+
+
+  //console.log(Chats.get($stateParams.chatId));
+  $scope.gameData = function sendGameData(sport, id, location, time){
+    console.log('in send game data');
+      }
 })
 
 .controller('CreateGameCtrl', function($scope, $state) {
@@ -50,11 +56,6 @@ angular.module('starter.controllers', [])
   $state.go('tab.account', chat);};
 })
 
-
-.controller('GameDetailCtrl', function($scope, $stateParams, GameData) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
 .controller('LoginCtrl', function($scope) {
   
   console.log('login');
@@ -62,14 +63,24 @@ angular.module('starter.controllers', [])
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData) {
   $scope.chat = Chats.get($stateParams.chatId);
+  console.log('in send game data');
+  //console.log(Chats.get($stateParams.chatId));
+  $scope.gameData = function sendGameData(sport, id, location, time){
+    console.log('in send game data');
+      }
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+  
+  //console.log($stateParams.chatId);
+  $scope.chat = Chats.getGameData($stateParams.chatId);
+  console.log($scope.chat);
+  //console.log(Chats[$stateParams.chatId]);
+  //console.log(Chats.get($stateParams.chatId));
 })
 
 .controller('AccountCtrl', function($scope, $state, addGameFactory) {
-  console.log('acct ctrl');
+  //console.log('acct ctrl');
   $scope.gameData = function getData(){
     console.log('here');
   };
