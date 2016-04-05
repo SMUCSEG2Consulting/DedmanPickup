@@ -3,10 +3,10 @@
     <h2>Can't find a game you want to join?</h2>
     <h3>Create a new game here!</h3>
       
-    <div class="list">
-  <label class="item item-input item-stacked-label">
+  <ul class="list">
+  <li class="item item-input item-stacked-label">
     <span class="input-label">Sport</span>
-    <select>
+    <select ng-model = "sport" >
       <div ng-repeat = "chat in chats" >
             <option>Basketball</option>
             <option>Soccer</option>
@@ -15,28 +15,28 @@
             <option>Pool</option>
             <option>Sand Volleyball</option>
         </div>
-    </label>
+    </li>
   </select>
-</div>
-  <div class="list">
-  <label class="item item-input item-stacked-label">
+</ul>
+  <ul class="list">
+  <li class="item item-input item-stacked-label">
     <span class="input-label">Location</span>
-    <select>
+    <select ng-model = "place">
             <option>Dedman Rec Center</option>
             <option>Intramural Field</option>
             <option>Sand Volleyball Courts</option>
             <option>Track</option>
             <option>Lacrosse Fields</option>
-    </label>
+    </li>
   </select>
-</div>
+</ul>
 
-   <div class="list">
-        <label class="item item-input">
+   <ul class="list">
+        <li class="item item-input">
           <span class="input-label">Time</span>
           <input type="time" placeholder="Enter Time Here">
-        </label>
-      </div>
+        </li>
+      </ul>
 
       <form ng-submit ="createGame()" ng-controller = "CreateGameCtrl">
       <button class="button button-full button-calm">

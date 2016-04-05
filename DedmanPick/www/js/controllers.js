@@ -3,8 +3,21 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
+.controller('ChatsCtrl', function($scope, $http, Chats) {
+
+
+ 
+  var chats = Chats.all();
+
+  chats.then(
+
+        function successCallback(data){
+          console.log(data);
+          $scope.chats = data;
+        }
+
+      )
+
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
@@ -12,19 +25,19 @@ angular.module('starter.controllers', [])
 
 .controller('CreateGameCtrl', function($scope, $state) {
   $scope.createGame = function createGame(){
-    /*var params={}
-    if($scope.form.abv)
+    var params={}
+    if($scope.form.place)
     {
-        params.abv=$scope.form.abv;
+        params.place=$scope.form.place;
       }    
       if($scope.form.name)
     {
         params.name=$scope.form.name;
       }    
-      if($scope.form.ibu)
+      if($scope.form.time)
     {
-        params.ibu=$scope.form.ibu;
-      }    */
+        params.time=$scope.form.time;
+      }    
   console.log('game created');
   console.log()
   $state.go('tab.chats');};
@@ -73,7 +86,7 @@ angular.module('starter.controllers', [])
   var gamesJoined = [];
   return {
     addGame : function(chat){
-      console.log("add game: " + chat.name);
+      console.log("add game: " + chat.sport);
       gamesJoined.push(chat);
     },
 
@@ -84,5 +97,6 @@ angular.module('starter.controllers', [])
 
 
 });
+
 
 

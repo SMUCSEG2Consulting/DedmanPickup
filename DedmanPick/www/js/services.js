@@ -1,10 +1,10 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Chats', function($http) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var testData = [{
     id: 0,
     name: 'Basketball',
     place: 'Dedman',
@@ -44,10 +44,34 @@ angular.module('starter.services', [])
     //image: 'null'
   }];
 
+  var chats =[];
+
   return {
     all: function() {
-      return chats;
+
+      //var getGames_url = 'http://dev.ianjjohnson.com/public/index.php/games';
+      var getGames_url = 'http://104.236.10.218/public/index.php/games';
+      
+
+      return $http({
+
+        method: 'GET',
+        url: getGames_url
+        //crossDomain: true
+
+      }).then(function(response){
+        chats = response.data;
+        return response.data;
+      })
+
+      //convert chats to correct format and then return
+      //...convert...
+      //return chats;
+
+      return testData;
     },
+
+
     remove: function(chat) {
       chats.splice(chats.indexOf(chat), 1);
     },
