@@ -4,7 +4,7 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var testData = [{
+  /*var testData = [{
     id: 0,
     name: 'Basketball',
     place: 'Dedman',
@@ -42,7 +42,7 @@ angular.module('starter.services', [])
     place: 'Sand Courts',
     time: '8:45 PM'
     //image: 'null'
-  }];
+  }];*/
 
   var chats =[];
 
@@ -71,13 +71,20 @@ angular.module('starter.services', [])
       return testData;
     },
 
+    getGameData: function(chatId){
+      //console.log(chats[chatId]);
+      console.log('in getGameData');
+      return chats[chatId-1];
+    },
 
     remove: function(chat) {
       chats.splice(chats.indexOf(chat), 1);
     },
     get: function(chatId) {
       for (var i = 0; i < chats.length; i++) {
+        console.log(chats[i].sport);
         if (chats[i].id === parseInt(chatId)) {
+          console.log('here');
           return chats[i];
         }
       }
