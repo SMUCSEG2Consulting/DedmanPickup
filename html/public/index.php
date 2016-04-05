@@ -1,7 +1,7 @@
 <?php
 //Headers to remove CORS errors:
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: origin,x-requested-with,content-type');
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for

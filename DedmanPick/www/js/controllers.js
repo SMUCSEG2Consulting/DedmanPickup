@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.factories'])
 
 
 .controller('DashCtrl', function($scope) {})
@@ -29,21 +29,11 @@ console.log('in chats');
       }
 })
 
-.controller('CreateGameCtrl', function($scope, $state) {
-  $scope.createGame = function createGame(){
-    var params={}
-    if($scope.form.place)
-    {
-        params.place=$scope.form.place;
-      }    
-      if($scope.form.name)
-    {
-        params.name=$scope.form.name;
-      }    
-      if($scope.form.time)
-    {
-        params.time=$scope.form.time;
-      }    
+.controller('CreateGameCtrl', function($scope, $state, games) {
+  $scope.createGame = function createGame(time, location, sport){
+    games.createGame($scope.time, $scope.location, $scope.sport).then(function(response){
+      console.log(response);
+    })
   console.log('game created');
   console.log()
   $state.go('tab.chats');};

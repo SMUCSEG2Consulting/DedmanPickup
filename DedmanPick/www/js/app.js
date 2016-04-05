@@ -26,7 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.common = {Accept: 'text/plain'};
-  console.log($httpProvider.defaults.headers.common);
+  //console.log($httpProvider.defaults.headers.common);
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
