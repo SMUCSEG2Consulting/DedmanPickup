@@ -174,6 +174,19 @@ $app->get('/removeSportForUser/{username}/{sport}',
 	}
 );
 
+$app->delete('/removeSportForUser',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		
+		$statement = $db->prepare('DELETE FROM sportPreference WHERE username=:usr AND sport =:spr');
+		$statement->execute(array(
+			'usr' => $request->getParam('username'),
+			'spr' => $request->getParam('sport')
+		));
+
+		return $response->write('success');
+	}
+);
 
 $app->get('/user/{username}',
 	function($request, $response, $args){
