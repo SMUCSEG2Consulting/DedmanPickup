@@ -96,6 +96,32 @@ $app->get('/newUser/{name}/{pwd}/{email}',
 	}
 );
 
+$app->post('/newUser',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+
+		$statement = $db->prepare('SELECT * FROM user WHERE name=:usr');
+		$statement->execute(array('usr'=>$request->getParam('name');));
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		if(!empty($result)){
+			return $response->write('Error - name already taken');
+		}
+
+		$salt = randomBitString();
+		$hash = hash('sha256', $request->getParam('pwd') . $salt);
+
+		$statement = $db->prepare('INSERT INTO user(name, salt, hash, email) values(:usr, :sl, :hs, :em)');
+		$statement->execute(array(
+			'usr' => $request->getParam('name'),
+			'sl' => $salt,
+			'hs' => $hash,
+			'em' => $request->getParam('email')
+		));
+
+		return $response->write($args['name']);
+	}
+);
+
 $app->get('/users',
 	function($request, $response, $args){
 		$db = $this->dbConn;
@@ -117,6 +143,20 @@ $app->get('/addSportForUser/{username}/{sport}',
 		));
 
 		return $response->write('success');
+	}
+);
+
+$app->post('/addSportForUser',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		
+		$statement = $db->prepare('INSERT INTO sportPreference(username, sport) values(:usr, :spr)');
+		$statement->execute(array(
+			'usr' => $request->getParam('username'),
+			'spr' => $request->getParam('sport')
+		));
+
+		return $response->write('Success!');
 	}
 );
 
