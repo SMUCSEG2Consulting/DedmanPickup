@@ -101,7 +101,7 @@ $app->post('/newUser',
 		$db = $this->dbConn;
 
 		$statement = $db->prepare('SELECT * FROM user WHERE name=:usr');
-		$statement->execute(array('usr'=>$request->getParam('name');));
+		$statement->execute(array('usr'=>$request->getParam('name')));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		if(!empty($result)){
 			return $response->write('Error - name already taken');
@@ -481,7 +481,7 @@ $app->get('/deleteUserFromGame/{gameID}/{username}',
 	}
 );
 
-$app->get('/deleteUserFromGame/{gameID}/{username}',
+$app->delete('/deleteUserFromGame',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		$statement = $db->prepare('DELETE FROM game WHERE gameID=:gid AND username=:usr');
