@@ -20,7 +20,7 @@ PRIMARY KEY(login, username)
 
 CREATE TABLE session(
 username VARCHAR(100),
-sessionKey VARCHAR(64)
+sessionKey VARCHAR(256)
 );
 
 CREATE TABLE friend(

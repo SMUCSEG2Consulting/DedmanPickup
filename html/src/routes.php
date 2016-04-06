@@ -383,12 +383,12 @@ $app->get('/updateUser/{usr}/{s1}/{s2}/{s3}',
 	}
 );
 
-$app->get('/login/{name}/{pwd}',
+$app->post('/login/',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
 		$statement = $db->prepare('SELECT * FROM user WHERE name=:usr');
-		$statement->execute(array('usr'=>$args['name']));
+		$statement->execute(array('usr'=>$request->getParam('name')));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		if(empty($result)){
 			return $response->write('failed');
@@ -396,20 +396,24 @@ $app->get('/login/{name}/{pwd}',
 
 		$statement = $db->prepare('SELECT salt, hash FROM user WHERE name = :nm');
 		$statement->execute(array(
-			'nm' => $args['name'],
+			'nm' => $request->getParam('name')
 		));
 
 		$item = $statement->fetch(PDO::FETCH_ASSOC);
 		$salt = $item['salt'];
 
-		$hash = hash('sha256', $args['pwd'] . $salt);
+		$hash = hash('sha256', $request->getParam('pwd') . $salt);
 
 		if($hash == $item['hash']){
 
 			$statement = $db->prepare('INSERT into login(login, username) values(NOW(), :usr)');
-			$statement->execute(array('usr'=>$args['name']));
+			$statement->execute(array('usr'=>$request->getParam('name')));
 
-			return $response->write("success");
+			$sessionKey = randomBitString();
+			$statement = $db->prepare('INSERT into session(username, sessionKey) values(:usr, :sk)');
+			$statement->execute(array('usr'=>$request->getParam('name'), 'sk'=>$sessionKey));
+
+			return $response->write($sessionKey);
 		} else {
 			return $response->write('failed');
 		}
