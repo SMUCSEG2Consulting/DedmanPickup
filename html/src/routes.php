@@ -476,7 +476,16 @@ $app->get('/deleteUserFromGame/{gameID}/{username}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		$statement = $db->prepare('DELETE FROM game WHERE gameID=:gid AND username=:usr');
-		$statement->execute(array('usr' => $args['username'], 'gid' => $args['gameID']));
+		$statement->execute(array('usr' => $request->getParam('username'), 'gid' => $request->getParam('gameID')));
+		return $response->write('Deleted.'); 
+	}
+);
+
+$app->get('/deleteUserFromGame/{gameID}/{username}',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		$statement = $db->prepare('DELETE FROM game WHERE gameID=:gid AND username=:usr');
+		$statement->execute(array('usr' => $request->getParam('username'), 'gid' => $request->getParam('gameID')));
 		return $response->write('Deleted.'); 
 	}
 );
