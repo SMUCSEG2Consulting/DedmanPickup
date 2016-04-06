@@ -23,6 +23,14 @@ username VARCHAR(100),
 sessionKey VARCHAR(256)
 );
 
+CREATE TABLE chat(
+username VARCHAR(100),
+gameID INT,
+message VARCHAR(1000),
+time TIME,
+PRIMARY KEY(username, gameID, time)
+);
+
 CREATE TABLE friend(
 friender VARCHAR(100),
 friendee VARCHAR(100),

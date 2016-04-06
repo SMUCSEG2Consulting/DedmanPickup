@@ -132,7 +132,19 @@ $app->get('/users',
 	}
 );
 
-$app->get('/addSportForUser/{username}/{sport}',
+$app->get('/chatData/{gameID}',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		$statement = $db->prepare('SELECT username, message FROM chat WHERE gameID = :gid ORDER BY time');
+		$statement->execute(array(
+			'gid' => $args['gameID']
+			));
+		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $response->write(json_encode($arr));
+	}
+);
+
+/*$app->get('/addSportForUser/{username}/{sport}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		
@@ -144,7 +156,7 @@ $app->get('/addSportForUser/{username}/{sport}',
 
 		return $response->write('success');
 	}
-);
+);*/
 
 $app->post('/addSportForUser',
 	function($request, $response, $args){
@@ -160,7 +172,22 @@ $app->post('/addSportForUser',
 	}
 );
 
-$app->get('/removeSportForUser/{username}/{sport}',
+$app->post('/chatMessage',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		
+		$statement = $db->prepare('INSERT INTO chat(username, gameID, message, time) values(:usr, :gid, :msg, NOW())');
+		$statement->execute(array(
+			'usr' => $request->getParam('username'),
+			'gid' => $request->getParam('game_id'),
+			'msg' => $request->getParam('message')
+		));
+
+		return $response->write('Success!');
+	}
+);
+
+/*$app->get('/removeSportForUser/{username}/{sport}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		
@@ -172,7 +199,7 @@ $app->get('/removeSportForUser/{username}/{sport}',
 
 		return $response->write('success');
 	}
-);
+);*/
 
 $app->delete('/removeSportForUser',
 	function($request, $response, $args){
@@ -214,7 +241,7 @@ $app->get('/gamesForUser/{username}',
 	}
 );
 
-$app->get('/deleteUser/{username}/{password}', 
+/*$app->get('/deleteUser/{username}/{password}', 
 	function($request, $response, $args){
 		
 		$db = $this->dbConn;
@@ -248,7 +275,7 @@ $app->get('/deleteUser/{username}/{password}',
 
 			
 	}
-);
+);*/
 
 $app->delete('/deleteUser', 
 	function($request, $response, $args){
@@ -286,7 +313,7 @@ $app->delete('/deleteUser',
 	}
 );
 
-$app->get('/deleteGame/{id}',
+/*$app->get('/deleteGame/{id}',
 	function($request, $response, $args){
 		
 		$db = $this->dbConn;
@@ -300,7 +327,7 @@ $app->get('/deleteGame/{id}',
 
 	}
 
-);
+);*/
 
 
 $app->delete('/deleteGame',
@@ -319,7 +346,7 @@ $app->delete('/deleteGame',
 
 );
 
-$app->get('/createGame/{hostName}/{time}/{sport}/{location}/{playerCount}',
+/*$app->get('/createGame/{hostName}/{time}/{sport}/{location}/{playerCount}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date) values (:sport, :time, :count, :loc, CURDATE())');
@@ -342,7 +369,7 @@ $app->get('/createGame/{hostName}/{time}/{sport}/{location}/{playerCount}',
 
 		return $response->write("Success!");
 	}
-);
+);*/
 
 $app->post('/createGame',
 	function($request, $response, $args){
@@ -369,7 +396,7 @@ $app->post('/createGame',
 	}
 );
 
-$app->get('/updateUser/{usr}/{s1}/{s2}/{s3}',
+/*$app->get('/updateUser/{usr}/{s1}/{s2}/{s3}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		$statement = $db->prepare('UPDATE user SET sport1= :one, sport2 = :two, sport3 = :three WHERE name = :username');
@@ -381,7 +408,7 @@ $app->get('/updateUser/{usr}/{s1}/{s2}/{s3}',
 		));
 		return $response->write(json_encode($args));
 	}
-);
+);*/
 
 $app->post('/login/',
 	function($request, $response, $args){
