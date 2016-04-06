@@ -132,6 +132,18 @@ $app->get('/users',
 	}
 );
 
+$app->get('/chatData/{gameID}',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		$statement = $db->prepare('SELECT username, message FROM chat WHERE gameID = :gid ORDER BY time');
+		$statement->execute(array(
+			'gid' => $args['gameID']
+			));
+		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $response->write(json_encode($arr));
+	}
+);
+
 /*$app->get('/addSportForUser/{username}/{sport}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
