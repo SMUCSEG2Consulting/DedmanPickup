@@ -1,5 +1,23 @@
 angular.module('starter.factories', [])
 
+.factory('user', function($http){
+
+  return {
+    //Iqbal played with this:****************
+    deleteUser: function(usr){
+
+      console.log("user: " + usr);
+      return $http({
+        method: 'DELETE',
+        url: 'http://104.236.10.218/public/index.php/deleteUser',
+        data: {usr: usr}
+      })
+
+    }
+//*********************************
+  }
+})
+
 .factory('games', function ($http)
 {
   return {

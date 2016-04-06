@@ -39,6 +39,17 @@ console.log('in chats');
   $state.go('tab.chats');};
 })
 
+//Iqbal played with this:****************
+.controller('DeleteUserCtrl', function($scope, $state, user) {
+  $scope.deleteUser = function deleteUser(usr){
+    user.deleteUser($scope.usr).then(function(response){
+      console.log(response);
+    })
+    console.log('deleted user');
+    console.log()
+    $state.go('tab.chats');};
+  })
+//***************************************
 .controller('JoinGameCtrl', function($scope, $state, addGameFactory) {
   
   $scope.joinGame = function joinGame(chat){
