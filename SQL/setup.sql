@@ -18,6 +18,11 @@ username VARCHAR(100),
 PRIMARY KEY(login, username)
 );
 
+CREATE TABLE session(
+username VARCHAR(100),
+sessionKey VARCHAR(64)
+);
+
 CREATE TABLE friend(
 friender VARCHAR(100),
 friendee VARCHAR(100),
