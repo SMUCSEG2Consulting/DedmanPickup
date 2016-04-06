@@ -448,7 +448,7 @@ $app->post('/login/',
 );
 
 
-$app->get('/addUserToGame/{gameID}/{username}',
+/*$app->get('/addUserToGame/{gameID}/{username}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		$statement = $db->prepare('INSERT into enlist(playerName, gameID) values(:username, :gameID)');
@@ -471,14 +471,14 @@ $app->get('/addUserToGame/{gameID}/{username}',
 
 		return $response->write(json_encode($args));
 	}
-);
+);*/
 
 $app->post('/addUserToGame',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
 		$username = $request->getParam('username');
-		$id = $request->getParam('id');
+		$id = $request->getParam('gameID');
 
 		$statement = $db->prepare('INSERT into enlist(playerName, gameID) values(:username, :gameID)');
 		$statement->execute(array(
@@ -503,14 +503,14 @@ $app->post('/addUserToGame',
 );
 
 /*delete user from game*/
-$app->get('/deleteUserFromGame/{gameID}/{username}',
+/*$app->get('/deleteUserFromGame/{gameID}/{username}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 		$statement = $db->prepare('DELETE FROM game WHERE gameID=:gid AND username=:usr');
 		$statement->execute(array('usr' => $request->getParam('username'), 'gid' => $request->getParam('gameID')));
 		return $response->write('Deleted.'); 
 	}
-);
+);*/
 
 $app->delete('/deleteUserFromGame',
 	function($request, $response, $args){
