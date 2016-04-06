@@ -72,5 +72,16 @@ for i in range(100):
         file.write("INSERT INTO sportPreference(username, sport) values(\"" + names[i] +"\", " + sport + ");")
         file.write('\n')
 
+for i in range(5):
+    file.write('\n')
+
+for i in range(50):
+    for k in range(random.choice(nums)):
+        file.write("INSERT INTO chat(username, gameID, message) values(\"" + random.choice(names) + "\", " + str(i+1) + ", \"Lorem Ipsum, yo! " + str(k)  + "\");")
+        file.write('\n')
+
+
+
+
 file.close()
     
