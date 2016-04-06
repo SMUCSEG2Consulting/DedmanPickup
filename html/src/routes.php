@@ -303,6 +303,22 @@ $app->get('/deleteGame/{id}',
 );
 
 
+$app->delete('/deleteGame',
+	function($request, $response, $args){
+		
+		$db = $this->dbConn;
+		$statement = $db->prepare('DELETE FROM game WHERE id=:id');
+		$statement->execute(array('id' => $request->getParam('id')));
+
+		$statement = $db->prepare('DELETE FROM enlist WHERE gameID=:id');
+		$statement->execute(array('id' => $request->getParam('id')));
+
+		return $response->write('Deleted.'); 
+
+	}
+
+);
+
 $app->get('/createGame/{hostName}/{time}/{sport}/{location}/{playerCount}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
