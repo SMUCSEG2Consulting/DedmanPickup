@@ -24,11 +24,11 @@ sessionKey VARCHAR(256)
 );
 
 CREATE TABLE chat(
+chatID INT auto_increment PRIMARY KEY,
 username VARCHAR(100),
 gameID INT,
 message VARCHAR(1000),
-time TIME,
-PRIMARY KEY(username, gameID, time)
+time TIME
 );
 
 CREATE TABLE friend(
