@@ -14,6 +14,18 @@ function randomBitString($length = 256) {
     return $str;
 }
 
+function authenticateSession($db, $user, $sessionKey){
+	$statement = $db->prepare('SELECT * FROM session WHERE sessionKey=:sk AND username = :usr');
+	$statement->execute(array('usr' => $user, 'sk' => $sessionKey));
+	$temp = array_values($statement->fetchAll(PDO::FETCH_ASSOC));
+		
+	foreach($temp as $blah){
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 $app->get('/json',
 	function ($request, $response, $args) {
 		return $response->write(json_encode(array('field' => 'value')));
@@ -291,7 +303,7 @@ $app->post('/createGame',
 	}
 );
 
-$app->post('/login/',
+$app->post('/login',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
@@ -325,6 +337,14 @@ $app->post('/login/',
 		} else {
 			return $response->write('failed');
 		}
+	}
+);
+
+$app->post('/logout',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		$statement = $db->prepare('DELETE FROM session WHERE username = :usr AND sessionKey = :sk');
+		$statement->execute(array('usr'=>$request->getParam('username'), 'sk' => $request->getParam('sessionKey')));
 	}
 );
 
