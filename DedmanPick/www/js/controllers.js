@@ -92,7 +92,19 @@ console.log('in chats');
       Login Controller
 */
 .controller('LoginCtrl', function($scope, $http, login_functions) {
-  console.log('login');
+    console.log('(login controller)');
+    
+    //on click
+    $scope.login = function() {
+        console.log("User: " + $scope.data.username + ", Password: " + $scope.data.password);
+      
+        login_functions.login_request($scope.data.username, $scope.data.password);
+        
+        /*
+          todo:
+                change state based on login success
+                                                    */
+    }
 })
 
 
