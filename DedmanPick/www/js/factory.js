@@ -55,7 +55,6 @@ angular.module('starter.factories', [])
       }
 
     }
-  });
 
 /*
 // this will be a delete method once the end point is changed
