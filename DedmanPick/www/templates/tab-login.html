@@ -8,8 +8,8 @@
     <div class="wrapper">
     <form class="form-signin">       
       
-      <input type="text" class="form-control" id="username_ui" name="username" placeholder="Username" required="" autofocus="" />
-      <input type="password" class="form-control" id="password_ui" name="password" placeholder="Password" required=""/>      
+      <input type="text" class="form-control" ng-model="data.username" name="username" placeholder="Username" required="" autofocus="" />
+      <input type="password" class="form-control" ng-model="data.password" name="password" placeholder="Password" required=""/>      
       <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click = "login()">Login</button>  
       
     </form>
