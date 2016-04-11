@@ -34,9 +34,9 @@ angular.module('starter.factories', [])
 
 // this will be a post method once the end point is changed
 
-    createGame: function(time, location, sport){
+    createGame: function(time, location,sport, playerCount){
 
-      var playerCount = 0; 
+      
       var hostName = "IanStenbit4"
 
       console.log("createGame");

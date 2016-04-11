@@ -30,8 +30,8 @@ console.log('in chats');
 })
 
 .controller('CreateGameCtrl', function($scope, $state, games) {
-  $scope.createGame = function createGame(time, location, sport){
-    games.createGame($scope.time, $scope.location, $scope.sport).then(function(response){
+  $scope.createGame = function createGame(time, location, sport, playerCount){
+    games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
       console.log(response);
     })
   console.log('game created');
@@ -91,7 +91,7 @@ console.log('in chats');
 /*
       Login Controller
 */
-.controller('LoginCtrl', function($scope, $http, login_functions) {
+.controller('LoginCtrl', function($scope, $http) {
   console.log('login');
 })
 
