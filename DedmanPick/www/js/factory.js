@@ -54,7 +54,9 @@ angular.module('starter.factories', [])
       })
       }
 
-    },
+    }
+});
+  
 
 /*
 // this will be a delete method once the end point is changed
@@ -159,6 +161,7 @@ angular.module('starter.factories', [])
 /*
 	login_functions factory
 */
+/*
 .factory('login_functions', function ($http)
 {
   return {
@@ -232,6 +235,7 @@ angular.module('starter.factories', [])
   	},
   			////END newUser request////
 });
+*/
 /*
 	end login_functions factory
 */
