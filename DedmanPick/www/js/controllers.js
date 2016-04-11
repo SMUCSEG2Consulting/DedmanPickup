@@ -57,11 +57,6 @@ console.log('in chats');
   $state.go('tab.account', chat);};
 })
 
-.controller('LoginCtrl', function($scope) {
-  
-  console.log('login');
-})
-
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData) {
   $scope.chat = Chats.get($stateParams.chatId);
   console.log('in send game data');
@@ -92,6 +87,20 @@ console.log('in chats');
   };
   
 })
+
+/*
+      Login Controller
+*/
+.controller('LoginCtrl', function($scope, $http, login_functions) {
+  console.log('login');
+})
+
+
+/*
+    note:
+            maybe move factory to factory.js or services.js
+                              VVV
+                                                             */
 
 .factory('addGameFactory', function ()
 {
