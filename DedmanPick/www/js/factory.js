@@ -38,7 +38,6 @@ angular.module('starter.factories', [])
 
       
       var hostName = "IanStenbit4"
-
       console.log("createGame");
       console.log("time: " + time);
       console.log("location: " + location);

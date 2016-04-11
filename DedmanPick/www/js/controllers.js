@@ -15,7 +15,7 @@ console.log('in chats');
           console.log(data);
           $scope.chats = data;
         }
-
+        
       )
 
   $scope.remove = function(chat) {
