@@ -14,6 +14,18 @@ function randomBitString($length = 256) {
     return $str;
 }
 
+function authenticateSession($db, $user, $sessionKey){
+	$statement = $db->prepare('SELECT * FROM session WHERE sessionKey=:sk AND username = :usr');
+	$statement->execute(array('usr' => $user, 'sk' => $sessionKey));
+	$temp = array_values($statement->fetchAll(PDO::FETCH_ASSOC));
+		
+	foreach($temp as $blah){
+		return "success";
+	}
+
+	return "failed";
+}
+
 $app->get('/json',
 	function ($request, $response, $args) {
 		return $response->write(json_encode(array('field' => 'value')));
