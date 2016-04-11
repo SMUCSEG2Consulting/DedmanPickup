@@ -42,7 +42,7 @@ angular.module('starter.factories', [])
       console.log("time: " + time);
       console.log("location: " + location);
       console.log("sport: " + sport);
-      console.log("playerCount" + playerCount);
+      console.log("playerCount: " + playerCount);
       console.log("hostName" + hostName);
       
       return $http({
