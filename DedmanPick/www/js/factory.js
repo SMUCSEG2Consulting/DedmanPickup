@@ -166,3 +166,83 @@ angular.module('starter.factories', [])
 });
 
 */
+
+/*
+	login_functions factory
+*/
+.factory('login_functions', function ($http)
+{
+  return {
+
+  	
+  			////START login request////
+  	login_request : function(username, password){
+	  	var username = username;
+	  	var password = password;
+
+	  	var session_key;
+
+	  	//endpoint
+	  	var login_url = "http://104.236.10.218/login" + username + "/" + password;
+
+	  	return 
+
+	  	//post request
+	  	$http(
+	  		{
+	           method: 'POST',
+	           url: login_url,
+	           data: {username: username, password: password}
+	    	}
+	    ).then(
+		    	function(session_key_repsonse)
+		    	{
+
+		    		//correct format: 256 character hexidecimal
+		    		if(session_key_repsonse ==  "failed")
+		    		{
+		    			console.log("fail to login");
+		    		}
+
+		    		//should check for correct session key format
+		    		//256 character hexidecimal
+		    		else
+		    		{
+		    			//retrive session key from response data
+		    			session_key = session_key_repsonse.data;
+
+		    			//save session key to local stoarage
+		    			window.localStorage.setItem("session_key", session_key);
+		    		}
+	      		}
+      		)//end async anonymsis function call
+  	},
+  			////END login request////
+
+
+
+  	  		////START newUser request////
+  	newUser : function(username, password, email){
+	  	var username = username;
+	  	var password = password;
+	  	var email = email;
+
+	  	//endpoint
+	  	var newUser_url = "http://104.236.10.218/newUser" + username + "/" + password;
+
+	  	return 
+
+	  	//post request
+	  	$http(
+	  		{
+	           method: 'POST',
+	           url: newUser_url
+	           data: {username: username, password: password, email: email}
+	    	}
+	    )
+  	},
+  			////END newUser request////
+});
+/*
+	end login_functions factory
+*/
