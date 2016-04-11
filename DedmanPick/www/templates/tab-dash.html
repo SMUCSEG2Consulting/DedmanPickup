@@ -30,11 +30,21 @@
     </li>
   </select>
 </ul>
+ <ul class="list">
+  <li class="item item-input item-stacked-label">
+    <span class="input-label">How many players?</span>
+    <select ng-model = "playerCount">
+            <option>1-5</option>
+            <option>6-10</options>
+            <option>11+</option>
+    </li>
+  </select>
+</ul>
 
    <ul class="list">
         <li class="item item-input">
           <span class="input-label">Time</span>
-          <input type="time" placeholder="Enter Time Here" ng-model="time">
+          <input type="time" placeholder="hh:mm:ss" ng-model="time">
         </li>
       </ul>
 
