@@ -20,10 +20,10 @@ function authenticateSession($db, $user, $sessionKey){
 	$temp = array_values($statement->fetchAll(PDO::FETCH_ASSOC));
 		
 	foreach($temp as $blah){
-		return "success";
+		return TRUE;
 	}
 
-	return "failed";
+	return FALSE;
 }
 
 $app->get('/json',
@@ -303,7 +303,7 @@ $app->post('/createGame',
 	}
 );
 
-$app->post('/login/',
+$app->post('/login',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
@@ -337,6 +337,14 @@ $app->post('/login/',
 		} else {
 			return $response->write('failed');
 		}
+	}
+);
+
+$app->post('/logout',
+	function($request, $response, $args){
+		$db = $this->dbConn;
+		$statement = $db->prepare('DELETE FROM session WHERE username = :usr AND sessionKey = :sk');
+		$statement->execute(array('usr'=>$request->getParam('username'), 'sk' => $request->getParam('sessionKey')));
 	}
 );
 
