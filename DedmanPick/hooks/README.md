@@ -81,3 +81,17 @@ cross-platform. Some good examples are shown here:
 
 [http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/](http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/)
 
+
+
+<li class="list-group-item">{{gamesJoined[0].sport}}
+        <a href=" " title=" Game start at {{gamesJoined()[0].time}}, and will be played on {{gamesJoined()[0].date}} at {{gamesJoined()[0].location}}."> 
+            <span class="label label-pill label-info pull-md-right">Game Details</span> </a>
+    </li>
+    
+    <li class="list-group-item">{{gamesJoined[1].sport}}
+        <a href=" " title=" Game start at {{gamesJoined()[1].time}}, and will be played on {{gamesJoined()[0].date}} at {{gamesJoined()[1].location}}."> 
+            <span class="label label-pill label-info pull-md-right">Game Details</span></a></li>
+    <li class="list-group-item"> {{gamesJoined[2].sport}}
+        <a href=" " title=" Game start at {{gamesJoined()[2].time}}, and will be played on {{gamesJoined()[0].date}} at {{gamesJoined()[2].location}}."> 
+            <span class="label label-pill label-info pull-md-right">Game Details</span></a></li>
+

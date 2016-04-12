@@ -3,44 +3,63 @@
     <ion-list>
     
     <div class = "container">
-        <h1> Welcome! </h2>
+        <h1> Welcome {{userName}}! </h2>
 
         <div class="col-xs-6 m-t-2">
             <div class="card">
                 <h2> Make sure you start stretching! </h2>
   <img class="card-img-top" img src="http://1.bp.blogspot.com/-yFxieKeNw8U/VVrA-tqloOI/AAAAAAAAAEI/kYI-C-spExg/s1600/modest-man-stretching.jpg" width = 405px height = 250px>
   <div class="card-block">
-    <h4 class="card-title">Here's your upcoming games: </h4>
+    <form ng-submit = "getGame()" >
+        <button class="button button-calm">
+            Click here
+        </button>
+        for data on your upcoming games!
+    </form>
+   
   </div>
   <ul class="list-group list-group-flush">
-    
-    <li class="list-group-item">{{gamesJoined()[0].sport}}
-        <a href=" " title=" Game start at {{gamesJoined()[0].time}}, and will be played on {{gamesJoined()[0].date}} at {{gamesJoined()[0].location}}."> 
-            <span class="label label-pill label-info pull-md-right">Game Details</span> </a>
+    <li class="list-group-item">{{gamesJoined[0].sport}} will be played at {{gamesJoined[0].location}} and will start at {{gamesJoined[0].time}}
+        
     </li>
     
-    <li class="list-group-item">{{gamesJoined()[1].sport}}
-        <a href=" " title=" Game start at {{gamesJoined()[1].time}}, and will be played on {{gamesJoined()[0].date}} at {{gamesJoined()[1].location}}."> 
-            <span class="label label-pill label-info pull-md-right">Game Details</span></a></li>
-    <li class="list-group-item"> {{gamesJoined()[2].sport}}
-        <a href=" " title=" Game start at {{gamesJoined()[2].time}}, and will be played on {{gamesJoined()[0].date}} at {{gamesJoined()[2].location}}."> 
-            <span class="label label-pill label-info pull-md-right">Game Details</span></a></li>
+    <li class="list-group-item">{{gamesJoined[1].sport}} will be played at {{gamesJoined[1].location}} and will start at {{gamesJoined[1].time}}
+        
+    <li class="list-group-item"> {{gamesJoined[2].sport}} will be played at {{gamesJoined[2].location}} and will start at {{gamesJoined[2].time}}
+
+    <li class="list-group-item">{{gamesJoined[3].sport}} will be played at {{gamesJoined[3].location}} and will start at {{gamesJoined[3].time}}
+        
+    </li>
+    
+    <li class="list-group-item">{{gamesJoined[4].sport}} will be played at {{gamesJoined[4].location}} and will start at {{gamesJoined[4].time}}
+        
+    <li class="list-group-item"> {{gamesJoined[5].sport}} will be played at {{gamesJoined[5].location}} and will start at {{gamesJoined[5].time}}
+        
+    
   </ul>
   
 </div>
         </div>
         <div class="col-xs-6 m-t-3" ></div>
             <div class="card">
+                <form ng-submit = "getPreferences()" >
+        <button class="button button-calm">
+            Click here
+        </button>
+        for sports preferences!
+    </form>
                 <h3> Your sport preferences: </h3>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" > 1. Basketball </li>
-                    <li class="list-group-item"> 2. Soccer </li>
-                    <li class="list-group-item"> 3. Tennis </li>
+                    <li class="list-group-item" > 1. {{preferences[0].sport}} </li>
+                    <li class="list-group-item"> 2. {{preferences[1].sport}} </li>
+                    <li class="list-group-item"> 3. {{preferences[2].sport}} </li>
                 </ul>
             </div>
 
     </ion-toggle>
     </div>
     </ion-list>
+    
+    
   </ion-content>
 </ion-view>

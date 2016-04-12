@@ -1,18 +1,73 @@
 angular.module('starter.factories', [])
 
-.factory('user', function($http){
-
+.factory('user', function($http)
+{
+  //console.log("in user factory");
+  var users = [];
   return {
     //Iqbal played with this:****************
-    deleteUser: function(usr){
+    deleteUser : function(usr){
 
       console.log("user: " + usr);
       return $http({
         method: 'DELETE',
         url: 'http://104.236.10.218/public/index.php/deleteUser',
-        data: {usr: usr}
+        //data: {usr: usr}
+      })},
+      
+      getUserData : function(){ 
+      console.log("in user data");    
+      return $http({
+        method:'GET',
+        url: "http://104.236.10.218/public/index.php/users"
       })
+    
+    },
+     getPreferences : function(){ 
+      console.log("in user data");    
+      return $http({
+        method:'GET',
+        url: "http://104.236.10.218/public/index.php/user/JohnKhan96"
+      })
+    },
 
+      updatePreferences : function(sport){
+        var username = "JohnKhan96";
+        return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           data: {sport: sport, username : username}
+        
+      })
+      
+    
+    },
+
+    updatePreferences : function(sport){
+        return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           data: {gameID:sport.id, username : username}
+        
+            })
+    },
+
+    addUserToGame : function(sport){
+        var username = "JohnKhan96";
+        return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addUserToGame',
+           data: {gameID:sport.id, username : username}
+        
+            })
+    },
+
+     getGamesForUser : function(){
+        var username = "JohnKhan96";
+           return $http({
+              method:'GET',
+              url: "http://104.236.10.218/public/index.php/gamesForUser/JohnKhan96"
+               })
     }
 //*********************************
   }

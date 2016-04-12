@@ -50,10 +50,10 @@ console.log('in chats');
     $state.go('tab.chats');};
   })
 //***************************************
-.controller('JoinGameCtrl', function($scope, $state, addGameFactory) {
-  
+.controller('JoinGameCtrl', function($scope, $state, $http, user) {  
   $scope.joinGame = function joinGame(chat){
-  $scope.fromFactory = addGameFactory.addGame(chat);
+  $scope.addToGame = user.addUserToGame(chat);
+  //$scope.fromFactory = addGameFactory.addGame(chat);
   $state.go('tab.account', chat);};
 })
 
@@ -75,15 +75,43 @@ console.log('in chats');
   //console.log(Chats.get($stateParams.chatId));
 })
 
-.controller('AccountCtrl', function($scope, $state, addGameFactory) {
-  //console.log('acct ctrl');
-  $scope.gameData = function getData(){
-    console.log('here');
+
+.controller('AccountCtrl', function($scope, $state, user) {
+  $scope.userName = "John";
+  console.log('acct ctrl');
+
+  $scope.getGame = function (){
+    //console.log("in get game");
+    $scope.gamesJoined = user.getGamesForUser().then(function(response){
+      $scope.gamesJoined = response.data;
+      //console.log($scope.gamesJoined);
+    })
+
   };
 
+   $scope.getUserData = function(){
+    //console.log("user data");
+    $scope.users = user.getUserData().then(function(response){
+      console.log(response);
+      console.log(getUserData);
+    })
+  };
+  $scope.getPreferences = function(){
+    //console.log("user data");
+    $scope.users = user.getPreferences().then(function(response){
+      $scope.preferences = response.data;
+      console.log($scope.preferences[0].sport);
+      //console.log($scope.users);
+    })
+  };
 
-  $scope.gamesJoined = function getGame(){
-    return addGameFactory.getGames();
+  $scope.getUserPreferenceProfile = function(){
+    //console.log("user data");
+    $scope.users = user.getOneUser().then(function(response){
+      users = response.data;
+      console.log(users[0]);
+      //console.log($scope.users);
+    })
   };
   
 })
@@ -91,33 +119,24 @@ console.log('in chats');
 /*
       Login Controller
 */
+<<<<<<< HEAD
 .controller('LoginCtrl', function($scope, $http) {
+=======
+//deleted login_functions
+.controller('LoginCtrl', function($scope, $http, user) {
+>>>>>>> Kate2.00
   console.log('login');
+  $scope.users = function getUser()
+  {
+    console.log("in getUser");
+    return user.getUserData();
+  }
 })
 
 
-/*
-    note:
-            maybe move factory to factory.js or services.js
-                              VVV
-                                                             */
-
-.factory('addGameFactory', function ()
-{
-  var gamesJoined = [];
-  return {
-    addGame : function(chat){
-      console.log("add game: " + chat.sport);
-      gamesJoined.push(chat);
-    },
-
-    getGames : function(){
-      return gamesJoined;
-    }
-}
 
 
-});
+
 
 
 
