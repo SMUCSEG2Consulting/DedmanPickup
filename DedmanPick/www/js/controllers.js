@@ -119,21 +119,22 @@ console.log('in chats');
 /*
       Login Controller
 */
+.controller('LoginCtrl', function($scope, $state, $http, login_functions) {
+    console.log('(login controller)');
+    
+    //on click
+    $scope.login = function() {
+        console.log("User: " + $scope.data.username + ", Password: " + $scope.data.password);
+        login_functions.login_request($scope.data.username, $scope.data.password);
+    }
 
-.controller('LoginCtrl', function($scope, $http) {
-//merge conflict 
-//deleted login_functions
-
-
-  console.log('login');
-  $scope.users = function getUser()
-  {
-    console.log("in getUser");
-    return user.getUserData();
-  }
+    //on click
+    $scope.sign_up = function() {
+        console.log("go to sign up state");
+        //$state.go('tab.signUp');
+        
+    }
 })
-
-
 
 
 
