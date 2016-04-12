@@ -119,12 +119,12 @@ console.log('in chats');
 /*
       Login Controller
 */
-<<<<<<< HEAD
+
 .controller('LoginCtrl', function($scope, $http) {
-=======
+//merge conflict 
 //deleted login_functions
-.controller('LoginCtrl', function($scope, $http, user) {
->>>>>>> Kate2.00
+
+
   console.log('login');
   $scope.users = function getUser()
   {
