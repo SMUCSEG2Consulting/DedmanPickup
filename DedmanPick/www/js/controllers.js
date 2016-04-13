@@ -33,10 +33,13 @@ console.log('in chats');
   $scope.createGame = function createGame(time, location, sport, playerCount){
     games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
       console.log(response);
-    })
-  console.log('game created');
-  console.log()
-  $state.go('tab.chats');};
+      $state.go('tab.chats');
+    })};
+
+$scope.newGame = function newGame(){
+    
+      $state.go('tab.dash');
+    };
 })
 
 //Iqbal played with this:****************
@@ -57,13 +60,18 @@ console.log('in chats');
   $state.go('tab.account', chat);};
 })
 
-.controller('GameLobbyCtrl', function($scope, $stateParams, GameData) {
+.controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
   $scope.chat = Chats.get($stateParams.chatId);
   console.log('in send game data');
   //console.log(Chats.get($stateParams.chatId));
   $scope.gameData = function sendGameData(sport, id, location, time){
     console.log('in send game data');
       }
+  $scope.createNewGame = function (){
+    //console.log("in get game");
+    console.log("create new game")
+      //console.log($scope.gamesJoined);
+  };
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

@@ -1,10 +1,14 @@
 
 <ion-view view-title="Game Lobby">
 
+
   <ion-content>
     <ion-list>
-
-        
+    <form ng-submit = "newGame()" ng-controller = "CreateGameCtrl" >
+        <button class="button button-positive">
+           Click to create a new game
+          </button>
+      </form>
         <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
         <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
         <h2>{{chat.sport}}</h2>
@@ -14,5 +18,6 @@
         
       </ion-item>
     </ion-list>
+    
   </ion-content>
 </ion-view>
