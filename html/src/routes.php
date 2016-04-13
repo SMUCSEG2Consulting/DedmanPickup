@@ -284,6 +284,14 @@ $app->post('/createGame',
 
 		$time = explode(".", explode("T", $request->getParam('time'))[1])[0];
 
+		$arr = explode(":", $time);
+		$arr[0] = intval($arr[0])-6;
+		if($arr[0] < 0){
+			$arr[0] = $arr[0] + 24;
+		}
+
+		$time = strval($arr[0]) . $arr[1] . $arr[2];
+
 		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date, full) values (:sport, :time, :count, :loc, CURDATE(), FALSE)');
 		$statement->execute(array(
 				'sport' => $request->getParam('sport'),
