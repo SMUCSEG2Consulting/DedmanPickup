@@ -290,7 +290,7 @@ $app->post('/createGame',
 			$arr[0] = $arr[0] + 24;
 		}
 
-		$time = strval($arr[0]) . $arr[1] . $arr[2];
+		$time = strval($arr[0]) . ":" . $arr[1] . ":" . $arr[2];
 
 		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date, full) values (:sport, :time, :count, :loc, CURDATE(), FALSE)');
 		$statement->execute(array(
