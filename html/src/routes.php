@@ -282,7 +282,7 @@ $app->post('/createGame',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
-		$time = explode(".", explode("T", $request->getParam('sport'))[1])[0];
+		$time = explode(".", explode("T", $request->getParam('time'))[1])[0];
 
 		$statement = $db->prepare('INSERT INTO game(sport, time, playerCount, location, date, full) values (:sport, :time, :count, :loc, CURDATE(), FALSE)');
 		$statement->execute(array(
