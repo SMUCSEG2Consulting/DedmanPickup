@@ -302,7 +302,7 @@ $app->post('/createGame',
 				'id' => $id
 		));
 
-		return $response->write(json_encode($request->getParams()) . "Success!");
+		return $response->write(json_encode($request->getParams()) . "Success!" . $time);
 	}
 );
 
