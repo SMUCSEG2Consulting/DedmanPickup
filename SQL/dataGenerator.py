@@ -18,6 +18,8 @@ sports = ["\"soccer\"", "\"basketball\"", "\"tennis\"", "\"football\"", "\"ultim
 times = ["\"12:30:00\"", "\"14:20:00\"", "\"08:00:00\"", "\"18:15:00\"", "\"22:00:00\"", "\"16:40:00\"", "\"09:30:00\"", "\"13:25:00\"", "\"21:05:00\""]
 dates = ["\"2016-3-14\"", "\"2016-3-28\"", "\"2016-4-14\"", "\"2016-4-11\"", "\"2016-5-18\"", "\"2016-4-28\"", "\"2016-7-11\"", "\"2016-5-12\""]
 locations = ["\"Dedman\"", "\"Intramural Fields\"", "\"Wescott Field\"", "\"Some Park\"", "\"Moody Colliseum\""]
+chats = ["Hey, I'll bring a ball!", "I'll bring some snacks!", "Just realized it's raining, so let's cancel?", "See you all in 10.", "Yo we should totally listen to some dank beats while we sports", "Just got here and its busy so we can't play. Sorry!", "Ay where the dank memes at?", "We still on?"]
+
 
 prefs = [1, 2, 3, 4]
 
@@ -77,7 +79,7 @@ for i in range(5):
 
 for i in range(50):
     for k in range(random.choice(nums)):
-        file.write("INSERT INTO chat(username, gameID, message) values(\"" + random.choice(names) + "\", " + str(i+1) + ", \"Lorem Ipsum, yo! " + str(k)  + "\");")
+        file.write("INSERT INTO chat(username, gameID, message) values(\"" + random.choice(names) + "\", " + str(i+1) + ", \""  + random.choice(chats) + str(k)  + "\");")
         file.write('\n')
 
 
