@@ -40,6 +40,21 @@
                     
                 </ul>
             </div>
+            <div class="col-xs-6.8 m-t-3" ></div>
+            <div class="card">
+                <form ng-submit = "getSuggestedGames()" >
+        <button class="button button-positive m-l-2">
+            <h4 style="color:white;"> Click here for suggested games</h4>
+        </button>
+    </form>
+   
+                <h3> Your suggested games: </h3>
+                <ul class="list-group list-group-flush">
+                  <ion ng-repeat="suggestedGame in suggestedGames" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+                    <li class="list-group-item" > {{suggestedGame.sport}} will be played at {{suggestedGame.location}} and will start at {{suggestedGame.time}}</li>
+                    
+                </ul>
+            </div>
 
     </ion-toggle>
     </div>

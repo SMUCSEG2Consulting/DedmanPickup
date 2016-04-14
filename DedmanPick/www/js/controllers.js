@@ -112,6 +112,14 @@ $scope.newGame = function newGame(){
       //console.log($scope.users);
     })
   };
+  $scope.getSuggestedGames = function(){
+    //console.log("user data");
+    $scope.suggestedGames = user.getSuggestedGames().then(function(response){
+      $scope.suggestedGames = response.data;
+      console.log($scope.suggestedGames[0].sport);
+      //console.log($scope.users);
+    })
+  };
 
   $scope.getUserPreferenceProfile = function(){
     //console.log("user data");

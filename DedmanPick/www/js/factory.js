@@ -61,7 +61,13 @@ angular.module('starter.factories', [])
         
             })
     },
-
+    getSuggestedGames : function(sport){
+        var username = "JohnKhan96";
+        return $http({
+           method: 'GET',
+           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/JohnKhan96',
+            })
+    },
      getGamesForUser : function(){
         var username = "JohnKhan96";
            return $http({
