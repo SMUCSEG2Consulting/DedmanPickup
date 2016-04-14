@@ -18,31 +18,11 @@
    
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{gamesJoined[0].sport}} will be played at {{gamesJoined[0].location}} and will start at {{gamesJoined[0].time}}
-        
+    <ion ng-repeat="gameJoined in gamesJoined" type="item-text-wrap" >
+    <li class="list-group-item">{{gameJoined.sport}} will be played at {{gameJoined.location}} and will start at {{gameJoined.time}}
     </li>
     
-    <li class="list-group-item">{{gamesJoined[1].sport}} will be played at {{gamesJoined[1].location}} and will start at {{gamesJoined[1].time}}
-      </li>  
-    <li class="list-group-item"> {{gamesJoined[2].sport}} will be played at {{gamesJoined[2].location}} and will start at {{gamesJoined[2].time}}
-     </li>
-    <li class="list-group-item">{{gamesJoined[3].sport}} will be played at {{gamesJoined[3].location}} and will start at {{gamesJoined[3].time}}
-        
-    </li>
     
-    <li class="list-group-item">{{gamesJoined[4].sport}} will be played at {{gamesJoined[4].location}} and will start at {{gamesJoined[4].time}}
-     </li>   
-    <li class="list-group-item"> {{gamesJoined[5].sport}} will be played at {{gamesJoined[5].location}} and will start at {{gamesJoined[5].time}}
-      </li>  
-      <li class="list-group-item"> {{gamesJoined[6].sport}} will be played at {{gamesJoined[6].location}} and will start at {{gamesJoined[6].time}}
-      </li>  
-      <li class="list-group-item"> {{gamesJoined[7].sport}} will be played at {{gamesJoined[7].location}} and will start at {{gamesJoined[7].time}}
-      </li>  
-      <li class="list-group-item"> {{gamesJoined[8].sport}} will be played at {{gamesJoined[8].location}} and will start at {{gamesJoined[8].time}}
-      </li>  
-    
-  </ul>
-  
 </div>
         </div>
         <div class="col-xs-6 m-t-3" ></div>
@@ -52,11 +32,12 @@
             <h4 style="color:white;"> Click here for sports preferences</h4>
         </button>
     </form>
+   
                 <h3> Your sport preferences: </h3>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" > 1. {{preferences[0].sport}} </li>
-                    <li class="list-group-item"> 2. {{preferences[1].sport}} </li>
-                    <li class="list-group-item"> 3. {{preferences[2].sport}} </li>
+                  <ion ng-repeat="preference in preferences" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+                    <li class="list-group-item" > {{preference.sport}} </li>
+                    
                 </ul>
             </div>
 
