@@ -61,7 +61,7 @@ $scope.newGame = function newGame(){
 })
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
-  $scope.chat = Chats.get($stateParams.chatId);
+  //$scope.chat = Chats.get($stateParams.chatId);
   console.log('in send game data');
   //console.log(Chats.get($stateParams.chatId));
   $scope.gameData = function sendGameData(sport, id, location, time){
