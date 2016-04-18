@@ -27,12 +27,12 @@ angular.module('starter.factories', [])
       console.log("in user data");    
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/user/JohnKhan96"
+        url: "http://104.236.10.218/public/index.php/user/IanFontenot67"
       })
     },
 
       updatePreferences : function(sport){
-        var username = "JohnKhan96";
+        var username = "IanFontenot67";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addSportForUser',
@@ -53,7 +53,7 @@ angular.module('starter.factories', [])
     },
 
     addUserToGame : function(sport){
-        var username = "JohnKhan96";
+        var username = "IanFontenot67";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addUserToGame',
@@ -62,17 +62,17 @@ angular.module('starter.factories', [])
             })
     },
     getSuggestedGames : function(sport){
-        var username = "JohnKhan96";
+        var username = "IanFontenot67";
         return $http({
            method: 'GET',
-           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/JohnKhan96',
+           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/IanFontenot67',
             })
     },
      getGamesForUser : function(){
-        var username = "JohnKhan96";
+        var username = "IanFontenot67";
            return $http({
               method:'GET',
-              url: "http://104.236.10.218/public/index.php/gamesForUser/JohnKhan96"
+              url: "http://104.236.10.218/public/index.php/gamesForUser/IanFontenot67"
                })
     }
 //*********************************
