@@ -37,7 +37,12 @@ console.log('in chats');
     })};
 
 $scope.newGame = function newGame(){
-    
+  
+      $state.go('tab.dash');
+    };
+
+  $scope.search = function(){
+      var name = $scope.form.name;
       $state.go('tab.dash');
     };
 })
