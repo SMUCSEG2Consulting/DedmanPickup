@@ -38,6 +38,16 @@ $app->get('/json/{id}',
 	}
 );
 
+$app->get('/games/{sport}',
+	function($request, $response, $args) {
+		$db = $this->dbConn;
+		$statement = $db->prepare('SELECT * FROM game WHERE date >= CURDATE() AND full = FALSE AND sport = :sp');
+		$statement->execute(array('sp' => $args['sport']));
+		$arr = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $response->write(json_encode($arr));
+	}
+);
+
 
 $app->get('/games',
 	function($request, $response, $args) {
