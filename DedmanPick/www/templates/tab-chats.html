@@ -4,6 +4,7 @@
 
   <ion-content>
     <ion-list>
+     
      <ion-checkbox ng-model="form.Showname">Search by sport</ion-checkbox>
       <div ng-show= "form.Showname">
         <div class="list">
@@ -11,12 +12,20 @@
             <label class="item-input-wrapper">
               <input type="text" ng-model = "form.name" placeholder="input search sport">
             </label>
+            <form ng-click = "search()">
+              <button class="button button-positive">
+                Search
+                </button>
+              </form>
           </div>
         </div>
       </div>
-    <form ng-submit = "newGame()" ng-controller = "CreateGameCtrl" >
-        <button class="button button-positive">
-           Click to create a new game
+
+
+
+      <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+          <button class="button button-positive">
+            Click to create a new game
           </button>
       </form>
         <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >

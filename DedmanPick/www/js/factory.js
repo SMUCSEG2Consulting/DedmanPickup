@@ -68,11 +68,20 @@ angular.module('starter.factories', [])
            url: 'http://104.236.10.218/public/index.php/gamesByUserPref/IanFontenot67',
             })
     },
+
+    searchGame : function(sportName){
+      console.log(sportName);
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/games/soccer'
+      })
+      
+    },
      getGamesForUser : function(){
         var username = "IanFontenot67";
            return $http({
               method:'GET',
-              url: "http://104.236.10.218/public/index.php/gamesForUser/IanFontenot67"
+              url: 'http://104.236.10.218/public/index.php/gamesForUser/IanFontenot67'
                })
     }
 //*********************************
@@ -88,7 +97,16 @@ angular.module('starter.factories', [])
       console.log('addGame');
       return $http({
         method:'GET',
-        url: "http://dev.ianjjohnson.com/public/index.php/addUserToGame/{gameID}/{username}"
+        url: 'http://104.236.10.218/public/index.php/addUserToGame/{gameID}/{username}'
+      })
+      
+    },
+
+    searchGame : function(sportName){
+      //console.log(sportName);
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/games/soccer'
       })
       
     },

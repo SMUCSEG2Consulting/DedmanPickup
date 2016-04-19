@@ -9,11 +9,7 @@
             <div class="card">
                
   <div class="card-block">
-    <form ng-submit = "getGame()" >
-        <button class="button button-positive">
-            <h4 style="color:white;">Click here for data on your upcoming games!</h4>
-        </button>
-    </form>
+    <h3> Here's all your upcoming games! </h3>
    
   </div>
   <ul class="list-group list-group-flush">
@@ -24,7 +20,7 @@
     
 </div>
         </div>
-        <div class="col-xs-6.8 m-t-3" ></div>
+      <!--  <div class="col-xs-6.8 m-t-3" ></div>
             <div class="card">
                 <form ng-submit = "getPreferences()" >
         <button class="button button-positive m-l-3">
@@ -38,16 +34,20 @@
                     <li class="list-group-item" > {{preference.sport}} </li>
                     
                 </ul>
-            </div>
+            </div>-->
             <div class="col-xs-6 m-t-3" ></div>
             <div class="card">
-              <h3> <input type="checkbox" ng-click="getSuggestedGames()" ng-model="checked" aria-label="Toggle ngHide">Turn on your suggested games:<br/></h3> 
+              <div class="card-block">
 <div>
-  <div class="check-element animate-show" ng-show="checked">
-    <span class="glyphicon glyphicon-thumbs-up"></span>
+  
+                <h3> Here's some games you might be interested in! </h3>
                 <ul class="list-group list-group-flush">
-                  <ion ng-repeat="suggestedGame in suggestedGames" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
-                    <li class="list-group-item" > {{suggestedGame.sport}} will be played at {{suggestedGame.location}} and will start at {{suggestedGame.time}}</li>
+                  <ion-item class ng-repeat="suggestedGame in suggestedGames" ng-click = "sendGameData(sport, id, location, time)" ng-controller = "ChatsCtrl" type="item-text-wrap" href="#/tab/chats/{{suggestedGame.id}}" z>
+                    <li class="list-group-item" > 
+                    {{suggestedGame.sport}} will be played at {{suggestedGame.location}} and will start at {{suggestedGame.time}}
+                      <i class="icon ion-chevron-right icon-accessory m-l-3"></i></li>
+                    </ion-item>
+
   </div>
 </div>
 

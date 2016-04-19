@@ -3,8 +3,28 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, $http, Chats) {
-
+.controller('ChatsCtrl', function($scope, $http, Chats, user) {
+console.log('in send game data');
+$scope.form = {};
+  $scope.search = function()
+  {
+    $scope.searchParam = $scope.form.name;
+    var searchResult =  user.searchGame($scope.searchParam).then(function(response){
+      $scope.searchResult = response.data;
+      console.log($scope.searchResult[0]);
+      //console.log($scope.users);
+    })
+    
+  };
+  //console.log(Chats.get($stateParams.chatId));
+  //$scope.gameData = function sendGameData(sport, id, location, time){
+    //console.log('in send game data');
+      //}
+  $scope.createNewGame = function (){
+    //console.log("in get game");
+    console.log("create new game")
+      //console.log($scope.gamesJoined);
+  };
 console.log('in chats');
  
   var chats = Chats.all();
@@ -67,16 +87,31 @@ $scope.newGame = function newGame(){
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
   //$scope.chat = Chats.get($stateParams.chatId);
-  console.log('in send game data');
+  //console.log('in send game data');
+  $scope.search = function()
+  {
+    console.log("in search");
+    //$scope.searchParam = $scope.form.name;
+  }
   //console.log(Chats.get($stateParams.chatId));
   $scope.gameData = function sendGameData(sport, id, location, time){
-    console.log('in send game data');
+    //console.log('in send game data');
       }
   $scope.createNewGame = function (){
     //console.log("in get game");
     console.log("create new game")
       //console.log($scope.gamesJoined);
   };
+
+  $scope.search = function()
+  {
+    console.log("in search");
+    //$scope.searchParam = $scope.form.name;
+  }
+})
+
+.controller('SearchCtrl', function($scope, $state) {
+    console.log('(search controller)');
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -92,15 +127,16 @@ $scope.newGame = function newGame(){
 .controller('AccountCtrl', function($scope, $state, user) {
   $scope.userName = "John";
   console.log('acct ctrl');
-
-  $scope.getGame = function (){
-    //console.log("in get game");
-    $scope.gamesJoined = user.getGamesForUser().then(function(response){
+  var gamesJoined = user.getGamesForUser().then(function(response){
       $scope.gamesJoined = response.data;
-      //console.log($scope.gamesJoined);
+      //$scope.$apply();
     })
-
-  };
+  var suggestedGames =  user.getSuggestedGames().then(function(response){
+      $scope.suggestedGames = response.data;
+      //$scope.apply();
+      console.log($scope.suggestedGames[0].sport);
+      //console.log($scope.users);
+    })
 
    $scope.getUserData = function(){
     //console.log("user data");
