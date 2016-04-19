@@ -1,0 +1,23 @@
+  <div class = "container">
+  <div class="card m-t-3">
+  
+  <div class="card-block">
+    <h4 class="card-title">Please Sign Up</h4>
+
+    <div class="wrapper">
+    <form class="form-signin">       
+      
+      <input type="text" ng-model="data.username" placeholder="Username" />
+      <input type="password" ng-model="data.password" placeholder="Password" /> 
+      <input type="text" ng-model="data.email" placeholder="Email" />       
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click = "sign_up()">Sign Up</button>  
+      
+    </form>
+
+    <h6 ng-model="data.username">Already have an account...</h6>
+    <button class="btn" type="submit" ng-click = "login_state()">Login</button> 
+
+  </div>
+  </div>
+</div>
+</div>

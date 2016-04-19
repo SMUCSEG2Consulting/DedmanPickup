@@ -15,15 +15,15 @@ angular.module('starter.factories', [])
     },
 
     getGames: function(){
-    console.log("getGames");
+        console.log("getGames");
 
-    return $http({
-    method:'GET',
-    url: "http://dev.ianjjohnson.com/public/index.php/games"
- })
+        return $http({
+        method:'GET',
+        url: "http://dev.ianjjohnson.com/public/index.php/games"
+     })
     },
-// this will be a post method once the end point is changed
 
+    // this will be a post method once the end point is changed
     createGame: function(time, location, sport){
 
       var playerCount = 0; 
@@ -43,108 +43,232 @@ angular.module('starter.factories', [])
            data: {time: time, location: location, sport: sport, playerCount: playerCount, hostName: hostName}
         
       })
-      }
-
     }
-  });
-
-/*
-// this will be a delete method once the end point is changed
-    deleteGame: function(){
-      console.log("deleteGame");
-      return $http({
-        method: 'GET',
-        url: "http://dev.ianjjohnson.com/public/index.php/deleteGame/{id}"
-      })
-    },
-
-      getInfo: function() {
-        console.log("getInfo");
-        return $http({
-          method: 'GET',
-          url: "http://dev.ianjjohnson.com/public.index.php/game/{id}"
-
-        })
-        
-      }
-
 
   }
 })
 
 
+/*
+	login_functions factory
+*/
 
+.factory('login_functions', function ($state, $http, $q)
+{
+  return {
+  	
+  			////START login request////
+  	login_request : function(username, password){
 
-//this will be a post method
-.factory('users', function (http){
-  return{
+	  	var usr = username;
+	  	var pwd = password;
+      var session_key;
 
+      var deferred = $q.defer();
 
-    //this will be a post method
-    addUser: function() {
-      console.log("addUser");
-        return $http({
-          method: 'GET',
-          url: "http://dev.ianjjohnson.com/public.index.php/addUserToGame/{gameID}/{username}"
-        })
-    },
+      //endpoint
 
-    //post verison
-    addUser: function(game_id, username){
-      console.log("addUser");
+        
+        //post request
+        $http(
+          {
+               method: 'POST',
+               url: 'http://104.236.33.141/public/index.php/login', 
+               data: {name: usr, pwd: pwd}
+          }
+        ).then(
 
-      var addUser_url = 'http://dev.ianjjohnson.com/public.index.php/addUserToGame/' + game_id + "/" + username;
-      
-      return $http({
-        var req = {
-           method: 'POST',
-           url: addUser_url,
-           headers: {'Content-Type': undefined},
-           data: { test: 'test' }
+                function(session_key_repsonse)
+                {
+
+                  //correct format: 256 character hexidecimal
+                  if(session_key_repsonse.data ==  "failed")
+                  {
+                    console.log("fail to login");
+
+                    deferred.reject();
+
+                  }
+
+                  //should check for correct session key format
+                  //256 character hexidecimal
+                  else
+                  {
+
+                    console.log(session_key_repsonse);
+
+                    //retrive session key from response data
+                    session_key = session_key_repsonse.data;
+
+                    //save session key to local stoarage
+                    window.localStorage.setItem("session_key", session_key);
+
+                    //promise
+                    deferred.resolve();
+
+                  }
+
+                }
+          )
+
+        return deferred.promise
+    }
+
+  }//end factory return
+}
+)
+
+/*
+	end login_functions factory
+*/
+
+/*
+  sign_up_function factory
+*/
+.factory('sign_up_functions', function ($state, $http, $q)
+{
+  return {
+
+    newUser : function(username, password, email){
+      var usr = username;
+      var pwd = password;
+      var eml = email;
+      var deferred = $q.defer();
+
+      $http(
+        {
+             method: 'GET',
+             url: 'http://104.236.33.141/public/index.php/newUser/' + usr + '/' + pwd + '/' + eml
+
         }
-      })
-      
-    },  //end addUser
+      ).then(
+                //$response->setStatus(400);  //routes newUsr
 
-  
-    //this will be a delete method
-        deleteUser: function() {
-          console.log("deleteUser");
-          return $http({
-            method: 'GET',
-            url: "http://dev.ianjjohnson.com/public.index.php/deleteUserFromGame/{gameID}/{username}"
-          })
-        },
-    
-    //delete verison
-    deleteUser: function() {
-      console.log("deleteUser");
-      var deleteUser_url = 'http://dev.ianjjohnson.com/public.index.php/deleteUserFromGame/' + game_id + "/" + username;
-    
-      $http.delete(deleteUser_url);
-    },
+                function(session_key_repsonse)
+                {
 
+                  if(session_key_repsonse.status ==  200)
+                  {
 
+                    console.log(session_key_repsonse);
 
-//this will be a post method
-    createUser: function() {
-      console.log("createUser");
-      return $http({
-        method: 'GET',
-        url: "http://dev.ianjjohnson.com/public.index.php/newUser/{name}/{pwd}"
-      })
-    },
+                    //retrive session key from response data
+                    session_key = session_key_repsonse.data;
 
-    getUsers: function() {
-      console.log("getUsers");
-      return $http({
-        method: 'GET',
-        url: "http://dev.ianjjohnson.com/public.index.php/users"
-      })
-    },
+                    //save session key to local stoarage
+                    window.localStorage.setItem("session_key", session_key);
 
+                    //promise
+                    deferred.resolve();
 
-  }
-});
+                  }
 
+                  //should check for correct session key format
+                  //256 character hexidecimal
+                  else
+                  {
+                        deferred.reject();
+
+                  }
+
+                }
+      )
+
+       return deferred.promise
+    }//end newUser
+
+  }//end factory return
+}
+)
+
+/*
+  end sign_up_function factory
+*/
+
+/*
+  chat_function factory
+*/
+.factory('sign_up_functions', function ($state, $http, $q)
+{
+  return {
+
+    get_chat : function(gameID){
+      var gID = gameID;
+      var deferred = $q.defer();
+
+      $http(
+        {
+             method: 'GET',
+             url: 'http://104.236.33.141/public/index.php/chatData/' + gID
+
+        }
+      ).then(
+                //$response->setStatus(400);  //routes chatData
+
+                function(response)
+                {
+
+                  if(response.status ==  200)
+                  {
+
+                    console.log(response);
+
+                    //promise
+                    deferred.resolve(response.data);
+
+                  }
+
+                  else
+                  {
+                        deferred.reject();
+                  }
+
+                }
+      )
+
+       return deferred.promise
+    },//end get_chat
+
+     send_message : function(username, gameID, message){
+      var gID = gameID;
+      var usr = username;
+      var msg = message;
+      var deferred = $q.defer();
+
+      $http(
+        {
+             method: 'POST',
+             url: 'http://104.236.33.141/public/index.php/chatMessage',
+             data: {username: usr, game_id: gID, message: msg}
+        }
+      ).then(
+                //$response->setStatus(400);  //routes chatMessage
+
+                function(response)
+                {
+
+                  if(response.status ==  200)
+                  {
+                    deferred.resolve(response.data);
+
+                  }
+
+                  else
+                  {
+                        deferred.reject();
+                  }
+
+                }
+      )
+
+       return deferred.promise
+    }//end send_message
+
+  }//end factory return
+
+}
+);
+
+/*
+  end chat_functions factory
 */
