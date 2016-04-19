@@ -9,9 +9,9 @@ $scope.form = {};
   $scope.search = function()
   {
     $scope.searchParam = $scope.form.name;
-    var searchResult =  user.searchGame($scope.searchParam).then(function(response){
-      $scope.searchResult = response.data;
-      console.log($scope.searchResult[0]);
+    var searchResults =  user.searchGame($scope.searchParam).then(function(response){
+      $scope.searchResults = response.data;
+      console.log($scope.searchResults[0]);
       //console.log($scope.users);
     })
     
@@ -115,13 +115,16 @@ $scope.newGame = function newGame(){
     console.log('(search controller)');
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, games) {
   
   //console.log($stateParams.chatId);
-  $scope.chat = Chats.getGameData($stateParams.chatId);
-  console.log($scope.chat);
+
+  $scope.chat = games.getGame($stateParams.chatId).then(function(response){
+      $scope.chat = response.data;
+      console.log($scope.chat);
   //console.log(Chats[$stateParams.chatId]);
   //console.log(Chats.get($stateParams.chatId));
+})
 })
 
 

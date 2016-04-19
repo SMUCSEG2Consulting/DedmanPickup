@@ -17,7 +17,17 @@
                 Search
                 </button>
               </form>
+               
           </div>
+          <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
+        <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
+        <h2>{{searchResult.sport}}</h2>
+        <p>{{searchResult.date}}</p>
+        <p>{{searchResult.time}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        
+      </ion-item>
+    </ion-list>
         </div>
       </div>
 
@@ -28,7 +38,7 @@
             Click to create a new game
           </button>
       </form>
-        <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+        <!--<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
         <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
         <h2>{{chat.sport}}</h2>
         <p>{{chat.date}}</p>
@@ -36,7 +46,7 @@
         <i class="icon ion-chevron-right icon-accessory"></i>
         
       </ion-item>
-    </ion-list>
+    </ion-list>-->
     
   </ion-content>
 </ion-view>
