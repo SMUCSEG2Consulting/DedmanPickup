@@ -100,6 +100,7 @@ $app->get('/newUser/{name}/{pwd}/{email}',
 		$statement->execute(array('usr'=>$args['name']));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		if(!empty($result)){
+		  //$response->setStatus(400);
 			return $response->write('Error - name already taken');
 		}
 
