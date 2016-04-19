@@ -61,6 +61,15 @@ angular.module('starter.factories', [])
         
             })
     },
+
+    getGame : function(id){
+      console.log(id + "get game");
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/game/31'
+      })
+      
+    },
     getSuggestedGames : function(sport){
         var username = "IanFontenot67";
         return $http({
@@ -98,6 +107,15 @@ angular.module('starter.factories', [])
       return $http({
         method:'GET',
         url: 'http://104.236.10.218/public/index.php/addUserToGame/{gameID}/{username}'
+      })
+      
+    },
+
+    getGame : function(id){
+      console.log(id + "get game");
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/game/{id}'
       })
       
     },
