@@ -97,6 +97,7 @@ $scope.newGame = function newGame(){
   $scope.gameData = function sendGameData(sport, id, location, time){
     //console.log('in send game data');
       }
+ 
   $scope.createNewGame = function (){
     //console.log("in get game");
     console.log("create new game")
@@ -124,7 +125,7 @@ $scope.newGame = function newGame(){
 })
 
 
-.controller('AccountCtrl', function($scope, $state, user) {
+.controller('AccountCtrl', function($scope, $state, user,games) {
   $scope.userName = "John";
   console.log('acct ctrl');
   var gamesJoined = user.getGamesForUser().then(function(response){
@@ -137,7 +138,14 @@ $scope.newGame = function newGame(){
       console.log($scope.suggestedGames[0].sport);
       //console.log($scope.users);
     })
-
+ $scope.getGameData = function(id){
+    console.log('in get game');
+      $scope.game = user.getGame(id).then(function(response){
+      $scope.game = response.data;
+      console.log(response);
+      console.log($scope.game);
+    })
+      }
    $scope.getUserData = function(){
     //console.log("user data");
     $scope.users = user.getUserData().then(function(response){
