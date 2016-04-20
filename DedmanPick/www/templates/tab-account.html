@@ -3,18 +3,17 @@
     <ion-list>
     
     <div class = "container">
-        <h1> Welcome {{userName}}! </h2>
-
+        
         <div class="col">
             <div class="card">
                
   <div class="card-block">
-    <h3>Your upcoming games!</h3>
+    <h2>Your upcoming games!</h2>
    
   </div>
   <ul class="list-group list-group-flush">
     <ion ng-repeat="gameJoined in gamesJoined"ng-click = "sendGameData(sport, id, location, time)" href="#/tab/chats/{{searchResult.id}}" type="item-text-wrap" >
-    <li class="list-group-item"> <strong> <h4>{{gameJoined.sport}}</strong></h4> at <strong>{{gameJoined.location}}</strong> starting at <strong>{{gameJoined.time}}</strong>    </li>
+    <li class="list-group-item"> <strong> <h3>{{gameJoined.sport}}</strong></h3> at <strong>{{gameJoined.location}}</strong> starting at <strong>{{gameJoined.time}}</strong>    </li>
     
     
 </div>
@@ -41,11 +40,12 @@
   
                 <h3>Suggested games </h3>
                 <ul class="list-group list-group-flush">
-                 <ion class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  >
+                 <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "joinGame(suggestedGame.id)"type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}">
                     <li class="list-group-item" > 
                       <!--{{suggestedGame.id}}-->
-                    <strong><h3>{{suggestedGame.sport}}</strong> </h3> will be played at <strong>{{suggestedGame.location}}</strong> and will start at <strong>{{suggestedGame.time}}</strong>
-                    <i class="icon ion-chevron-right icon-accessory"></i>
+                  <p>{{suggestedGame.sport}}</p>
+                    <p> {{suggestedGame.location}}</p>
+                    <p>{{suggestedGame.time}}</p>                    <i class="icon ion-chevron-right icon-accessory"></i>
 
         <form ng-submit ="joinGame(suggestedGame)" ng-controller = "JoinGameCtrl">
         <button type = "button" class="btn btn-primary btn-sm m-l-3 m-t-1">
