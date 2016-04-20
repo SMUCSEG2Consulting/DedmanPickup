@@ -11,7 +11,7 @@ file.write(tmp + "\n\n\n")
 
 
 
-firstNames = ["John", "Jack", "Tom", "Bob", "Sarah", "Grace", "Timmothy", "Ian", "Matt", "Mark", "Jennifer", "Allison", "Mary", "Katy", "Jonathan", "Ben"]
+firstNames = ["John", "Jack", "Tom", "Bob", "Sarah", "Grace", "Timmothy", "Paige", "Matt", "Mark", "Jennifer", "Allison", "Mary", "Katie", "Jonathan", "Ben"]
 lastNames = ["Johnson", "Smith", "Carter", "Gabrielson", "Fontenot", "Khan", "Mitchell", "Banbury", "Cohen", "Hansen", "Stenbit", "Renninger", "Reiss", "Goldman"]
 nums = [2, 4, 5, 6, 8, 10, 15]
 sports = ["\"soccer\"", "\"basketball\"", "\"tennis\"", "\"football\"", "\"ultimate frisbee\"", "\"squash\"", "\"indoor soccer\"", "\"pool\"", "\"ping pong\""]
@@ -24,7 +24,7 @@ chats = ["Hey, I'll bring a ball!", "I'll bring some snacks!", "Just realized it
 prefs = [1, 2, 3, 4]
 
 _salt = "1jo5OFAVDpC6xaEgt8sSuHcOSzo1SnkEVF5jHwD39SJegUlvz8nBLNeJBK6StVPCKzNNxUpOToQojUW304fW5gjniSqWejeBxo6Xtlgb0qIWW4vYoRYIIPRph8YwiW1mSxZ6sahYlfruDA52wtwPw82I9EVnEul7jRMbbFGFD2NDNW3AinEFt5sqMa84tKK0V9JJyRe4FY7yFTOVjSMV41WF2srbI3k0QVGoEaQ7r0tijCBnXil4QVwQ0ya1FW3g"
-_hash = "e48856bbdbbb68291a2059fd540961ca213ee5b20b91a7a26bb8b59ae4b052b5"
+_hash = "b494b120a0216e50afa797788bd537e3abed549b4e5a62c1bd800ce0b6c92389"
 names = []
 
 for i in range(100):
