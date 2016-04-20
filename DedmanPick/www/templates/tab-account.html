@@ -40,18 +40,12 @@
   
                 <h3>Suggested games </h3>
                 <ul class="list-group list-group-flush">
-                 <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "joinGame(suggestedGame.id)"type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}">
+                 <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "getGame({{suggestedGame.id}})" type="item-text-wrap" href="#/tab/chats/{{suggestedGame.id}}" ng-controller = "ChatDetailCtrl">
                     <li class="list-group-item" > 
                       <!--{{suggestedGame.id}}-->
                   <p>{{suggestedGame.sport}}</p>
                     <p> {{suggestedGame.location}}</p>
                     <p>{{suggestedGame.time}}</p>                    <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <form ng-submit ="joinGame(suggestedGame)" ng-controller = "JoinGameCtrl">
-        <button type = "button" class="btn btn-primary btn-sm m-l-3 m-t-1">
-            Click here to join
-        </button>
-    </form>
     
                      </li>
 
