@@ -27,12 +27,12 @@ angular.module('starter.factories', [])
       console.log("in user data");    
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/user/IanFontenot67"
+        url: "http://104.236.10.218/public/index.php/user/TomBanbury0"
       })
     },
 
       updatePreferences : function(sport){
-        var username = "IanFontenot67";
+        var username = "TomBanbury0";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addSportForUser',
@@ -53,7 +53,7 @@ angular.module('starter.factories', [])
     },
 
     addUserToGame : function(sport){
-        var username = "KatyHansen76";
+        var username = "TomBanbury0";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addUserToGame',
@@ -71,7 +71,7 @@ angular.module('starter.factories', [])
       
     },
     getSuggestedGames : function(sport){
-        var username = "KatyHansen76";
+        var username = "TomBanbury0";
         return $http({
            method: 'GET',
            url: 'http://104.236.10.218/public/index.php/gamesByUserPref/'+username
@@ -87,7 +87,7 @@ angular.module('starter.factories', [])
       
     },
      getGamesForUser : function(){
-        var username = "KatyHansen76";
+        var username = "TomBanbury0";
            return $http({
               method:'GET',
               url: 'http://104.236.10.218/public/index.php/gamesForUser/'+username
@@ -99,8 +99,48 @@ angular.module('starter.factories', [])
 
 .factory('games', function ($http)
 {
+  
+
+ var images = [  
+  {
+      id: 0,
+      name: 'Basketball',
+      image:'http://boykinsbasketball.com/wp-content/uploads/2015/10/5451a9bac173c.preview-699.jpg'
+    },
+    {
+      id: 1,
+      name: 'Pool',
+      image:'http://weknowyourdreamz.com/images/billiards/billiards-05.jpg'
+    },
+    {
+      id: 2,
+      name: 'Sand Volleyball',
+      image:'http://archive.aacounty.org/sebin/j/b/beach_volleyball_pic2.jpg'
+    },
+    {
+      id: 3,
+      name: 'Tennis',
+      image:'http://www.pirec.org/wp-content/uploads/2013/02/tennis-balls-and-rackets.jpg'
+    },
+
+    {
+      id: 4,
+      name: 'Soccer',
+       image:'http://www.buenavistaco.gov/ImageRepository/Document?documentID=676'
+    }     
+];
   return {
 
+
+
+      getImage : function(id){
+      console.log(id + "get game");
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/game/'+id
+      })
+      
+    },
     getGame : function(id){
       console.log(id + "get game");
       return $http({
