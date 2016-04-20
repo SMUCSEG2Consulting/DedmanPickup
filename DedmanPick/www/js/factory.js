@@ -53,7 +53,7 @@ angular.module('starter.factories', [])
     },
 
     addUserToGame : function(sport){
-        var username = "IanFontenot67";
+        var username = "KatyHansen76";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addUserToGame',
@@ -66,15 +66,15 @@ angular.module('starter.factories', [])
       console.log(id + "get game");
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/game/31'
+        url: 'http://104.236.10.218/public/index.php/game/'+id
       })
       
     },
     getSuggestedGames : function(sport){
-        var username = "IanFontenot67";
+        var username = "KatyHansen76";
         return $http({
            method: 'GET',
-           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/IanFontenot67',
+           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/'+username
             })
     },
 
@@ -82,15 +82,15 @@ angular.module('starter.factories', [])
       console.log(sportName);
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/games/soccer'
+        url: 'http://104.236.10.218/public/index.php/games/'+sportName
       })
       
     },
      getGamesForUser : function(){
-        var username = "IanFontenot67";
+        var username = "KatyHansen76";
            return $http({
               method:'GET',
-              url: 'http://104.236.10.218/public/index.php/gamesForUser/IanFontenot67'
+              url: 'http://104.236.10.218/public/index.php/gamesForUser/'+username
                })
     }
 //*********************************
@@ -101,12 +101,21 @@ angular.module('starter.factories', [])
 {
   return {
 
+    getGame : function(id){
+      console.log(id + "get game");
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/game/'+id
+      })
+      
+    },
+
     // this will be a post method
     addGame : function(chat){
       console.log('addGame');
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/addUserToGame/{gameID}/{username}'
+        url: 'http://104.236.10.218/public/index.php/addUserToGame/'+chat.id
       })
       
     },
@@ -115,7 +124,7 @@ angular.module('starter.factories', [])
       console.log(id + "get game");
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/game/{id}'
+        url: 'http://104.236.10.218/public/index.php/game/'+id
       })
       
     },
@@ -124,7 +133,7 @@ angular.module('starter.factories', [])
       //console.log(sportName);
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/games/soccer'
+        url: 'http://104.236.10.218/public/index.php/games/'+sportName
       })
       
     },

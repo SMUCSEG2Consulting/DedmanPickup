@@ -9,9 +9,9 @@ $scope.form = {};
   $scope.search = function()
   {
     $scope.searchParam = $scope.form.name;
-    var searchResult =  user.searchGame($scope.searchParam).then(function(response){
-      $scope.searchResult = response.data;
-      console.log($scope.searchResult[0]);
+    var searchResults =  user.searchGame($scope.searchParam).then(function(response){
+      $scope.searchResults = response.data;
+      console.log($scope.searchResults[0]);
       //console.log($scope.users);
     })
     
@@ -80,6 +80,7 @@ $scope.newGame = function newGame(){
 //***************************************
 .controller('JoinGameCtrl', function($scope, $state, $http, user) {  
   $scope.joinGame = function joinGame(chat){
+    console.log(chat);
   $scope.addToGame = user.addUserToGame(chat);
   //$scope.fromFactory = addGameFactory.addGame(chat);
   $state.go('tab.account', chat);};
@@ -115,18 +116,21 @@ $scope.newGame = function newGame(){
     console.log('(search controller)');
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, games) {
   
   //console.log($stateParams.chatId);
-  $scope.chat = Chats.getGameData($stateParams.chatId);
-  console.log($scope.chat);
+
+  $scope.chat = games.getGame($stateParams.chatId).then(function(response){
+      $scope.chat = response.data;
+      console.log($scope.chat);
   //console.log(Chats[$stateParams.chatId]);
   //console.log(Chats.get($stateParams.chatId));
+})
 })
 
 
 .controller('AccountCtrl', function($scope, $state, user,games) {
-  $scope.userName = "John";
+  $scope.userName = "Katy";
   console.log('acct ctrl');
   var gamesJoined = user.getGamesForUser().then(function(response){
       $scope.gamesJoined = response.data;
@@ -143,7 +147,8 @@ $scope.newGame = function newGame(){
       $scope.game = user.getGame(id).then(function(response){
       $scope.game = response.data;
       console.log(response);
-      console.log($scope.game);
+      console.log($scope.game)
+      ;
     })
       }
    $scope.getUserData = function(){
