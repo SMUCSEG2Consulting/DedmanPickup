@@ -126,6 +126,7 @@ $app->post('/newUser',
 		$statement->execute(array('usr'=>$request->getParam('name')));
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 		if(!empty($result)){
+			$response->setStatus(400);
 			return $response->write('Error - name already taken');
 		}
 
