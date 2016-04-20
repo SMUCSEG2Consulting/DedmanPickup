@@ -24,7 +24,7 @@ chats = ["Hey, I'll bring a ball!", "I'll bring some snacks!", "Just realized it
 prefs = [1, 2, 3, 4]
 
 _salt = "1jo5OFAVDpC6xaEgt8sSuHcOSzo1SnkEVF5jHwD39SJegUlvz8nBLNeJBK6StVPCKzNNxUpOToQojUW304fW5gjniSqWejeBxo6Xtlgb0qIWW4vYoRYIIPRph8YwiW1mSxZ6sahYlfruDA52wtwPw82I9EVnEul7jRMbbFGFD2NDNW3AinEFt5sqMa84tKK0V9JJyRe4FY7yFTOVjSMV41WF2srbI3k0QVGoEaQ7r0tijCBnXil4QVwQ0ya1FW3g"
-_hash = "b494b120a0216e50afa797788bd537e3abed549b4e5a62c1bd800ce0b6c92389"
+_hash = "d528cbceddde5d3cbc0f6f3b841a48e10d35fd84eea400959a2bc450c19d1a2f"
 names = []
 
 for i in range(100):
