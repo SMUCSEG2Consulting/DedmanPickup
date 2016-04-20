@@ -80,6 +80,7 @@ $scope.newGame = function newGame(){
 //***************************************
 .controller('JoinGameCtrl', function($scope, $state, $http, user) {  
   $scope.joinGame = function joinGame(chat){
+    console.log(chat);
   $scope.addToGame = user.addUserToGame(chat);
   //$scope.fromFactory = addGameFactory.addGame(chat);
   $state.go('tab.account', chat);};
@@ -129,7 +130,7 @@ $scope.newGame = function newGame(){
 
 
 .controller('AccountCtrl', function($scope, $state, user,games) {
-  $scope.userName = "John";
+  $scope.userName = "Katy";
   console.log('acct ctrl');
   var gamesJoined = user.getGamesForUser().then(function(response){
       $scope.gamesJoined = response.data;
@@ -146,7 +147,8 @@ $scope.newGame = function newGame(){
       $scope.game = user.getGame(id).then(function(response){
       $scope.game = response.data;
       console.log(response);
-      console.log($scope.game);
+      console.log($scope.game)
+      ;
     })
       }
    $scope.getUserData = function(){
