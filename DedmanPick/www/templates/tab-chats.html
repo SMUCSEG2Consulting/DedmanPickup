@@ -1,5 +1,5 @@
 
-<ion-view view-title="Game Lobby" <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+<ion-view view-title="Game Lobby"  >
           <button class="button button-positive">
             Click to create a new game
           </button>
@@ -20,9 +20,10 @@
               <button class="button button-positive">
                 Search
                 </button>
-              </form>
-               
+              </form>    
           </div>
+
+
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
         <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
         <h2>{{searchResult.sport}}</h2>
@@ -32,12 +33,12 @@
         
       </ion-item>
     </ion-list>
-        </div>
-      </div>
+    </div>
+  </div>
 
 
 
-      <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+     <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
           <button class="button button-positive">
             Click to create a new game
           </button>

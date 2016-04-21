@@ -131,6 +131,13 @@ angular.module('starter.factories', [])
 ];
   return {
 
+      get: function(id) {
+      for (var i = 0; i < images.length; i++) {
+        if (images[i].id === parseInt(imageId)) {
+          return images[i];
+        }
+      }
+    },
 
 
       getImage : function(id){

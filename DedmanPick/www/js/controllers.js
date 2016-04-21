@@ -61,7 +61,7 @@ console.log('in chats');
   $scope.createGame = function createGame(time, location, sport, playerCount){
     games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
       console.log(response);
-      $state.go('tab.chats');
+      //$state.go('tab.chats');
     })};
 
 $scope.newGame = function newGame(){
@@ -71,7 +71,7 @@ $scope.newGame = function newGame(){
 
   $scope.search = function(){
       var name = $scope.form.name;
-      $state.go('tab.dash');
+      //$state.go('tab.dash');
     };
 })
 
@@ -83,7 +83,8 @@ $scope.newGame = function newGame(){
     })
     console.log('deleted user');
     console.log()
-    $state.go('tab.chats');};
+    //$state.go('tab.chats');
+  };
   })
 //***************************************
 .controller('JoinGameCtrl', function($scope, $state, $http, user) {  
@@ -121,7 +122,7 @@ $scope.newGame = function newGame(){
 })
 
 .controller('SearchCtrl', function($scope, $state) {
-    console.log('(search controller)');
+    //console.log('(search controller)');
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, games) {
@@ -130,16 +131,17 @@ $scope.newGame = function newGame(){
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
       $scope.chat = response.data;
-      console.log($scope.chat);
+      //console.log($scope.chat[0].image);
   //console.log(Chats[$stateParams.chatId]);
   //console.log(Chats.get($stateParams.chatId));
 })
 })
 
 
-.controller('AccountCtrl', function($scope, $state, user,games) {
+.controller('AccountCtrl', function($scope, $state, user, games) {
   $scope.userName = "Katy";
-  console.log('acct ctrl');
+  //console.log('acct ctrl');
+  //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
       $scope.gamesJoined = response.data;
       //$scope.$apply();
