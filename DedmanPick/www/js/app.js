@@ -34,10 +34,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
-    
+  //login  
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+  })
+
+  //sign up
+  .state('sign_up', {
+      url: '/sign_up',
+      templateUrl: 'templates/sign_up.html',
+      controller: 'sign_up_Ctrl'
+  })
+
    
-     .state('tab', {
+  // setup an abstract state for the tabs directive
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -73,11 +86,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('login', {
-    url: '/login',
-    templateUrl: 'templates/tab-login.html',
-    controller: 'LoginCtrl'
-  })
 
   .state('tab.account', {
     url: '/account',
@@ -88,17 +96,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
 
-   /* .state('tab.login', {
-    url: '/login',
-    views: {
-      'tab-login': {
-        templateUrl: 'templates/tab-login.html',
-        controller: 'AccountCtrl'
-      }
-    }*/
   });
 
-  // if none of the above states are matched, use this as the fallback
+  // defualt page
   $urlRouterProvider.otherwise('/login');
 
 });
