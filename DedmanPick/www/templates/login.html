@@ -1,49 +1,23 @@
-<!DOCTYPE html>
-<html ng-app="app">
-<head>
-    <meta charset="utf-8" />
-    <title>AngularJS User Registration and Login Example</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-    <link href="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app-content/app.css" rel="stylesheet" />
-</head>
-<body>
+  <div class = "container" id="login_background">
+  <div class="card m-t-3">
+  
+  <div class="card-block" id="login_card_background">
+    <h4 class="card-title">Please login</h4>
+    <div ng-bind-html="failed_login_attempt_message"></div>
 
-    <div class="jumbotron">
-        <div class="container">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-                <div ng-view></div>
-            </div>
-        </div>
-    </div>
-    <div class="credits text-center">
-        <p>
-            <a href="http://jasonwatmore.com/post/2015/03/10/AngularJS-User-Registration-and-Login-Example.aspx" target="_top">AngularJS User Registration and Login Example</a>
-        </p>
-        <p>
-            <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-        </p>
-    </div>
+    <div class="wrapper">
+    <form class="form-signin">       
+      
+      <input type="text" ng-model="data.username" placeholder="Username" id="login_username_feild"/>
+      <input type="password" ng-model="data.password" placeholder="Password" id="login_password_feild" />      
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click = "login()" id="login_login_button">Login</button>  
+      
+    </form>
 
-    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="//code.angularjs.org/1.2.20/angular.js"></script>
-    <script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
-    <script src="//code.angularjs.org/1.2.13/angular-cookies.js"></script>
+    <h6 ng-model="data.username">Or sign up...</h6>
+    <button class="btn" type="submit" ng-click = "sign_up_state()" id="login_sign_up_button">Sign Up</button> 
 
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app.js"></script>
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app-services/authentication.service.js"></script>
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app-services/flash.service.js"></script>
-
-    <!-- Real user service that uses an api -->
-    <!-- <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app-services/user.service.js"></script> -->
-
-    <!-- Fake user service for demo that uses local storage -->
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/app-services/user.service.local-storage.js"></script>
-
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/home/home.controller.js"></script>
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/login/login.controller.js"></script>
-    <script src="//cdn.rawgit.com/cornflourblue/angular-registration-login-example/master/register/register.controller.js"></script>
-    <button> login </button>
-</body>
-
-</html>
+  </div>
+  </div>
+</div>
+</div>
