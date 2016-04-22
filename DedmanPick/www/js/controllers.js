@@ -146,6 +146,9 @@ $scope.newGame = function newGame(){
       $scope.gamesJoined = response.data;
       //$scope.$apply();
     })
+
+
+
   var suggestedGames =  user.getSuggestedGames().then(function(response){
       $scope.suggestedGames = response.data;
       //$scope.apply();
