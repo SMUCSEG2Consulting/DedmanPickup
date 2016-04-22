@@ -27,12 +27,12 @@ angular.module('starter.factories', [])
       console.log("in user data");    
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/user/TomBanbury0"
+        url: "http://104.236.10.218/public/index.php/user/MarkJohnson99"
       })
     },
 
       updatePreferences : function(sport){
-        var username = "TomBanbury0";
+        var username = "MarkJohnson99";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addSportForUser',
@@ -53,7 +53,7 @@ angular.module('starter.factories', [])
     },
 
     addUserToGame : function(sport){
-        var username = "TomBanbury0";
+        var username = "MarkJohnson99";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addUserToGame',
@@ -87,7 +87,7 @@ angular.module('starter.factories', [])
       
     },
      getGamesForUser : function(){
-        var username = "TomBanbury0";
+        var username = "MarkJohnson99";
            return $http({
               method:'GET',
               url: 'http://104.236.10.218/public/index.php/gamesForUser/'+username
