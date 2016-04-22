@@ -23,48 +23,28 @@
                  -->
           </div>
 
+            <!--search for a game-->
+            <ion-list>
+             
+                <div class="list">
+                  <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                      <input type="text" ng-model = "form.name" placeholder="input search sport">
+                    </label>
+                    <form ng-click = "search()"></form>    
+                  </div>
 
-          
-          <!--  
-              ongoing games
 
-                  ->this will be replaced by the above and all other upcomming games and details
-                    will be viwed by the click above ^^^
-          -->
+                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
+                  <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
+                  <h2>{{searchResult.sport}}</h2>
+                  <p>{{searchResult.date}}</p>
+                  <p>{{searchResult.time}}</p>
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
 
-          <div class="col">
-              <div class="card" id="account_card_ongoing_games">
-                 
-                <div class="card-block" id="account_card_header">
-                    <h2>Your upcoming games!</h2>
-
-                  <ul class="list-group list-group-flush" >
-                    <ion ng-repeat="gameJoined in gamesJoined"ng-click = "sendGameData(sport, id, location, time)" href="#/tab/chats/{{searchResult.id}}" type="item-text-wrap" >
-                    <li class="list-group-item list-group-success" id="account_game_slot"> 
-                      <strong> <h3>{{gameJoined.sport}}</strong></h3> at <strong>{{gameJoined.location}}</strong> starting at <strong>{{gameJoined.time}}</strong>    
-                    </li> 
-                  </ul>
-
-                </div>
-
-              </div>
-          </div>
-
-              <!--  
-                <div class="col-xs-6.8 m-t-3" ></div>
-                    <div class="card">
-                        <form ng-submit = "getPreferences()" >
-                          <button class="button button-positive m-l-3">
-                            <h4 style="color:white;"> Click here to see your sports preferences</h4>
-                          </button>
-                         </form>
-          
-                        <ul class="list-group list-group-flush">
-                          <ion ng-repeat="preference in preferences" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
-                            <li class="list-group-item" > {{preference.sport}} </li>
-                        </ul>
-                    </div>
-              -->
+            </ion-list>
+            <!--/search for a game-->
 
               <!--
                     suggested games
@@ -102,6 +82,20 @@
               <!--/suggested games-->
 
         </ion-toggle>
+
+          <!--nothing you like?-->
+          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+            <button class="button button-positive">
+              Click to create a new game
+            </button>
+          </form>
+          <!--/nothing you like?-->
+
+
+            </div>
+          </div>
+
+
       </div>  
     </ion-list>
   </ion-content>

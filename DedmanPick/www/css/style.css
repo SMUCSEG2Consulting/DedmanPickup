@@ -1,1 +1,51 @@
 /* Empty. Add your own CSS if you like */
+
+/*accounts*/
+#account_container{
+
+	background-color: white
+}
+
+/*welcom/main*/
+#account_card_main{
+	/*background image*/
+}
+
+#account_card_main h1{
+	letter-spacing: 17px; 
+	line-height: 1; 
+	text-align: center;
+	color: #00FFFF; 
+	font-family: 'Helvetica Neue', sans-serif; 
+	font-size: 40px; 
+	font-weight: bold; 
+}
+
+/*ongoing games*/
+#account_card_ongoing_games{
+	background-color:blue;
+}
+
+#account_card_header h2{
+	letter-spacing: 10px; 
+	line-height: 3; 
+	text-align: center;
+	color: #00FFFF; 
+	font-family: 'Helvetica Neue', sans-serif; 
+	font-size: 20px; 
+	font-weight: bold; 
+}
+
+#account_card_header{
+
+}
+
+#account_game_slot{
+	/*specific sport image*/
+	background-color: #00FFFF
+}
+
+/*suggested games*/
+#account_card_suggested_games{
+	background-color:#00FFFF;
+}
