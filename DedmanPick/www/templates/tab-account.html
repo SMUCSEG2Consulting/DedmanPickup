@@ -13,10 +13,10 @@
    <h1> Upcoming Games </h1>
 
 
-    <ion class="item"ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" type="item-text-wrap" ng-controller = "ChatDetailCtrl">
+    <ion class="item" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" type="item-text-wrap" ng-controller = "ChatDetailCtrl">
       <a class = "item"  href="#/tab/chats/{{gameJoined.id}}" >
 
-      <img ng-src="{{image[0].image}}">
+      <img ng-src="{{getImage(gameJoined.sport)}}" height="50" width = "50">
       <strong> <h3> {{gameJoined.id}}  {{gameJoined.sport}}</h3></strong> <h4>at <strong>{{gameJoined.location}}
       </strong> starting at <strong>{{gameJoined.time}}</strong> </h4>   </a>
 
@@ -47,7 +47,7 @@
                 
                  <ion-item class = "item" ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "getGame({{suggestedGame.id}})" type="item-text-wrap" href="#/tab/chats/{{suggestedGame.id}}" ng-controller = "ChatDetailCtrl">
                     <a class="item" href="#/tab/chats/{{suggestedGame.id}}"> 
-                       {{image}}
+                        <img ng-src="{{getImage(suggestedGame.sport)}}" height="50" width = "50">
                       <strong> <h3> {{suggestedGame.sport}}</h3></strong> <h4>at <strong>{{suggestedGame.location}}
       </strong> starting at <strong>{{suggestedGame.time}}</strong> </h4>
 

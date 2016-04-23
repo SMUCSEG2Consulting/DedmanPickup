@@ -6,6 +6,11 @@ angular.module('starter.controllers', ['starter.factories'])
 .controller('ChatsCtrl', function($scope, $http, Chats, user,games) {
 console.log('in send game data');
 $scope.form = {};
+$scope.getChatImage = function (sport)
+  {
+    //console.log("here");
+    return $scope.suggestedImage = games.getImage(sport);
+  }
   $scope.search = function()
   {
     $scope.searchParam = $scope.form.name;
@@ -128,13 +133,21 @@ $scope.newGame = function newGame(){
 .controller('ChatDetailCtrl', function($scope, $stateParams, games) {
   
   //console.log($stateParams.chatId);
+$scope.getChatImage = function (sport)
+  {
+    //console.log("here");
+    return $scope.suggestedImage = games.getImage(sport);
+  }
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
       $scope.chat = response.data;
+
+
       //console.log($scope.chat[0].image);
   //console.log(Chats[$stateParams.chatId]);
   //console.log(Chats.get($stateParams.chatId));
 })
+ 
 })
 
 
@@ -148,20 +161,28 @@ $scope.newGame = function newGame(){
       //$scope.$apply();
     })
 
-var image = [{
-  id :0,
-  image: 'basketball.png'}];
-console.log(image.basketball);
+  
+  
 
 
   var suggestedGames =  user.getSuggestedGames().then(function(response){
       $scope.suggestedGames = response.data;
       //$scope.apply();
-      console.log($scope.suggestedGames[0].sport);
+      //for (i = 0; i < suggestedGames.length; i++) { 
+      $scope.suggestedImage = games.getImage($scope.suggestedGames[0].sport)//.then(function(response){
+      //$scope.suggestedImage = response.data;
+          //console.log($scope.suggestedImage);
+        //})
+      //console.log($scope.suggestedGames[0].sport);
       //console.log($scope.users);
     })
+  $scope.getImage = function (sport)
+  {
+    //console.log("here");
+    return $scope.suggestedImage = games.getImage(sport);
+  }
  $scope.getGameData = function(id){
-    console.log('in get game');
+    //console.log('in get game');
       $scope.game = user.getGame(id).then(function(response){
       $scope.game = response.data;
       console.log(response);
@@ -188,9 +209,19 @@ console.log(image.basketball);
     //console.log("user data");
     $scope.suggestedGames = user.getSuggestedGames().then(function(response){
       $scope.suggestedGames = response.data;
-          console.log($scope.suggestedGames[0].sport);
-      //console.log($scope.users);
-    })
+      console.log(suggestedGames.sport);
+            $scope.getImages(suggestedGames.sport);
+})
+      
+  };
+
+  $scope.getImages = function getImages(sport)
+  {
+    $scope.suggestedImage = games.getImage('basketball').then(function(response){
+      $scope.suggestedImage = response.data;
+          console.log($scope.suggestedImage);
+        })
+
   };
 
   $scope.getUserPreferenceProfile = function(){

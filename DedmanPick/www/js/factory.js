@@ -100,25 +100,27 @@ angular.module('starter.factories', [])
 .factory('games', function ($http)
 {
   
-
- var hashtable = {"basketball" : "basketball.png"};
+ var hashtable = {};
   
   return {
 
-      get: function(id) {
-      for (var i = 0; i < images.length; i++) {
-        if (images[i].id === parseInt(imageId)) {
-          return images[i];
-        }
-      }
-    },
-
 
       getImage : function(sport){
-     var hashtable = {
-     image : "basketball.png"};
-      return 
-        hashtable[sport];
+        //console.log(sport);
+      hashtable['basketball'] =  "basketball.png";
+      hashtable['soccer'] =  "soccer.png";
+      hashtable['football'] =  "football.png";
+      hashtable['tennis'] =  "tennis.png";
+      hashtable['indoor soccer'] =  "insoccer.png";
+      hashtable['sand volleyball'] =  "vb.png";
+      hashtable['ultimate frisbee'] =  "frisbee.png";
+      hashtable['pool'] =  "pool.png";
+      hashtable['ping pong'] =  "pp.png";
+
+    
+     image = hashtable[sport];
+      //console.log(image);
+      return image;
       
     },
     getGame : function(id){
