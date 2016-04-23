@@ -57,6 +57,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
+  //select a sport
+  //new game page or multiple?
+  //select a sport  //should come with a default number of players
+  //select location
+  //select time
    
   // setup an abstract state for the tabs directive
   .state('tab', {

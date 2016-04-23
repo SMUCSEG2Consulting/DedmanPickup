@@ -1,5 +1,6 @@
 angular.module('starter.controllers', ['starter.factories'])
 
+
 /*
   some controller
 */
@@ -56,25 +57,43 @@ angular.module('starter.controllers', ['starter.factories'])
 
 
 /*
-  Create Game controllers(don't think we need this "game factory")
+  Create Game controllers
 */
 .controller('CreateGameCtrl', function($scope, $state, games) {
+  $scope.createGame = function createGame(time, location, sport, playerCount){
+      games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
+        console.log(response);
+        //$state.go('tab.chats');
+      }
+    )
+  };
+})
+
+/*
+  Start A Game Controller
+  "lj's version create game ctrl"
+*/
+.controller('StartAGameCtrl', function($scope, $state, games) {
+
+    $scope.newGame = function newGame(){
+      //change state to create a game page
+      //$state.go('new_game');
+    };
+/*
   $scope.createGame = function createGame(time, location, sport, playerCount){
     games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
       console.log(response);
       //$state.go('tab.chats');
-    })};
-
-$scope.newGame = function newGame(){
-  
-      $state.go('tab.dash');
-    };
-
+    }
+  )};*/
+/*
   $scope.search = function(){
-      var name = $scope.form.name;
-      //$state.go('tab.dash');
-    };
+        var name = $scope.form.name;
+        //$state.go('tab.dash');
+      };
+*/
 })
+
 
 /*
   Delete User controllers(don't think we need this "account factory")

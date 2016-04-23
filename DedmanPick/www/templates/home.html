@@ -24,10 +24,10 @@
                    <h3>{{next_game.sport}} in {{next_game.time}}  </h3>
           </div>
 
-           <!--nothing you like?-->
-          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
-            <button class="button button-positive">
-              Click to create a new game
+           <!--nothing you like?  //will take you to new create a game page//-->
+          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "StartAGameCtrl" >
+            <button class="button button-positive" id="start_a_game_button">
+              Start a Game
             </button>
           </form>
           <!--/nothing you like?-->
