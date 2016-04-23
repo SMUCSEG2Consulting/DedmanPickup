@@ -143,10 +143,15 @@ $scope.newGame = function newGame(){
   //console.log('acct ctrl');
   //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
-      $scope.gamesJoined = response.data;
+      $scope.gamesJoined = response.data
+      console.log(response.data[0]);
       //$scope.$apply();
     })
 
+var image = [{
+  id :0,
+  image: 'basketball.png'}];
+console.log(image.basketball);
 
 
   var suggestedGames =  user.getSuggestedGames().then(function(response){
