@@ -52,7 +52,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   //home
   .state('home', {
       url: '/home',
-      templateUrl: 'templates/home.html'
+      templateUrl: 'templates/home.html',
+      controller: 'HomeCtrl'
   })
 
 

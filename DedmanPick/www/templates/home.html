@@ -21,30 +21,16 @@
                         if (no next game) 
                           -defualt image
                  -->
+                   <h3>{{next_game.sport}} in {{next_game.time}}  </h3>
           </div>
 
-            <!--search for a game-->
-            <ion-list>
-             
-                <div class="list">
-                  <div class="item item-input-inset">
-                    <label class="item-input-wrapper">
-                      <input type="text" ng-model = "form.name" placeholder="input search sport">
-                    </label>
-                    <form ng-click = "search()"></form>    
-                  </div>
-
-
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
-                  <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
-                  <h2>{{searchResult.sport}}</h2>
-                  <p>{{searchResult.date}}</p>
-                  <p>{{searchResult.time}}</p>
-                  <i class="icon ion-chevron-right icon-accessory"></i>
-                </ion-item>
-
-            </ion-list>
-            <!--/search for a game-->
+           <!--nothing you like?-->
+          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+            <button class="button button-positive">
+              Click to create a new game
+            </button>
+          </form>
+          <!--/nothing you like?-->
 
               <!--
                     suggested games
@@ -60,10 +46,10 @@
                 <div class="card" id="account_card_suggested_games">
                   <div class="card-block">
                     <div>
-                      <h3>Suggested games </h3>
+                      <h3>Games Starting Soon</h3>
                       <ul class="list-group list-group-flush">
 
-                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "getGame({{suggestedGame.id}})" type="item-text-wrap" href="#/tab/chats/{{suggestedGame.id}}" ng-controller = "ChatDetailCtrl">
+                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl">
                           <li class="list-group-item" > 
                               <!--{{suggestedGame.id}}-->
                             <p>{{suggestedGame.sport}}</p>
@@ -82,14 +68,6 @@
               <!--/suggested games-->
 
         </ion-toggle>
-
-          <!--nothing you like?-->
-          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
-            <button class="button button-positive">
-              Click to create a new game
-            </button>
-          </form>
-          <!--/nothing you like?-->
 
 
             </div>
