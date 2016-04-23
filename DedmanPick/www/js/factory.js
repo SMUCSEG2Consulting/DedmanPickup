@@ -100,7 +100,7 @@ angular.module('starter.factories', [])
 .factory('games', function ($http)
 {
   
-
+//do nothing
  var hashtable = {"basketball" : "basketball.png"};
   
   return {
