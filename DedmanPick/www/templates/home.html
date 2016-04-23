@@ -51,11 +51,12 @@
             <!--display results-->
             <div class="card-block">
               <ul class="list-group list-group-flush">
-                <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl">
-                  <li class="list-group-item" > 
+                <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/tab/chats/{{result.id}}">
+                  <li class="list-group-item"> 
                     <p>{{result.sport}}</p>
                     <p> {{result.location}}</p>
-                    <p>{{result.time}}</p>                    
+                    <p>{{result.time}}</p> 
+                    <p>{{result.id}}</p>                      
                     <i class="icon ion-chevron-right icon-accessory"></i>
                   </li>
                 </ion-item>
@@ -81,7 +82,7 @@
                       <h3>Games Starting Soon</h3>
                       <ul class="list-group list-group-flush">
 
-                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl">
+                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/tab/chats/{{suggestedGame.id}}">
                           <li class="list-group-item" > 
                               <!--{{suggestedGame.id}}-->
                             <p>{{suggestedGame.sport}}</p>
