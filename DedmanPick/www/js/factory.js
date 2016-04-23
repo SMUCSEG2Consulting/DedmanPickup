@@ -335,40 +335,25 @@ angular.module('starter.factories', [])
 .factory('game', function ($http)
 {
   
-/*
-  //not sure what this does
-
- var images = [  
-  {
-      id: 0,
-      name: 'Basketball',
-      image:'http://boykinsbasketball.com/wp-content/uploads/2015/10/5451a9bac173c.preview-699.jpg'
-    },
-    {
-      id: 1,
-      name: 'Pool',
-      image:'http://weknowyourdreamz.com/images/billiards/billiards-05.jpg'
-    },
-    {
-      id: 2,
-      name: 'Sand Volleyball',
-      image:'http://archive.aacounty.org/sebin/j/b/beach_volleyball_pic2.jpg'
-    },
-    {
-      id: 3,
-      name: 'Tennis',
-      image:'http://www.pirec.org/wp-content/uploads/2013/02/tennis-balls-and-rackets.jpg'
-    },
-
-    {
-      id: 4,
-      name: 'Soccer',
-       image:'http://www.buenavistaco.gov/ImageRepository/Document?documentID=676'
-    }     
-];
-*/
-
   return {
+
+      getImagePath : function(sport){
+
+        var hashtable = {};
+
+        hashtable['basketball'] =  "pictures/basketball.png";
+        hashtable['soccer'] =  "pictures/soccer.png";
+        hashtable['soccer_large'] =  "pictures/soccer_large.png";
+        hashtable['football'] =  "pictures/football.png";
+        hashtable['tennis'] =  "pictures/tennis.png";
+        hashtable['indoor soccer'] =  "pictures/insoccer.png";
+        hashtable['sand volleyball'] =  "pictures/vb.png";
+        hashtable['ultimate frisbee'] =  "pictures/frisbee.png";
+        hashtable['pool'] =  "pictures/pool.png";
+        hashtable['ping pong'] = "pictures/pp.png";
+
+        return hashtable[sport];
+      },
 
       //not sure what this does
       get: function(id) {
@@ -511,6 +496,7 @@ angular.module('starter.factories', [])
 
                     //save session key to local stoarage
                     window.localStorage.setItem("session_key", session_key);
+                    window.localStorage.setItem("username", username);  //.getItem('key');
 
                     //promise
                     deferred.resolve();

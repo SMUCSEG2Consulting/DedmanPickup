@@ -265,9 +265,21 @@ $scope.getChatImage = function (sport)
 */
                                                     //need own factories as well
 .controller('HomeCtrl', function($scope, $state, account, game) {
-    
+
     //Pull name from database
-    $scope.username = "TomBanbury0";
+    $scope.username = window.localStorage.getItem('username');
+
+    //Start A Game
+    $scope.startGame = function(){
+      console.log("startGame()");
+    }
+
+    //Search By sport
+    $scope.searchBySport = function(){
+      account.searchGame($scope.search_ui).then(function(response){
+        $scope.searchResults = response.data;
+      })
+    }
 
     //this will see when your next game is...
     account.getGamesForUser($scope.username)
@@ -319,6 +331,15 @@ $scope.getChatImage = function (sport)
 
               //change global var time
               $scope.next_game.time = time_until_game;
+
+              //set correct image
+              //$scope.next_game.img = game.getImage($scope.next_game.sport);
+              //console.log(game.getImage("basketball"));
+              //var image = game.getImage("basketball");
+              //console.log(image);
+
+              var image_path = game.getImagePath($scope.next_game.sport + "_large");
+              $scope.next_game.img_path = image_path;
             }
 
           }

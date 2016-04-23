@@ -7,7 +7,8 @@
            <div class="col">
                  
                 <div class="card-block" id="account_card_main">
-                    <h1>Still need a name!</h1>
+                    <p>welcome {{username}}</p>
+                    <h1>Dedman Pickup</h1>
                 </div>
 
                  <!--
@@ -21,14 +22,41 @@
                         if (no next game) 
                           -defualt image
                  -->
-                   <h3>{{next_game.sport}} in {{next_game.time}}  </h3>
+                   <h3>{{next_game.sport}} in {{next_game.time}}</h3>
+
+                  <!-- <img src="{{next_game.img_path}}" height="100" width="150"></img> -->
+  
           </div>
 
-           <!--nothing you like?  //will take you to new create a game page//-->
-          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "StartAGameCtrl" >
-            <button class="button button-positive" id="start_a_game_button">
-              Start a Game
-            </button>
+           <!--nothing you like?-->
+
+           <!--Start a game-->
+            <form>
+                <button class="button button-positive" id="start_a_game_button" ng-click="startGame()">Start a Game</button>
+            </form>
+           <!--href="#/tab/dash" >-->
+
+          <!--search for a sepecific sport-->
+          <form ng-controller="HomeCtrl">
+            <div class="item item-input-inset" >
+              <label class="item-input-wrapper">
+                <input type="text" ng-model="search_ui" placeholder="Search for a sport">
+              </label>
+              <button class="button button-positive" ng-click = "searchBySport()">Search</button>
+            </div>
+            <!--display results-->
+            <div class="card-block">
+              <ul class="list-group list-group-flush">
+                <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl">
+                  <li class="list-group-item" > 
+                    <p>{{result.sport}}</p>
+                    <p> {{result.location}}</p>
+                    <p>{{result.time}}</p>                    
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                  </li>
+                </ion-item>
+              </ul>
+            </div>
           </form>
           <!--/nothing you like?-->
 
