@@ -100,7 +100,9 @@ angular.module('starter.factories', [])
 .factory('games', function ($http)
 {
   
+
  var hashtable = {};
+
   
   return {
 
