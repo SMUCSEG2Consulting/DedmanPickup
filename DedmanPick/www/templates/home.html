@@ -1,0 +1,80 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+      <div class = "container" id="account_container">
+
+          <!--picture/welcome-->
+           <div class="col">
+                 
+                <div class="card-block" id="account_card_main">
+                    <h1>Still need a name!</h1>
+                </div>
+
+                 <!--
+                      display 
+                        -time until next game 
+                        -correct sport picture as background
+                        -location 
+                        -and maybe a click for more details with other upcomming games (#number of games)
+                        -and maybe a leave game option
+
+                        if (no next game) 
+                          -defualt image
+                 -->
+                   <h3>{{next_game.sport}} in {{next_game.time}}  </h3>
+          </div>
+
+           <!--nothing you like?  //will take you to new create a game page//-->
+          <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "StartAGameCtrl" >
+            <button class="button button-positive" id="start_a_game_button">
+              Start a Game
+            </button>
+          </form>
+          <!--/nothing you like?-->
+
+              <!--
+                    suggested games
+
+                      -time of game, time until game
+                      -correct sport picture
+                      -hover change
+                      -should be able to join a game from suggested view view
+
+              -->
+              <div class="col" >
+
+                <div class="card" id="account_card_suggested_games">
+                  <div class="card-block">
+                    <div>
+                      <h3>Games Starting Soon</h3>
+                      <ul class="list-group list-group-flush">
+
+                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl">
+                          <li class="list-group-item" > 
+                              <!--{{suggestedGame.id}}-->
+                            <p>{{suggestedGame.sport}}</p>
+                            <p> {{suggestedGame.location}}</p>
+                            <p>{{suggestedGame.time}}</p>                    
+                            <i class="icon ion-chevron-right icon-accessory"></i>
+                          </li>
+
+                          </ion-item>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!--/suggested games-->
+
+        </ion-toggle>
+
+
+            </div>
+          </div>
+
+
+      </div>  
+    </ion-list>
+  </ion-content>
+</ion-view>

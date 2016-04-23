@@ -48,6 +48,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       controller: 'sign_up_Ctrl'
   })
 
+  //home
+  .state('home', {
+      url: '/home',
+      templateUrl: 'templates/home.html',
+      controller: 'HomeCtrl'
+  })
    
   // setup an abstract state for the tabs directive
   .state('tab', {

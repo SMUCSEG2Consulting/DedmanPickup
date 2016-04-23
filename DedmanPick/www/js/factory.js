@@ -186,6 +186,277 @@ angular.module('starter.factories', [])
 
     }
 })
+/*
+        account factory
+
+    "lj's version of (user) factory"
+
+*/
+.factory('account', function($http)
+{
+  //console.log("in user factory");
+  //var users = [];
+  return {
+
+    /*
+        genpurpose functions...
+    */
+
+    //all users information??? when will this be needed???
+    getUserData : function(){ 
+      return $http({
+        method:'GET',
+        url: "http://104.236.10.218/public/index.php/users"
+      })
+    
+    },
+
+    /*
+        user specific functions
+    */
+
+    //delete user
+    deleteUser : function(username){
+
+      return $http({
+        method: 'DELETE',
+        url: 'http://104.236.10.218/public/index.php/deleteUser',
+        data: {username: username}
+      })
+
+      //data: {usr: usr}
+    },
+    
+    
+    //get sports prefrences for a specific user
+    getPreferences : function(username){ 
+      return $http({
+        method:'GET',
+        url: "http://104.236.10.218/public/index.php/user/" + username
+      })
+    },
+
+    //update sports prefrences for a specific user
+    updatePreferences : function(username, sport){
+
+      return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           data: {sport: sport, username : username}
+        
+      })
+    },
+
+    //redefined not sure which one is correct
+    /*
+    updatePreferences : function(sport){
+
+        return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           data: {gameID:sport.id, username : username}
+        })
+    },
+    */
+
+    //(WORKS)
+    //return suggested games for the username
+    getSuggestedGames : function(username){
+
+        return $http({
+           method: 'GET',
+           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/'+ username
+        })
+    },
+
+    //returns enrolled game for a user
+    getGamesForUser : function(username){
+
+        return $http({
+            method:'GET',
+            url: 'http://104.236.10.218/public/index.php/gamesForUser/'+ username
+        })
+    },
+
+    /*
+        funcitons that should be in a game factory...
+    */
+
+        //search by sport name (probably shouldn't be in account)
+    searchGame : function(sportName){
+
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/games/'+ sportName
+      })
+    },
+
+        //username should be passed, not sure what sport is exactly
+    addUserToGame : function(sport){
+        var username = "TomBanbury0";
+        return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addUserToGame',
+           data: {gameID:sport.id, username : username}
+        
+            })
+    },
+
+    /*
+      //should probably be in games
+    addUserToGame : function(username, gameID){
+
+        return $http({
+           method: 'POST',
+           url: 'http://104.236.10.218/public/index.php/addUserToGame',
+           data: {gameID:gameID, username : username}
+        })
+    },
+    */
+
+    //retrieves info for game based on game_id  (probaly should be in games)
+    getGame : function(id){
+      return $http({
+        method:'GET',
+        url: 'http://104.236.10.218/public/index.php/game/'+ id
+      })
+      
+    }
+
+  }
+
+})
+/*
+        game factory
+
+    "lj's version of (game((s))) factory"
+
+*/
+.factory('game', function ($http)
+{
+  
+/*
+  //not sure what this does
+
+ var images = [  
+  {
+      id: 0,
+      name: 'Basketball',
+      image:'http://boykinsbasketball.com/wp-content/uploads/2015/10/5451a9bac173c.preview-699.jpg'
+    },
+    {
+      id: 1,
+      name: 'Pool',
+      image:'http://weknowyourdreamz.com/images/billiards/billiards-05.jpg'
+    },
+    {
+      id: 2,
+      name: 'Sand Volleyball',
+      image:'http://archive.aacounty.org/sebin/j/b/beach_volleyball_pic2.jpg'
+    },
+    {
+      id: 3,
+      name: 'Tennis',
+      image:'http://www.pirec.org/wp-content/uploads/2013/02/tennis-balls-and-rackets.jpg'
+    },
+
+    {
+      id: 4,
+      name: 'Soccer',
+       image:'http://www.buenavistaco.gov/ImageRepository/Document?documentID=676'
+    }     
+];
+*/
+
+  return {
+
+      //not sure what this does
+      get: function(id) {
+        for (var i = 0; i < images.length; i++) {
+          if (images[i].id === parseInt(imageId)) {
+            return images[i];
+          }
+        }
+      },
+
+      //must get game by id like the function defined in users/account  factory
+      getImage : function(id){
+        console.log(id + "get game");
+        return $http({
+          method:'GET',
+          url: 'http://104.236.10.218/public/index.php/game/'+id
+        }) 
+      },
+/*
+      //seems like this is just a redfeintion of above
+      getGame : function(id){
+        console.log(id + "get game");
+        return $http({
+          method:'GET',
+          url: 'http://104.236.10.218/public/index.php/game/'+id
+        })
+        
+      },
+*/
+
+      //not sure what this does but it looks like it just adds a user to a game so its a redfintion of whats in users/account factory
+      // this will be a post method
+      addGame : function(chat){
+        console.log('addGame');
+        return $http({
+          method:'GET',
+          url: 'http://104.236.10.218/public/index.php/addUserToGame/'+chat.id
+        })
+        
+      },
+
+/*
+      //another redefiniton of above
+      getGame : function(id){
+        console.log(id + "get game");
+        return $http({
+          method:'GET',
+          url: 'http://104.236.10.218/public/index.php/game/'+id
+        })
+        
+      },
+*/
+
+      //seems like the search function defined in users/account factory
+      searchGame : function(sportName){
+        //console.log(sportName);
+        return $http({
+          method:'GET',
+          url: 'http://104.236.10.218/public/index.php/games/'+sportName
+        })
+        
+      },
+
+      //this is create game function very  importaint !!!
+        //not working yet
+      // this will be a post method once the end point is changed
+      createGame: function(time, location,sport, playerCount){
+
+        var hostName = "IanStenbit4"  //should be a param
+        console.log("createGame");
+        console.log("time: " + time);
+        console.log("location: " + location);
+        console.log("sport: " + sport);
+        console.log("playerCount: " + playerCount);
+        console.log("hostName" + hostName);
+        
+        return $http({
+             method: 'POST',
+             url: 'http://104.236.10.218/public/index.php/createGame',
+             //headers: {'Content-Type': undefined},  //not sure what this is
+             data: {time: time, location: location, sport: sport, playerCount: playerCount, hostName: hostName}
+          
+        })
+      }
+
+  }
+})
+
 
 /*
   login_functions factory
@@ -409,106 +680,4 @@ angular.module('starter.factories', [])
 
 /*
   end chat_functions factory
-*/
-  
-
-/*
-// this will be a delete method once the end point is changed
-    deleteGame: function(){
-      console.log("deleteGame");
-      return $http({
-        method: 'GET',
-        url: "http://dev.ianjjohnson.com/public/index.php/deleteGame/{id}"
-      })
-    },
-
-      getInfo: function() {
-        console.log("getInfo");
-        return $http({
-          method: 'GET',
-          url: "http://dev.ianjjohnson.com/public.index.php/game/{id}"
-
-        })
-        
-      }
-
-
-  }
-})
-
-
-
-
-//this will be a post method
-.factory('users', function (http){
-  return{
-
-
-    //this will be a post method
-    addUser: function() {
-      console.log("addUser");
-        return $http({
-          method: 'GET',
-          url: "http://dev.ianjjohnson.com/public.index.php/addUserToGame/{gameID}/{username}"
-        })
-    },
-
-    //post verison
-    addUser: function(game_id, username){
-      console.log("addUser");
-
-      var addUser_url = 'http://dev.ianjjohnson.com/public.index.php/addUserToGame/' + game_id + "/" + username;
-      
-      return $http({
-        var req = {
-           method: 'POST',
-           url: addUser_url,
-           headers: {'Content-Type': undefined},
-           data: { test: 'test' }
-        }
-      })
-      
-    },  //end addUser
-
-  
-    //this will be a delete method
-        deleteUser: function() {
-          console.log("deleteUser");
-          return $http({
-            method: 'GET',
-            url: "http://dev.ianjjohnson.com/public.index.php/deleteUserFromGame/{gameID}/{username}"
-          })
-        },
-    
-    //delete verison
-    deleteUser: function() {
-      console.log("deleteUser");
-      var deleteUser_url = 'http://dev.ianjjohnson.com/public.index.php/deleteUserFromGame/' + game_id + "/" + username;
-    
-      $http.delete(deleteUser_url);
-    },
-
-
-
-//this will be a post method
-    createUser: function() {
-      console.log("createUser");
-      return $http({
-        method: 'GET',
-        url: "http://dev.ianjjohnson.com/public.index.php/newUser/{name}/{pwd}"
-      })
-    },
-
-    getUsers: function() {
-      console.log("getUsers");
-      return $http({
-        method: 'GET',
-        url: "http://dev.ianjjohnson.com/public.index.php/users"
-      })
-    },
-
-
-  }
-});
-
 */

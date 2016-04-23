@@ -236,6 +236,161 @@ $scope.getChatImage = function (sport)
 })
 
 /*
+  Start A Game Controller
+  "lj's version create game ctrl"
+*/
+.controller('StartAGameCtrl', function($scope, $state, games) {
+
+    $scope.newGame = function newGame(){
+      //change state to create a game page
+      //$state.go('new_game');
+    };
+/*
+  $scope.createGame = function createGame(time, location, sport, playerCount){
+    games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
+      console.log(response);
+      //$state.go('tab.chats');
+    }
+  )};*/
+/*
+  $scope.search = function(){
+        var name = $scope.form.name;
+        //$state.go('tab.dash');
+      };
+*/
+})
+
+/*
+  Home controller ("Account")
+*/
+                                                    //need own factories as well
+.controller('HomeCtrl', function($scope, $state, account, game) {
+    
+    //Pull name from database
+    $scope.username = "TomBanbury0";
+
+    //this will see when your next game is...
+    account.getGamesForUser($scope.username)
+      .then(
+          function(response){
+
+                      //format the code so you don't return everything
+                      //just next game
+                      //$scope.gamesJoined = response.data;
+
+            //all upcomming games for a user
+            $scope.all_upcomming_games = response.data;
+
+            /*
+              format next_game
+            */
+
+            $scope.next_game = response.data[0];
+
+            /*
+                note:
+                  should be a function that takes time as event time as param...
+            */
+
+            //extract hour minute second from next game time to compare to current time
+            var start_time = $scope.next_game.time;
+            var regex = /(\d\d):(\d\d):(\d\d)/g;
+            var match = regex.exec(start_time);
+
+
+            if(match != null){
+              var game_hour = match[1];
+              var game_minute = match[2];
+              var game_second = match[3];
+
+              //current time
+              var d = new Date();
+              var cur_hour = d.getHours();
+              var cur_minute = d.getMinutes();
+              var cur_second = d.getSeconds();
+
+              //diffrence (should be no negitive values!!!)
+              var hour_diff = parseInt(game_hour) - parseInt(cur_hour);
+              var minute_diff = parseInt(game_minute) - parseInt(cur_minute);
+              var second_diff = parseInt(game_second) - parseInt(cur_second);
+
+              //time until game format
+              var time_until_game = hour_diff.toString() + " hours and " + minute_diff.toString() + " minutes";
+
+              //change global var time
+              $scope.next_game.time = time_until_game;
+            }
+
+          }
+      )
+
+    /*
+    //for whole list of games a user is enrolled in
+    var gamesJoined = user.getGamesForUser()
+      .then(
+          function(response){
+            $scope.gamesJoined = response.data;
+            //$scope.$apply();
+          }
+      )
+    */
+
+    //suggested games for your
+      //time formatted incorrectly
+    account.getSuggestedGames($scope.username).then(function(response){$scope.suggestedGames = response.data;})
+
+    /*
+    //not quite sure what this does
+    $scope.getGameData = function(id){
+      console.log('in get game');
+
+      $scope.game = user.getGame(id).then(function(response){
+        $scope.game = response.data;
+        console.log(response);
+        console.log($scope.game)
+        ;
+      })
+    }
+    */
+
+    /*
+    //not quite sure what this does
+    $scope.getUserData = function(){
+
+      //doesn't look we need a then
+      //sets a global variable users as all the user information returned by /users endpoint
+      //not sure  why this is importaint to do
+      $scope.users = user.getUserData().then(function(response){
+        console.log(response);
+        console.log(getUserData);
+      })
+    };
+    */
+
+    /*
+    //this seems strange overwriting the global users with sports prefs from a specific user
+    $scope.getPreferences = function(){
+      $scope.users = user.getPreferences().then(function(response){
+        $scope.preferences = response.data;
+        console.log($scope.preferences[0].sport);
+      })
+    };
+    */
+
+  /*
+    $scope.getUserPreferenceProfile = function(){
+      $scope.users = user.getOneUser()
+        .then(
+          function(response){
+            users = response.data;
+            console.log(users[0]);
+          }
+        )
+    };
+    */
+})
+
+/*
       Login Controller
 */
 .controller('LoginCtrl', function($scope, $state, $http, login_functions) {
