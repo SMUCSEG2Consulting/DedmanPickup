@@ -333,12 +333,7 @@ $scope.getChatImage = function (sport)
               $scope.next_game.time = time_until_game;
 
               //set correct image
-              //$scope.next_game.img = game.getImage($scope.next_game.sport);
-              //console.log(game.getImage("basketball"));
-              //var image = game.getImage("basketball");
-              //console.log(image);
-
-              var image_path = game.getImagePath($scope.next_game.sport + "_large");
+              var image_path = game.getImagePath($scope.next_game.sport);
               $scope.next_game.img_path = image_path;
             }
 

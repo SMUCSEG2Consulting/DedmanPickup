@@ -274,7 +274,7 @@ angular.module('starter.factories', [])
 
         return $http({
             method:'GET',
-            url: 'http://104.236.10.218/public/index.php/gamesForUser/'+ username
+            url: 'http://104.236.33.141/public/index.php/gamesForUser/'+ username
         })
     },
 

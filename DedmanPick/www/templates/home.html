@@ -22,14 +22,18 @@
                         if (no next game) 
                           -defualt image
                  -->
+                <span>
                    <h3>{{next_game.sport}} in {{next_game.time}}</h3>
-
+                   <img src="{{next_game.img_path}}" height="100" width="100"></img>
+                   <a href="#/tab/chats/{{next_game.id}}">details</a>
+                </span>
                   <!-- <img src="{{next_game.img_path}}" height="100" width="150"></img> -->
   
           </div>
 
-           <!--nothing you like?-->
+          <br>
 
+           <!--nothing you like?-->
            <!--Start a game-->
             <form>
                 <button class="button button-positive" id="start_a_game_button" ng-click="startGame()">Start a Game</button>
