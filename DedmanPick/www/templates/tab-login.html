@@ -1,0 +1,30 @@
+  <ion-view view-title="Login"  >
+  <div class = "container">
+  <div class="card m-t-3">
+  
+
+  <div class="card-block">
+    <img src="logo.png" height = "200">
+    <h4 class="card-title">Please login</h4>
+    
+   
+    <div class="wrapper">
+    <form class="form-signin">       
+      
+      <input type="text" class="form-control" ng-model="data.username" name="username" placeholder="Username" required="" autofocus="" />
+      <input type="password" class="form-control" ng-model="data.password" name="password" placeholder="Password" required=""/>      
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click = "login()">Login</button>  
+    <!--  <div class="alert alert-danger alert-dismissible fade in" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button><strong>User name or password is incorrect. Please retry. </strong>-->
+   
+
+   </div>
+    </form>
+  </div>
+  </div>
+</div>
+</div>
+</ion-view>
+

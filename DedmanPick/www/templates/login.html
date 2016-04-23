@@ -1,6 +1,7 @@
+  <ion-view view-title="Login"  >
   <div class = "container" id="login_background">
   <div class="card m-t-3">
-  
+  <img src="logo.png" height = "200">
   <div class="card-block" id="login_card_background">
     <h4 class="card-title">Please login</h4>
     <div ng-bind-html="failed_login_attempt_message"></div>
@@ -14,7 +15,7 @@
       
     </form>
 
-    <h6 ng-model="data.username">Or sign up...</h6>
+    <h6 ng-model="data.username"></h6>
     <button class="btn" type="submit" ng-click = "sign_up_state()" id="login_sign_up_button">Sign Up</button> 
 
   </div>
