@@ -18,7 +18,12 @@
 
 }
 
-
+.icon{
+	color:#CB1313;
+	outline:black;
+	font-color:black;
+	
+}
 
 #login_card_background{
 	/*from please login to underneath the login button*/
