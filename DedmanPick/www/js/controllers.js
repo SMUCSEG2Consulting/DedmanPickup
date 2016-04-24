@@ -369,7 +369,10 @@ $scope.getChatImage = function (sport)
         //})
       //console.log($scope.suggestedGames[0].sport);
       //console.log($scope.users);
-    })
+    }})
+
+
+
   $scope.getImage = function (sport)
   {
     //console.log("here");
