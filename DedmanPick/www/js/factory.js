@@ -166,7 +166,7 @@ angular.module('starter.factories', [])
 
     createGame: function(time, location,sport, playerCount){
 
-      
+      console.log("here");
       var hostName = "IanStenbit4"
       console.log("createGame");
       console.log("time: " + time);
