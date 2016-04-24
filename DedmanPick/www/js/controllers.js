@@ -858,9 +858,20 @@ $scope.getChatImage = function (sport)
 /*
       Sign up Controller
 */
-.controller('sign_up_Ctrl', function($scope, $state, $http, sign_up_functions) {
+.controller('sign_up_Ctrl', function($scope, $state, $http, sign_up_functions, account) {
     console.log('(sign_up_Ctrl controller)');
     console.log(sign_up_functions)
+
+    $scope.show_preferences=false;
+
+    //toggle show prefrences
+    $scope.toggle_prefrences = function(){
+      if($scope.show_preferences){
+        $scope.show_preferences = false;
+      }else{
+         $scope.show_preferences = true;
+      }
+    }
     
     //on click
     $scope.sign_up = function() {
@@ -880,6 +891,57 @@ $scope.getChatImage = function (sport)
                 function() 
                 {
                     console.log("success");
+
+                    //var sports_prefs = ["football_checkbox", "indoorSoccer_checkbox", "ultimateFrisbee_checkbox", "basketball_checkbox","soccer_checkbox",
+                    //"tennis_checkbox", "pingPong_checkbox","pool_checkbox","sandVolleyball_checkbox"];
+
+                    //send sports prefrences
+
+                    //football
+                    if($scope.football_checkbox = true){
+                      account.updatePreferences($scope.data.username, "football");
+                    }
+
+                    //indoor soccer
+                    if($scope.indoorSoccer_checkbox = true){
+                      account.updatePreferences($scope.data.username, "indoor_soccer");
+                    }
+
+                    //ultimate frisbee
+                    if($scope.ultimateFrisbee_checkbox = true){
+                      account.updatePreferences($scope.data.username, "ultimate_frisbee");
+                    }
+
+                    //basketball
+                    if($scope.basketball_checkbox = true){
+                      account.updatePreferences($scope.data.username, "basketball");
+                    }
+
+                    //soccer
+                    if($scope.soccer_checkbox = true){
+                      account.updatePreferences($scope.data.username, "soccer");
+                    }
+                    
+                    //tennis
+                    if($scope.tennis_checkbox = true){
+                      account.updatePreferences($scope.data.username, "tennis");
+                    }
+
+                    //ping pong
+                    if($scope.pingPong_checkbox = true){
+                      account.updatePreferences($scope.data.username, "ping_pong");
+                    }
+                    
+                    //ping pong
+                    if($scope.pool_checkbox = true){
+                      account.updatePreferences($scope.data.username, "pool");
+                    }
+
+                    //sand volleyball
+                    if($scope.sandVolleyball_checkbox = true){
+                      account.updatePreferences($scope.data.username, "sand_volleyball");
+                    }
+                    
 
                     //change state
                     $state.go('tab.account');
