@@ -110,10 +110,10 @@ angular.module('starter.factories', [])
       getImage : function(sport){
         //console.log(sport);
       hashtable['basketball'] =  "basketball.png";
-      hashtable['soccer'] =  "soccer.png";
+      hashtable['soccer'] =  "insoccer.png";
       hashtable['football'] =  "football.png";
       hashtable['tennis'] =  "tennis.png";
-      hashtable['indoor soccer'] =  "insoccer.png";
+      hashtable['indoor soccer'] =  "soccer.png";
       hashtable['sand volleyball'] =  "vb.png";
       hashtable['ultimate frisbee'] =  "frisbee.png";
       hashtable['pool'] =  "pool.png";

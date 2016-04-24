@@ -2,6 +2,7 @@
 /*#home_next_game{
 	background-image: url('../pictures/{{next_game.img_path}}');
 }*/
+@import url(https://fonts.googleapis.com/css?family=Lato);
 .button{
 	background:#CB1313;
 
@@ -81,8 +82,10 @@ h1{
 	
 
 /*controls the design for text "Upcoming Games" and all h1s*/
-	font-family: times, Times New Roman, times-roman, georgia, serif;
-	color: black;
+	
+font-family: 'Lato', sans-serif;
+
+	color:#CB1313 ;
 	margin: 0;
 	padding: 0px 0px 6px 0px;
 	font-size: 51px;
