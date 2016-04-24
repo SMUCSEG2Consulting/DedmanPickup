@@ -11,7 +11,7 @@ angular.module('starter.factories', [])
       console.log("user: " + usr);
       return $http({
         method: 'DELETE',
-        url: 'http://104.236.10.218/public/index.php/deleteUser',
+        url: 'http://104.236.33.141/public/index.php/deleteUser',
         //data: {usr: usr}
       })},
       
@@ -19,7 +19,7 @@ angular.module('starter.factories', [])
       console.log("in user data");    
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/users"
+        url: "http://104.236.33.141/public/index.php/users"
       })
     
     },
@@ -27,7 +27,7 @@ angular.module('starter.factories', [])
       console.log("in user data");    
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/user/JonathanCohen12"
+        url: "http://104.236.33.141/public/index.php/user/AllisonStenbit0"
       })
     },
 
@@ -35,7 +35,7 @@ angular.module('starter.factories', [])
         var username = "JonathanCohen12";
         return $http({
            method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           url: 'http://104.236.33.141/public/index.php/addSportForUser',
            data: {sport: sport, username : username}
         
       })
@@ -46,17 +46,17 @@ angular.module('starter.factories', [])
     updatePreferences : function(sport){
         return $http({
            method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           url: 'http://104.236.33.141/public/index.php/addSportForUser',
            data: {gameID:sport.id, username : username}
         
             })
     },
 
     addUserToGame : function(sport){
-        var username = "JonathanCohen12";
+        var username = "AllisonStenbit0";
         return $http({
            method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/addUserToGame',
+           url: 'http://104.236.33.141/public/index.php/addUserToGame',
            data: {gameID:sport.id, username : username}
         
             })
@@ -66,15 +66,15 @@ angular.module('starter.factories', [])
       console.log(id + "get game");
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/game/'+id
+        url: 'http://104.236.33.141/public/index.php/game/'+id
       })
       
     },
     getSuggestedGames : function(sport){
-        var username = "JonathanCohen12";
+        var username = "AllisonStenbit0";
         return $http({
            method: 'GET',
-           url: 'http://104.236.10.218/public/index.php/gamesByUserPref/'+username
+           url: 'http://104.236.33.141/public/index.php/gamesByUserPref/'+username
             })
     },
 
@@ -82,15 +82,15 @@ angular.module('starter.factories', [])
       console.log(sportName);
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/games/'+sportName
+        url: 'http://104.236.33.141/public/index.php/games/'+sportName
       })
       
     },
      getGamesForUser : function(){
-        var username = "JonathanCohen12";
+        var username = "AllisonStenbit0";
            return $http({
               method:'GET',
-              url: 'http://104.236.10.218/public/index.php/gamesForUser/'+username
+              url: 'http://104.236.33.141/public/index.php/gamesForUser/'+username
                })
     }
 //*********************************
@@ -129,10 +129,10 @@ angular.module('starter.factories', [])
      getHeroImage : function(location){
         //console.log(sport);
       hashtable['Dedman Rec Center'] =  "dedman.jpg";
-      hashtable['Intramural Field'] =  "intra.png";
-      hashtable['Sand Volleyball Courts'] =  "sand.png";
-      hashtable['Track'] =  "track.png";
-      hashtable['Lacrosse Field'] =  "lax.png";
+      hashtable['Intramural Field'] =  "intra.jpg";
+      hashtable['Sand Volleyball Courts'] =  "sand.jpg";
+      hashtable['Track'] =  "track.JPG";
+      hashtable['Lacrosse Field'] =  "lax.jpg";
       
     
      image = hashtable[location];
@@ -144,7 +144,7 @@ angular.module('starter.factories', [])
       console.log(id + "get game");
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/game/'+id
+        url: 'http://104.236.33.141/public/index.php/game/'+id
       })
       
     },
@@ -154,7 +154,7 @@ angular.module('starter.factories', [])
       console.log('addGame');
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/addUserToGame/'+chat.id
+        url: 'http://104.236.33.141/public/index.php/addUserToGame/'+chat.id
       })
       
     },
@@ -163,7 +163,7 @@ angular.module('starter.factories', [])
       console.log(id + "get game");
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/game/'+id
+        url: 'http://104.236.33.141/public/index.php/game/'+id
       })
       
     },
@@ -172,7 +172,7 @@ angular.module('starter.factories', [])
       //console.log(sportName);
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/games/'+sportName
+        url: 'http://104.236.33.141/public/index.php/games/'+sportName
       })
       
     },
@@ -192,7 +192,7 @@ angular.module('starter.factories', [])
       
       return $http({
            method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/createGame',
+           url: 'http://104.236.33.141/public/index.php/createGame',
            //headers: {'Content-Type': undefined},
            data: {time: time, location: location, sport: sport, playerCount: playerCount, hostName: hostName}
         
@@ -221,7 +221,7 @@ angular.module('starter.factories', [])
     getUserData : function(){ 
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/users"
+        url: "http://104.236.33.141/public/index.php/users"
       })
     
     },
@@ -235,7 +235,7 @@ angular.module('starter.factories', [])
 
       return $http({
         method: 'DELETE',
-        url: 'http://104.236.10.218/public/index.php/deleteUser',
+        url: 'http://104.236.33.141/public/index.php/deleteUser',
         data: {username: username}
       })
 
@@ -247,7 +247,7 @@ angular.module('starter.factories', [])
     getPreferences : function(username){ 
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/user/" + username
+        url: "http://104.236.33.141/public/index.php/user/" + username
       })
     },
 
@@ -256,7 +256,7 @@ angular.module('starter.factories', [])
 
       return $http({
            method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/addSportForUser',
+           url: 'http://104.236.33.141/public/index.php/addSportForUser',
            data: {sport: sport, username : username}
         
       })
@@ -302,7 +302,7 @@ angular.module('starter.factories', [])
 
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/games/'+ sportName
+        url: 'http://104.236.33.141/public/index.php/games/'+ sportName
       })
     },
 
@@ -382,7 +382,7 @@ angular.module('starter.factories', [])
         console.log(id + "get game");
         return $http({
           method:'GET',
-          url: 'http://104.236.10.218/public/index.php/game/'+id
+          url: 'http://104.236.33.141/public/index.php/game/'+id
         }) 
       },
 /*
