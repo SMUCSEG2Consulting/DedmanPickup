@@ -12,11 +12,11 @@
                
   
 
-  <div class="item item-divider">
+  <div class="item item-divider item-text-wrap">
    <h1> Upcoming Games </h1>
 
 
-    <ion class="item" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" type="item-text-wrap" ng-controller = "ChatDetailCtrl">
+    <ion class="item" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" ng-controller = "ChatDetailCtrl">
       <a class = "item"  href="#/tab/chats/{{gameJoined.id}}" >
 
       <img ng-src="{{getImage(gameJoined.sport)}}" height="50" width = "50">
@@ -43,7 +43,7 @@
                     
                 </ul>
             </div>-->
-            <div class="item item-divider">
+            <div class="item item-divider item-text-wrap">
           <h1> Suggested Games </h1>
   
                
