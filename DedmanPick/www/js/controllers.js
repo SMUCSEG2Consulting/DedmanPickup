@@ -448,15 +448,39 @@ $scope.getChatImage = function (sport)
     )
 
     //Message board
-    //http://104.236.10.218/public/index.php/chatData/9
-    //returns format : {"username":"PaigeFontenot24","message":"See you all in 10.0"}
+      //returns format : {"username":"PaigeFontenot24","message":"See you all in 10.0"}
     chat_functions.get_chat($stateParams.gameID).then(
        function(response){
         $scope.chat_data = response;
-        //console.log(response[0].message);
       }
     )
 
+    //Send Message
+    $scope.sendMessage = function(){
+      console.log("sendMessage()");
+      console.log($scope.message_ui);
+
+      //uses chat_functions to send your message
+      chat_functions.send_message($scope.username, $stateParams.gameID, $scope.message_ui);
+    }
+
+
+
+    //hiding and showing players in lobby
+    $scope.showPlayersInLobby = false;
+
+    $scope.showPlayers = function(){
+      if($scope.showPlayersInLobby == false)
+      {
+       $scope.showPlayersInLobby = true;
+       console.log($scope.showPlayersInLobby);
+      }
+      else
+      {
+        $scope.showPlayersInLobby = false;
+        console.log($scope.showPlayersInLobby);
+      }
+    }
 
     //Leave Game
     $scope.leaveGame = function(){
