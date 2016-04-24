@@ -148,6 +148,7 @@ $scope.newGame = function newGame(){
   }
   //console.log(Chats.get($stateParams.chatId));
   $scope.gameData = function sendGameData(sport, id, location, time){
+     
     //console.log('in send game data');
       }
  
@@ -179,6 +180,43 @@ $scope.getChatImage = function (sport)
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
       $scope.chat = response.data;
+         console.log($scope.chat.length);
+
+      
+      console.log(response.data);
+
+      console.log($scope.chat.length);
+
+      console.log($scope.chat);
+
+      time = $scope.chat.time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
+        }
+
+      $scope.chat.time = $scope.newTime;
+      console.log( $scope.chat.time);
+    
 
 
       //console.log($scope.chat[0].image);
