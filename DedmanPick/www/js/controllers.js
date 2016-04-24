@@ -294,6 +294,8 @@ $scope.getChatImage = function (sport)
       .then(
           function(response){
 
+            //var closed_game_index = 0;
+
                       //format the code so you don't return everything
                       //just next game
                       //$scope.gamesJoined = response.data;
@@ -305,45 +307,88 @@ $scope.getChatImage = function (sport)
               format next_game
             */
 
-            $scope.next_game = response.data[0];
+            //$scope.next_game = response.data[0];
 
-            /*
-                note:
-                  should be a function that takes time as event time as param...
-            */
+            for (var i=0; i< $scope.all_upcomming_games.length; i++){
+              /*
+                  note:
+                    should be a function that takes time as event time as param...
+              */
 
-            //extract hour minute second from next game time to compare to current time
-            var start_time = $scope.next_game.time;
-            var regex = /(\d\d):(\d\d):(\d\d)/g;
-            var match = regex.exec(start_time);
+              //extract hour minute second from next game time to compare to current time
+              //var start_time = $scope.next_game.time;
+              var start_time =$scope.all_upcomming_games[i].time
+              var regex = /(\d\d):(\d\d):(\d\d)/g;
+              var match = regex.exec(start_time);
 
 
-            if(match != null){
-              var game_hour = match[1];
-              var game_minute = match[2];
-              var game_second = match[3];
+              if(match != null){
+                var game_hour = match[1];
+                var game_minute = match[2];
+                var game_second = match[3];
 
-              //current time
-              var d = new Date();
-              var cur_hour = d.getHours();
-              var cur_minute = d.getMinutes();
-              var cur_second = d.getSeconds();
+                //current time
+                var d = new Date();
+                var cur_hour = d.getHours();
+                var cur_minute = d.getMinutes();
+                var cur_second = d.getSeconds();
 
-              //diffrence (should be no negitive values!!!)
-              var hour_diff = parseInt(game_hour) - parseInt(cur_hour);
-              var minute_diff = parseInt(game_minute) - parseInt(cur_minute);
-              var second_diff = parseInt(game_second) - parseInt(cur_second);
+                //diffrence (should be no negitive values!!!)
+                var hour_diff = parseInt(game_hour) - parseInt(cur_hour);
+                if(hour_diff < 0){
+                  hour_diff = hour_diff - 1;  //maybe
+                }
 
-              //time until game format
-              var time_until_game = hour_diff.toString() + " hours and " + minute_diff.toString() + " minutes";
+                var minute_diff = parseInt(game_minute) - parseInt(cur_minute);
+                if(minute_diff < 0){
+                  //minute_diff should be one less
+                  hour_diff = hour_diff -1;
+                  //second_diff should be 60 + second_diff
+                  minute_diff = 60 + minute_diff;
+                }
+                var second_diff = parseInt(game_second) - parseInt(cur_second);
+                //if negitive
+                if(second_diff < 0){
+                  //minute_diff should be one less
+                  minute_diff = minute_diff -1;
+                  //second_diff should be 60 + second_diff
+                  second_diff = 60 + second_diff;
+                }
 
-              //change global var time
-              $scope.next_game.time = time_until_game;
 
-              //set correct image
-              var image_path = game.getImagePath($scope.next_game.sport);
-              $scope.next_game.img_path = image_path;
+                //time until game format
+                var time_until_game = hour_diff.toString() + " hours and " + minute_diff.toString() + " minutes";
+
+                //change global var time
+                //$scope.next_game.time = time_until_game;
+                $scope.all_upcomming_games[i].time = time_until_game;
+
+                //set correct image
+                //var image_path = game.getImagePath($scope.next_game.sport);
+                //$scope.next_game.img_path = image_path;
+                var image_path = game.getImagePath($scope.all_upcomming_games[i].sport);
+                $scope.all_upcomming_games[i].img_path = image_path;
+
+                //if game is past remove from list and save location for next neasest game
+                  //check date and time 
+                if( hour_diff < 0){
+                  //closed_game_index = i;
+                  //console.log(closed_game_index);
+                  $scope.all_upcomming_games.splice(i,1);
+                  i = i-1;
+                }
+
+                //move closet game to the top
+                //if($scope.all_upcomming_games[i].next_game_index = i;
+              }
+
+              //$scope.next_game = $scope.all_upcomming_games[closed_game_index+1];
+              $scope.next_game = $scope.all_upcomming_games[0];
+
             }
+
+            //no upcomming games
+            //if($scope.all_upcomming_games.length == 0)
 
           }
       )

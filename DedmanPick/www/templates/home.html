@@ -7,8 +7,7 @@
            <div class="col">
                  
                 <div class="card-block" id="account_card_main">
-                    <p>welcome {{username}}</p>
-                    <h1>Dedman Pickup</h1>
+                  <p><h3>Welcome to <strong>Dedman Pickup</strong> {{username}}.</h3></p>
                 </div>
 
                  <!--
@@ -23,8 +22,8 @@
                           -defualt image
                  -->
                 <span>
-                   <h3>{{next_game.sport}} in {{next_game.time}}</h3>
                    <img src="{{next_game.img_path}}" height="100" width="100"></img>
+                   <h3>Your <strong>{{next_game.sport}}</strong> game starts in <strong>{{next_game.time}}</strong>.</h3>
                    <a href="#/game_lobby/{{next_game.id}}">details</a>
                 </span>
 
@@ -32,6 +31,36 @@
                   <!-- <img src="{{next_game.img_path}}" height="100" width="150"></img> -->
   
           </div>
+
+
+               <!--
+                    your upcomming games
+                      -should you click to show
+                      -should be able to hide
+              -->
+              <div class="col" >
+
+                <div class="card" id="account_card_suggested_games">
+                  <div class="card-block">
+                    <div>
+                      <h3>Your upcommin games</h3>
+                      <ul class="list-group list-group-flush">
+
+                        <ion-item class ng-repeat="upcomming_game in all_upcomming_games"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/game_lobby/{{suggestedGame.id}}">
+                          <li class="list-group-item" > 
+                            <img src="{{upcomming_game.img_path}}" height="50" width = "50">
+                            <h3> You have <strong> {{upcomming_game.sport}}</strong> at <strong>{{upcomming_game.location}}
+                             </strong> in <strong>{{upcomming_game.time}}</strong></h3>                 
+                          </li>
+
+                          </ion-item>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!--/suggested games-->
 
           <br>
 
