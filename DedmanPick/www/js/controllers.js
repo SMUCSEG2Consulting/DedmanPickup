@@ -4,16 +4,6 @@ angular.module('starter.controllers', ['starter.factories'])
 .controller('DashCtrl', function($scope) {})
 
 
-.directive('sort', function() {
-  return{
-    restrict: 'E',
-    scope: {
-      name: "@",
-      sort: "="
-    },
-    template: '<i class="fa fa-sort" ng-click="sort =\'name\'" ng-hide="sort == \'name\' || sort == \'-\+name\' "></i><i class="fa fa-sort-desc" ng-click="sort =\'name\'" ng-show="sort == \'-\+name\'"></i><i class="fa fa-sort-asc" ng-click="sort =\'-\+name\'" ng-show="sort == \'name\'"></i>'
-  }
-})
 
 .controller('ChatsCtrl', function($scope, $http, Chats, user, games) {
 console.log('in send game data');
