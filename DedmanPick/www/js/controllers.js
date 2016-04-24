@@ -269,6 +269,14 @@ $scope.getChatImage = function (sport)
     //Pull name from database
     $scope.username = window.localStorage.getItem('username');
 
+    //logout
+    $scope.logout = function(){
+      console.log("logout()");
+      $scope.username = window.localStorage.setItem('username', null);
+      //use logout request
+      $state.go("login");
+    }
+
     //Start A Game
     $scope.startGame = function(){
       console.log("startGame()");
@@ -295,10 +303,6 @@ $scope.getChatImage = function (sport)
           function(response){
 
             //var closed_game_index = 0;
-
-                      //format the code so you don't return everything
-                      //just next game
-                      //$scope.gamesJoined = response.data;
 
             //all upcomming games for a user
             $scope.all_upcomming_games = response.data;
