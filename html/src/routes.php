@@ -226,7 +226,7 @@ $app->get('/gamesForUser/{username}',
 	function($request, $response, $args){
 		$db = $this->dbConn;
 
-		$statement = $db->prepare('SELECT g.sport, time, playerCount, location FROM enlist e, game g WHERE e.playerName = :usr AND e.gameID = g.id');
+		$statement = $db->prepare('SELECT g.sport, time, g.id, playerCount, location FROM enlist e, game g WHERE e.playerName = :usr AND e.gameID = g.id');
 		$statement->execute(array(
 				'usr' => $args['username']
 			));

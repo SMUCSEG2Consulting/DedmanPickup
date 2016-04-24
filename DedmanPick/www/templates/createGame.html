@@ -1,0 +1,56 @@
+<ion-view view-title="Create a Game">
+  <ion-content class="padding">
+      
+  <ul class="list">
+  <li class="item item-input item-stacked-label">
+    <span class="input-label">Sport</span>
+    <select ng-model = "sport" >
+      <div ng-repeat = "chat in chats" >
+            <option>Basketball</option>
+            <option>Soccer</option>
+            <option>Tennis</option>  
+            <option>Ping Pong</option>
+            <option>Pool</option>
+            <option>Sand Volleyball</option>
+        </div>
+    </li>
+  </select>
+</ul>
+  <ul class="list">
+  <li class="item item-input item-stacked-label">
+    <span class="input-label">Location</span>
+    <select ng-model = "location">
+            <option>Dedman Rec Center</option>
+            <option>Intramural Field</option>
+            <option>Sand Volleyball Courts</option>
+            <option>Track</option>
+            <option>Lacrosse Fields</option>
+    </li>
+  </select>
+</ul>
+ <ul class="list">
+  <li class="item item-input item-stacked-label">
+    <span class="input-label"># of players?</span>
+    <select ng-model = "playerCount">
+            <option>1-5</option>
+            <option>6-10</options>
+            <option>11+</option>
+    </li>
+  </select>
+</ul>
+
+   <ul class="list">
+        <li class="item item-input">
+          <span class="input-label">Time</span>
+          <input type="time" placeholder="hh:mm:ss" ng-model="time">
+        </li>
+      </ul>
+
+      <form ng-submit ="createGame()" ng-controller = "CreateGameCtrl">
+      <button class="button button-full button-positive">
+      <h3 style="color:white;">Create Your Game</h3>
+      </button>
+    </form>
+
+  </ion-content>
+</ion-view>

@@ -6,8 +6,8 @@
 -->
 <ion-view view-title="{{chat.sport}}">
   <ion-content class="padding">
-    <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg" style="width: 64px; height: 64px">
-    <p>
+    <img ng-src= "{{getChatImage(chat.sport)}}" height="50" width = "50">     <p>
+    <h1>{{chat.sport}}</h1>
       Place of game:
       {{chat.location}}
     </p>

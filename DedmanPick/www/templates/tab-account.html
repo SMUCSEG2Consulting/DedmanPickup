@@ -5,19 +5,26 @@
     <div class = "container">
         
         <div class="col">
-            <div class="card">
+          
                
-  <div class="card-block">
-    <h2>Your upcoming games!</h2>
-   
-  </div>
-  <ul class="list-group list-group-flush">
-    <ion ng-repeat="gameJoined in gamesJoined"ng-click = "sendGameData(sport, id, location, time)" href="#/tab/chats/{{searchResult.id}}" type="item-text-wrap" >
-    <li class="list-group-item list-group-success"> <strong> <h3>{{gameJoined.sport}}</strong></h3> at <strong>{{gameJoined.location}}</strong> starting at <strong>{{gameJoined.time}}</strong>    </li>
-    
-    
+  
+
+  <div class="item item-divider">
+   <h1> Upcoming Games </h1>
+
+
+    <ion class="item" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" type="item-text-wrap" ng-controller = "ChatDetailCtrl">
+      <a class = "item"  href="#/tab/chats/{{gameJoined.id}}" >
+
+      <img ng-src="{{getImage(gameJoined.sport)}}" height="50" width = "50">
+      <strong> <h3> {{gameJoined.id}}  {{gameJoined.sport}}</h3></strong> <h4>at <strong>{{gameJoined.location}}
+      </strong> starting at <strong>{{gameJoined.time}}</strong> </h4>   </a>
+
 </div>
-        </div>
+   
+ 
+
+     
       <!--  <div class="col-xs-6.8 m-t-3" ></div>
             <div class="card">
                 <form ng-submit = "getPreferences()" >
@@ -33,35 +40,20 @@
                     
                 </ul>
             </div>-->
-            <div class="col" ></div>
-            <div class="card">
-              <div class="card-block">
-<div>
+            <div class="item item-divider">
+          <h1> Suggested Games </h1>
   
-                <h3>Suggested games </h3>
-                <ul class="list-group list-group-flush">
-                 <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "getGame({{suggestedGame.id}})" type="item-text-wrap" href="#/tab/chats/{{suggestedGame.id}}" ng-controller = "ChatDetailCtrl">
-                    <li class="list-group-item" > 
-                      <!--{{suggestedGame.id}}-->
-                  <p>{{suggestedGame.sport}}</p>
-                    <p> {{suggestedGame.location}}</p>
-                    <p>{{suggestedGame.time}}</p>                    <i class="icon ion-chevron-right icon-accessory"></i>
-    
-                     </li>
+               
+                
+                 <ion-item class = "item" ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap"  ng-click = "getGame({{suggestedGame.id}})" type="item-text-wrap" href="#/tab/chats/{{suggestedGame.id}}" ng-controller = "ChatDetailCtrl">
+                    <a class="item" href="#/tab/chats/{{suggestedGame.id}}"> 
+                        <img ng-src="{{getImage(suggestedGame.sport)}}" height="50" width = "50">
+                      <strong> <h3> {{suggestedGame.sport}}</h3></strong> <h4>at <strong>{{suggestedGame.location}}
+      </strong> starting at <strong>{{suggestedGame.time}}</strong> </h4>
 
-                    </ion-item>
-
+  </ion-item>
+  </ion-toggle>
   </div>
-</div>
-
-
-        
-            </div>
-
-    </ion-toggle>
-    </div>
-    </ion-list>
-    
-    
+  </ion-list>  
   </ion-content>
 </ion-view>

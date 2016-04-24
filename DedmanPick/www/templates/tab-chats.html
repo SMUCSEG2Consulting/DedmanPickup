@@ -37,21 +37,24 @@
   </div>
 
 
-
-     <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
-          <button class="button button-positive">
-            Click to create a new game
-          </button>
-      </form>
-        <!--<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
-        <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
+<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+       <img ng-src= "{{getChatImage(chat.sport)}}" height="50" width = "50">
         <h2>{{chat.sport}}</h2>
         <p>{{chat.date}}</p>
         <p>{{chat.time}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
         
       </ion-item>
-    </ion-list>-->
+    </ion-list>
+    
+     <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+          <button class="button button-positive">
+            Click to create a new game
+          </button>
+      </form>
+        
+      </ion-item>
+    </ion-list>
     
   </ion-content>
 </ion-view>

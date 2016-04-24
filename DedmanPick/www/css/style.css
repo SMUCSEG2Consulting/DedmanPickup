@@ -1,1 +1,113 @@
 /* Empty. Add your own CSS if you like */
+/*#home_next_game{
+	background-image: url('../pictures/{{next_game.img_path}}');
+}*/
+
+.view-container{
+
+	background: url('../img/image2.jpg') no-repeat 50% 50% fixed; 
+  	background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	-webkit-background-size: cover;
+
+}
+
+#login_card_background{
+	/*from please login to underneath the login button*/
+	background-color: rgba(224,224,224,0.0);
+}
+
+.container{
+
+	/*to fade away the container behind the logo and login form*/
+	background-color: rgba(224,224,224,0.0);
+}
+
+.card{
+	
+	/*actual card you see and it's settings*/
+	background-color: rgba(224,224,224,0.3);
+}
+
+.wrapper{
+	
+	/*fades away the login form's wrapper*/
+	background-color: rgba(224,224,224,0.0);
+}
+
+input{
+	
+	/*fades away the login fields background*/
+	background-color: rgba(256,256,256,0.0);
+}
+
+#login_username_feild{
+
+	/*Username text*/	
+	font-weight:bold;
+	color: black;
+	font-weight: 900;
+
+}
+
+#login_password_feild{
+	
+	/*Password Text*/
+	font-weight:bold;
+	color: black;
+	font-weight: 900;
+
+}
+
+.card-title{
+
+	text-align:center;
+	font-weight:bold;
+}
+
+
+input::-webkit-input-placeholder {
+color: black;
+}
+
+h1{
+	
+
+/*controls the design for text "Upcoming Games" and all h1s*/
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	color: black;
+	margin: 0;
+	padding: 0px 0px 6px 0px;
+	font-size: 51px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: lighter;
+
+}
+
+.col{
+	
+	background-color: rgba(170,170,170,0.2);
+
+}
+.item{
+
+	background-color: rgba(234,234,234,0.8);
+
+}
+
+.item-divider{
+
+
+	background-color: rgba(224,224,224,1.0);
+}
+
+.scroll-content{
+
+	background: url('../img/account_background5.jpg') no-repeat 50% 50% fixed; 
+  	background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	-webkit-background-size: cover;
+}
