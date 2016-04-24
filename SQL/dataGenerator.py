@@ -14,7 +14,7 @@ file.write(tmp + "\n\n\n")
 firstNames = ["John", "Jack", "Tom", "Bob", "Sarah", "Grace", "Timmothy", "Paige", "Matt", "Mark", "Jennifer", "Allison", "Mary", "Katie", "Jonathan", "Ben"]
 lastNames = ["Johnson", "Smith", "Carter", "Gabrielson", "Fontenot", "Khan", "Mitchell", "Banbury", "Cohen", "Hansen", "Stenbit", "Renninger", "Reiss", "Goldman"]
 nums = [2, 4, 5, 6, 8, 10, 15]
-sports = ["\"Soccer\"", "\"Basketball\"", "\"Tennis\"", "\"Football\"", "\"Ultimate Frisbee\"", "\"Squash\"", "\"Indoor Soccer\"", "\"Pool\"", "\"Ping Pong\""]
+sports = ["\"Soccer\"", "\"Basketball\"", "\"Tennis\"", "\"Football\"", "\"Ultimate Frisbee\"", "\"Indoor Soccer\"", "\"Pool\"", "\"Ping Pong\""]
 times = ["\"12:30:00\"", "\"14:20:00\"", "\"08:00:00\"", "\"18:15:00\"", "\"22:00:00\"", "\"16:40:00\"", "\"09:30:00\"", "\"13:25:00\"", "\"21:05:00\""]
 dates = ["\"2016-3-14\"", "\"2016-3-28\"", "\"2016-4-14\"", "\"2016-4-11\"", "\"2016-5-18\"", "\"2016-4-28\"", "\"2016-7-11\"", "\"2016-5-12\""]
 locations = ["\"Dedman\"", "\"Intramural Fields\"", "\"Wescott Field\"", "\"Some Park\"", "\"Moody Colliseum\""]
