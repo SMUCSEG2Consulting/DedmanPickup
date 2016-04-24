@@ -20,10 +20,8 @@ $scope.getChatImage = function (sport)
 
 
       for(var i=0; i < $scope.searchResults.length; i++){
-     // console.log(response.data[i]);
-
+      //console.log(response.data[i]);
       //console.log($scope.searchResults.length);
-
       //console.log($scope.searchResults[i]);
 
       time = $scope.searchResults[i].time;
@@ -141,13 +139,15 @@ console.log('in chats');
       }
 })
 
-.controller('CreateGameCtrl', function($scope, $state, games) {
-  $scope.createGame = function createGame(time, location, sport, playerCount){
-    games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
-      console.log(response);
-      //$state.go('tab.chats');
-    })};
-
+.controller('CreateGameCtrl', function($scope, $state, games, $ionicHistory) {
+  $scope.createGame = function createGame(time, location, sport, playerCount){
+    $scope.createGame = games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
+      console.log(response);
+      $ionicHistory.clearCache().then(function(){
+        $state.go('tab.chats',{},{ reload: true });
+      })
+      
+    })};
 $scope.newGame = function newGame(){
   
       $state.go('tab.dash');
@@ -171,12 +171,15 @@ $scope.newGame = function newGame(){
   };
   })
 //***************************************
-.controller('JoinGameCtrl', function($scope, $state, $http, user) {  
-  $scope.joinGame = function joinGame(chat){
-    console.log(chat);
-  $scope.addToGame = user.addUserToGame(chat);
-  //$scope.fromFactory = addGameFactory.addGame(chat);
-  $state.go('tab.account', chat);};
+.controller('JoinGameCtrl', function($scope, $state, $http, $ionicHistory, user) {  
+  $scope.joinGame = function joinGame(chat){
+    console.log(chat);
+  $scope.addToGame = user.addUserToGame(chat).then(function(response){
+      $ionicHistory.clearCache().then(function(){
+        $state.go('tab.account', {}, {reload:true});
+      })
+    });
+  };
 })
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
