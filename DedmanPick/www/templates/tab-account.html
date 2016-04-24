@@ -21,7 +21,10 @@
 
       <img ng-src="{{getImage(gameJoined.sport)}}" height="50" width = "50">
       <strong> <h3>  {{gameJoined.sport}}</h3></strong> <h4>at <strong>{{gameJoined.location}}
-      </strong> starting at <strong>{{gameJoined.time}}</strong> </h4>   </a>
+      </strong> starting at <strong>{{gameJoined.time}}</strong> </h4> 
+      <i class="icon ion-chevron-right icon-accessory m-l-3"></i>
+        </a>
+
 
 </div>
    
@@ -52,7 +55,12 @@
                     <a class="item" href="#/tab/chats/{{suggestedGame.id}}"> 
                         <img ng-src="{{getImage(suggestedGame.sport)}}" height="50" width = "50">
                       <strong> <h3> {{suggestedGame.sport}}</h3></strong> <h4>at <strong>{{suggestedGame.location}}
-      </strong> starting at <strong>{{suggestedGame.time}}</strong> </h4>
+      </strong> starting at <strong>{{suggestedGame.time}}</strong> 
+    </h4>
+    <div class = chevron >
+    <i class="icon ion-chevron-right icon-accessory m-l-3"></i>
+  </div>
+  </a>
 
   </ion-item>
   </ion-toggle>
