@@ -54,6 +54,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       templateUrl: 'templates/home.html',
       controller: 'HomeCtrl'
   })
+
+  //createGame
+  .state('createGame', {
+      url: '/createGame',
+      templateUrl: 'templates/createGame.html'
+  })
    
   // setup an abstract state for the tabs directive
   .state('tab', {

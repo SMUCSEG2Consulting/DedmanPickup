@@ -53,10 +53,10 @@
               <ul class="list-group list-group-flush">
                 <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/tab/chats/{{result.id}}">
                   <li class="list-group-item"> 
+                    <img src="{{result.img_path}}" height="50" width = "50">
                     <p>{{result.sport}}</p>
                     <p> {{result.location}}</p>
-                    <p>{{result.time}}</p> 
-                    <p>{{result.id}}</p>                      
+                    <p>{{result.time}}</p>                
                     <i class="icon ion-chevron-right icon-accessory"></i>
                   </li>
                 </ion-item>
@@ -85,6 +85,7 @@
                         <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/tab/chats/{{suggestedGame.id}}">
                           <li class="list-group-item" > 
                               <!--{{suggestedGame.id}}-->
+                            <img src="{{suggestedGame.img_path}}" height="50" width = "50">
                             <p>{{suggestedGame.sport}}</p>
                             <p> {{suggestedGame.location}}</p>
                             <p>{{suggestedGame.time}}</p>                    

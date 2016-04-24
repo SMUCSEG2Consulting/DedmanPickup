@@ -278,6 +278,13 @@ $scope.getChatImage = function (sport)
     $scope.searchBySport = function(){
       account.searchGame($scope.search_ui).then(function(response){
         $scope.searchResults = response.data;
+
+        //set icons
+        for(var i=0; i<$scope.searchResults.length; i++){
+            var image_path = game.getImagePath($scope.searchResults[i].sport);
+            $scope.searchResults[i].img_path = image_path;
+        }
+
       })
     }
 
@@ -353,7 +360,18 @@ $scope.getChatImage = function (sport)
 
     //suggested games for your
       //time formatted incorrectly
-    account.getSuggestedGames($scope.username).then(function(response){$scope.suggestedGames = response.data;})
+    account.getSuggestedGames($scope.username)
+      .then(
+        function(response){
+          $scope.suggestedGames = response.data;
+
+          //set icons
+          for(var i=0; i<$scope.suggestedGames.length; i++){
+            var image_path = game.getImagePath($scope.suggestedGames[i].sport);
+            $scope.suggestedGames[i].img_path = image_path;
+          }
+        }
+      )
 
     /*
     //not quite sure what this does
