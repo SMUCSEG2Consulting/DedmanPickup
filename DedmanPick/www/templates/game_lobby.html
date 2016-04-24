@@ -19,13 +19,18 @@
     </p>
 
     <h5>Players in lobby</h5>
-    <ion-item class ng-repeat="player in players"  type="item-text-wrap" type="item-text-wrap" ng-controller = "GameLobbyCtrl">
+    <ion-item class ng-repeat="player in players" ng-controller = "GameLobbyCtrl">
       <li class="list-group-item">{{player}}</li>
     </ion-item>
 
     <form ng-controller = "GameLobbyCtrl">
       <button class="button button-positive">Leave Game</button>
     </form>
+
+    <p>chat</p>
+    <ion-item class ng-repeat="message in chat_data" ng-controller = "GameLobbyCtrl">
+      <li class="list-group-item">{{message.username}} : {{message.message}}</li>
+    </ion-item>
 
   </ion-content>
 </ion-view>

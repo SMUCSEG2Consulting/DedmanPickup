@@ -429,7 +429,7 @@ $scope.getChatImage = function (sport)
   Game Lobby Controller ("Chats")
 */
                                                     //need own factories as well
-.controller('GameLobbyCtrl', function($scope, $stateParams, $state, account, game) {
+.controller('GameLobbyCtrl', function($scope, $stateParams, $state, account, game, chat_functions) {
 
     //Pull name from local storage
     $scope.username = window.localStorage.getItem('username');
@@ -446,6 +446,17 @@ $scope.getChatImage = function (sport)
         $scope.players = $scope.pickup_game.playerNames;
       }
     )
+
+    //Message board
+    //http://104.236.10.218/public/index.php/chatData/9
+    //returns format : {"username":"PaigeFontenot24","message":"See you all in 10.0"}
+    chat_functions.get_chat($stateParams.gameID).then(
+       function(response){
+        $scope.chat_data = response;
+        //console.log(response[0].message);
+      }
+    )
+
 
     //Leave Game
     $scope.leaveGame = function(){

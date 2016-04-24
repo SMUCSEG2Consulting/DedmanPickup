@@ -605,9 +605,6 @@ angular.module('starter.factories', [])
 
                   if(response.status ==  200)
                   {
-
-                    console.log(response);
-
                     //promise
                     deferred.resolve(response.data);
 
