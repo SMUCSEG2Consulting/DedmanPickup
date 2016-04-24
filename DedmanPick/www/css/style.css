@@ -2,3 +2,71 @@
 /*#home_next_game{
 	background-image: url('../pictures/{{next_game.img_path}}');
 }*/
+
+.view-container{
+
+	background: url('../img/image2.jpg') no-repeat 50% 50% fixed; 
+  	background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	-webkit-background-size: cover;
+
+}
+
+#login_card_background{
+	/*from please login to underneath the login button*/
+	background-color: rgba(224,224,224,0.0);
+}
+
+.container{
+
+	/*to fade away the container behind the logo and login form*/
+	background-color: rgba(224,224,224,0.0);
+}
+
+.card{
+	
+	/*actual card you see and it's settings*/
+	background-color: rgba(224,224,224,0.3);
+}
+
+.wrapper{
+	
+	/*fades away the login form's wrapper*/
+	background-color: rgba(224,224,224,0.0);
+}
+
+input{
+	
+	/*fades away the login fields background*/
+	background-color: rgba(256,256,256,0.0);
+}
+
+#login_username_feild{
+
+	/*Username text*/	
+	font-weight:bold;
+	color: black;
+	font-weight: 900;
+
+}
+
+#login_password_feild{
+	
+	/*Password Text*/
+	font-weight:bold;
+	color: black;
+	font-weight: 900;
+
+}
+
+.card-title{
+
+	text-align:center;
+	font-weight:bold;
+}
+
+
+input::-webkit-input-placeholder {
+color: black;
+}
