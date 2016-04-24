@@ -442,6 +442,8 @@ $scope.getChatImage = function (sport)
 
         var image_path = game.getImagePath($scope.pickup_game.sport);
         $scope.pickup_game.img_path = image_path;
+
+        $scope.players = $scope.pickup_game.playerNames;
       }
     )
 
