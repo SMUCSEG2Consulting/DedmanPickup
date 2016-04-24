@@ -1,6 +1,10 @@
 
 <ion-view view-title="Game Lobby">
 <ion-nav-bar class = "bar-dark">
+<ion-nav-back-button>
+Back
+  </ion-nav-back-button>
+        
           <ion-nav-buttons side= "right">
                <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
                 <div class = headbutton>
@@ -31,6 +35,7 @@
 
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
         <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
+
         <h2>{{searchResult.sport}}</h2>
        
         <p>{{searchResult.time}}</p>
@@ -44,12 +49,14 @@
 
 <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats | filter: searchGames" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
        <img ng-src= "{{getChatImage(chat.sport)}}" height="50" width = "50">
-        <h2>{{chat.sport}}</h2>
-        <p>{{chat.date}}</p>
-        <p>{{chat.time}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+       <strong> <h3>  {{chat.sport}}</h3></strong> <h4>at <strong>{{chat.location}}
+      </strong> starting at <strong>{{chat.time}}</strong> </h4> 
+      <i class="icon ion-chevron-right icon-accessory m-l-3"></i>
+       </ion-item>
+
+      
         
-      </ion-item>
+    
     </ion-list>
     
      

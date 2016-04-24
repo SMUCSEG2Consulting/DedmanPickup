@@ -1,5 +1,8 @@
 <ion-view view-title="Account">
 <ion-nav-bar class="bar-dark">
+<ion-nav-back-button>
+Back
+  </ion-nav-back-button>
         
       </ion-nav-bar>
   <ion-content>
@@ -16,7 +19,7 @@
    <h1> Upcoming Games </h1>
 
 
-    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" ng-controller = "ChatDetailCtrl">
+    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/account/{{gameJoined.id}}" ng-controller = "ChatDetailCtrl">
       <img ng-src="{{getImage(gameJoined.sport)}}" height="50" width = "50">
 
       <strong> <h3>  {{gameJoined.sport}}</h3></strong> <h4>at <strong>{{gameJoined.location}}
@@ -24,7 +27,6 @@
       <i class="icon ion-chevron-right icon-accessory m-l-3"></i>
        </ion-item>
 
-      <strong> <h2>  {{gameJoined.sport}}</h2><h4></strong>starting at <strong>{{gameJoined.time}}</strong> </h4> </a>
 
 </div>
    

@@ -19,14 +19,14 @@ angular.module('starter.services', [])
 
       }).then(function(response){
         chats = response.data;
-        return response.data;
+        return chats;
       })
 
       //convert chats to correct format and then return
       //...convert...
       //return chats;
 
-      return testData;
+      //return testData;
     },
 
     getGameData: function(chatId){
