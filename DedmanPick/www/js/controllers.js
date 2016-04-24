@@ -85,9 +85,50 @@ console.log('in chats');
         function successCallback(data){
           console.log(data);
           $scope.chats = data;
+          console.log($scope.chats.length);
+
+
+      for(var i=0; i < $scope.chats.length; i++){
+      // console.log(response.data[i]);
+
+      console.log($scope.chats.length);
+
+      console.log($scope.chats[i]);
+
+      time = $scope.chats[i].time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
         }
-        
-      )
+
+      $scope.chats[i].time = $scope.newTime;
+      console.log( $scope.chats[i].time);
+    }
+
+      //$scope.$apply();
+   
+          
+    
+    })
 
   $scope.remove = function(chat) {
     Chats.remove(chat);
