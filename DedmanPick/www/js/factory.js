@@ -282,7 +282,7 @@ angular.module('starter.factories', [])
         funcitons that should be in a game factory...
     */
 
-        //search by sport name (probably shouldn't be in account)
+    //search by sport name (probably shouldn't be in account)
     searchGame : function(sportName){
 
       return $http({
@@ -292,35 +292,33 @@ angular.module('starter.factories', [])
     },
 
         //username should be passed, not sure what sport is exactly
-    addUserToGame : function(sport){
-        var username = "TomBanbury0";
-        return $http({
-           method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/addUserToGame',
-           data: {gameID:sport.id, username : username}
-        
-            })
+    addUserToGame : function(username, id){
+
+      return $http({
+         method: 'POST',
+         url: 'http://104.236.33.141/public/index.php/addUserToGame',
+         data: {gameID:id, username : username}
+      })
     },
 
-    /*
-      //should probably be in games
-    addUserToGame : function(username, gameID){
-
-        return $http({
-           method: 'POST',
-           url: 'http://104.236.10.218/public/index.php/addUserToGame',
-           data: {gameID:gameID, username : username}
-        })
+    //username should be passed, not sure what sport is exactly
+    deleteUserFromGame : function(username, id){
+      
+      return $http({
+         method: 'DELETE',
+         url: 'http://104.236.33.141/public/index.php/deleteUserFromGame',
+         data: {gameID:id, username : username}
+      })
     },
-    */
+
 
     //retrieves info for game based on game_id  (probaly should be in games)
     getGame : function(id){
+
       return $http({
         method:'GET',
-        url: 'http://104.236.10.218/public/index.php/game/'+ id
+        url: 'http://104.236.33.141/public/index.php/game/'+ id
       })
-      
     }
 
   }

@@ -436,16 +436,23 @@ $scope.getChatImage = function (sport)
 
     //pull game information from database
         //retrieve gameID form url/$stateParams (defined in apps.js)
-    account.getGame($stateParams.gameID).then(
-      function(response){
-        $scope.pickup_game = response.data;
 
-        var image_path = game.getImagePath($scope.pickup_game.sport);
-        $scope.pickup_game.img_path = image_path;
+    $scope.getGameInfo = function(){
+      account.getGame($stateParams.gameID).then(
+        function(response){
+          $scope.pickup_game = response.data;
 
-        $scope.players = $scope.pickup_game.playerNames;
-      }
-    )
+          var image_path = game.getImagePath($scope.pickup_game.sport);
+          $scope.pickup_game.img_path = image_path;
+
+          $scope.players = $scope.pickup_game.playerNames;
+        }
+      )
+    }
+
+    //***set game info***
+    $scope.getGameInfo();
+
 
     //Message board
       //returns format : {"username":"PaigeFontenot24","message":"See you all in 10.0"}
@@ -457,7 +464,7 @@ $scope.getChatImage = function (sport)
         )
       }
 
-    //fill messages ***
+    //*** fill messages ***
     $scope.getMesseges();
 
     //Send Message
@@ -472,12 +479,41 @@ $scope.getChatImage = function (sport)
       $scope.getMesseges();
     }
 
+    //Leave Game
+    $scope.leaveGame = function(){
+      console.log("leaveGame()");
 
+      //remove username from gameID
+      account.deleteUserFromGame($scope.username, $stateParams.gameID).then(
+          function(response){
+            console.log(response);
 
+            $state.go("home");
+          }
+      )
+    }
+    
+    //join Game
+    $scope.joinGame = function(){
+      console.log("joinGame()");
+
+      //add username to gameID
+      account.addUserToGame($scope.username, $stateParams.gameID).then(
+          function(response){
+            console.log(response);
+          }
+      )
+    }
+
+    /*** join game on entry ***/
+    $scope.joinGame();
+    
     //hiding and showing players in lobby
-    $scope.showPlayersInLobby = false;
+    $scope.showPlayersInLobby = true;
 
     $scope.showPlayers = function(){
+      //$scope.showPlayersInLobby = $scope.showPlayersInLobby === false ? true: false;
+      /*
       if($scope.showPlayersInLobby == false)
       {
        $scope.showPlayersInLobby = true;
@@ -487,15 +523,35 @@ $scope.getChatImage = function (sport)
       {
         $scope.showPlayersInLobby = false;
         console.log($scope.showPlayersInLobby);
+      }*/
+    }
+
+    //join/leave button
+
+    account.getGame($stateParams.gameID).then(
+      function(response){
+
+        var in_lobby = false;
+
+        for(var i=0; i < response.data.playerNames.length; i++){
+            if (response.data.playerNames[i] == $scope.username){
+              in_lobby = true;
+            }
+        }
+
+        if (!in_lobby)
+        {
+          $scope.join_leave_button = "Join Game";
+          $scope.join_leave_function =  "joinGame()";
+        } 
+        else 
+        {
+          $scope.join_leave_button = "Leave Game";
+          $scope.join_leave_function =  "leaveGame()";
+        }
+
       }
-    }
-
-    //Leave Game
-    $scope.leaveGame = function(){
-      console.log("leaveGame()");
-    }
-
-    //should be join/leave options
+    )
 
 })
 

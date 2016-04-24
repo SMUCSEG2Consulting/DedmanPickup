@@ -3,9 +3,12 @@
 
     <img ng-src= "{{pickup_game.img_path}}" height="50" width = "50">     
     <h1>{{pickup_game.sport}}</h1>
+    <p>
+      Games at  <strong>{{pickup_game.location}}</strong> at <strong>{{pickup_game.time}}</strong> on <strong>{{pickup_game.date}}  </strong>
+    </p>
 
     <form ng-controller = "GameLobbyCtrl">
-      <button class="button button-positive">Leave Game</button>
+      <button class="button button-positive" ng-click="leaveGame()">Leave Game</button>
     </form>
 
     <br>
@@ -19,10 +22,6 @@
 
     <br>
     <br>
-
-    <p>
-      Games at  <strong>{{pickup_game.location}}</strong> at <strong>{{pickup_game.time}}</strong> on <strong>{{pickup_game.date}}  </strong>
-    </p>
 
     <h2>Message Board:</h2>
     <ion-item class ng-repeat="message in chat_data" ng-controller = "GameLobbyCtrl">

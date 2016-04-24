@@ -27,6 +27,8 @@
                    <img src="{{next_game.img_path}}" height="100" width="100"></img>
                    <a href="#/game_lobby/{{next_game.id}}">details</a>
                 </span>
+
+
                   <!-- <img src="{{next_game.img_path}}" height="100" width="150"></img> -->
   
           </div>
@@ -53,10 +55,8 @@
               <ul class="list-group list-group-flush">
                 <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/game_lobby/{{result.id}}">
                   <li class="list-group-item"> 
-                    <img src="{{result.img_path}}" height="50" width = "50">
-                    <strong> <h3> {{result.sport}}</h3></strong> <h4>at <strong>{{result.location}}
-                    </strong> starting at <strong>{{result.time}}</strong> </h4>              
-                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    <!--<img src="{{result.img_path}}" height="50" width = "50">-->
+                    <h3>Join <strong> {{result.sport}}</strong> at <strong>{{result.location}}</strong> starting at <strong>{{result.time}}</strong>?</h3>
                   </li>
                 </ion-item>
               </ul>
@@ -71,7 +71,6 @@
                       -correct sport picture
                       -hover change
                       -should be able to join a game from suggested view view
-
               -->
               <div class="col" >
 
@@ -85,9 +84,8 @@
                           <li class="list-group-item" > 
                               <!--{{suggestedGame.id}}-->
                             <img src="{{suggestedGame.img_path}}" height="50" width = "50">
-                            <strong> <h3> {{suggestedGame.sport}}</h3></strong> <h4>at <strong>{{suggestedGame.location}}
-                             </strong> starting at <strong>{{suggestedGame.time}}</strong> </h4>                    
-                            <i class="icon ion-chevron-right icon-accessory"></i>
+                            <h3> Join <strong> {{suggestedGame.sport}}</strong> at <strong>{{suggestedGame.location}}
+                             </strong> starting at <strong>{{suggestedGame.time}}</strong>?</h3>                 
                           </li>
 
                           </ion-item>
