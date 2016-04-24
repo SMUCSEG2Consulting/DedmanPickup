@@ -272,7 +272,7 @@ $scope.getChatImage = function (sport)
 
 
 .controller('AccountCtrl', function($scope, $state, user, games) {
-  $scope.userName = "Katy";
+  $scope.username = window.localStorage.getItem('username');
   //console.log('acct ctrl');
   //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
