@@ -450,57 +450,8 @@ $scope.getChatImage = function (sport)
       console.log("leaveGame()");
     }
 
+    //should be join/leave options
 
-    //  $scope.chat = games.getGame($stateParams.chatId).then(function(response){
-    //  $scope.chat = response.data;
-/*
-    var chats = Chats.all();
-
-
-    //this must be importaint
-    chats.then(
-
-      function successCallback(data){
-        console.log(data);
-        $scope.chats = data;
-      }
-      
-    )
-
-    //not sure vvv
-    $scope.form = {};
-    $scope.getChatImage = function (sport)
-    {
-      return $scope.suggestedImage = games.getImage(sport);
-    }
-
-    $scope.search = function()
-    {
-      $scope.searchParam = $scope.form.name;
-      var searchResults =  user.searchGame($scope.searchParam).then(function(response){
-        $scope.searchResults = response.data;
-        console.log($scope.searchResults[0]);
-        //console.log($scope.users);
-      })
-      
-    };
-
-      $scope.createNewGame = function (){
-        //console.log("in get game");
-        console.log("create new game")
-          //console.log($scope.gamesJoined);
-      };
-
-      $scope.remove = function(chat) {
-        Chats.remove(chat);
-      };
-
-      //console.log(Chats.get($stateParams.chatId));
-      $scope.gameData = function sendGameData(sport, id, location, time){
-        console.log('in send game data');
-      }
-      //not sure ^^^
-*/
 })
 
 /*
