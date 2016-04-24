@@ -7,27 +7,28 @@ Back
   </ion-nav-back-button>
   </ion-nav-bar>
   <ion-content class="padding">
-    
+    <div class = image >
+      <img ng-src= "{{getHeroImage(chat.location)}}" width = "100%" height="20%"> </div>
         <p>
     <font color = "white"><h2>{{chat.sport}}</h2>
-      Place of game:
       {{chat.location}}
     </p>
 
     <p>
-      Time of game:
+     
       {{chat.time}}
     </p>
-    <p>
-      Number of players needed:
-      {{chat.playerCount}}
-    </p></font>
+    </font>
 
       
 
     
 
-<h2><font color="white"> Message Board:</h2> </font>
+
+
+<font color="white">
+<h2>Message Board:</h2></font>
+
     <ion-item class ng-repeat="message in chat_data" ng-controller = "GameLobbyCtrl">
       <li class="list-group-item">{{message.username}} : {{message.message}}</li>
     </ion-item>

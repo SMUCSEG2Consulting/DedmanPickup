@@ -229,6 +229,11 @@ $scope.getChatImage = function (sport)
     console.log("here");
     return $scope.suggestedImage = games.getImage(sport);
   }
+  $scope.getHeroImage = function (sport)
+  {
+    console.log("here");
+    return $scope.suggestedImage = games.getHeroImage(sport);
+  }
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
 
