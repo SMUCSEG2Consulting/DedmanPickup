@@ -3,7 +3,7 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, $http, Chats, user,games) {
+.controller('ChatsCtrl', function($scope, $http, Chats, user,games) { 
 console.log('in send game data');
 
 $scope.form = {};
@@ -17,22 +17,22 @@ $scope.getChatImage = function (sport)
     $scope.searchParam = $scope.form.name;
     var searchResults =  user.searchGame($scope.searchParam).then(function(response){
       $scope.searchResults = response.data;
-            console.log($scope.searchResults.length);
+           // console.log($scope.searchResults.length);
 
 
       for(var i=0; i < $scope.searchResults.length; i++){
-      console.log(response.data[i]);
+     // console.log(response.data[i]);
 
-      console.log($scope.searchResults.length);
+      //console.log($scope.searchResults.length);
 
-      console.log($scope.searchResults[i]);
+      //console.log($scope.searchResults[i]);
 
       time = $scope.searchResults[i].time;
 
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-      console.log(time);
+      //console.log(time);
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -53,9 +53,9 @@ $scope.getChatImage = function (sport)
         }
 
       $scope.gamesJoined[i].time = $scope.newTime;
-      console.log( $scope.searchResults[i].time);
+     // console.log( $scope.searchResults[i].time);
     }
-      console.log($scope.searchResults[0]);
+     // console.log($scope.searchResults[0]);
       //console.log($scope.users);
     })
     
@@ -86,22 +86,22 @@ console.log('in chats');
         function successCallback(data){
           console.log(data);
           $scope.chats = data;
-          console.log($scope.chats.length);
+         // console.log($scope.chats.length);
 
 
       for(var i=0; i < $scope.chats.length; i++){
       // console.log(response.data[i]);
 
-      console.log($scope.chats.length);
+     // console.log($scope.chats.length);
 
-      console.log($scope.chats[i]);
+     // console.log($scope.chats[i]);
 
       time = $scope.chats[i].time;
 
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-      console.log(time);
+     // console.log(time);
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -122,7 +122,7 @@ console.log('in chats');
         }
 
       $scope.chats[i].time = $scope.newTime;
-      console.log( $scope.chats[i].time);
+     // console.log( $scope.chats[i].time);
     }
 
       //$scope.$apply();
@@ -189,6 +189,7 @@ $scope.newGame = function newGame(){
 })
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
+
   //$scope.chat = Chats.get($stateParams.chatId);
   //console.log('in send game data');
   $scope.search = function()
@@ -216,6 +217,7 @@ $scope.newGame = function newGame(){
 })
 
 .controller('SearchCtrl', function($scope, $state) {
+
     //console.log('(search controller)');
 })
 
@@ -229,14 +231,15 @@ $scope.getChatImage = function (sport)
   }
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
+
       $scope.chat = response.data;
-        
+
       time = $scope.chat.time;
 
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-      console.log(time);
+     // console.log(time);
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -257,7 +260,7 @@ $scope.getChatImage = function (sport)
         }
 
       $scope.chat.time = $scope.newTime;
-      console.log( $scope.chat.time);
+    //  console.log( $scope.chat.time);
     
 
 
@@ -276,17 +279,17 @@ $scope.getChatImage = function (sport)
   //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
       $scope.gamesJoined = response.data;
-      console.log($scope.gamesJoined.length);
+      //console.log($scope.gamesJoined.length);
 
 
       for(var i=0; i < $scope.gamesJoined.length; i++){
-      
+
       time = $scope.gamesJoined[i].time;
 
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-      //console.log(time);
+
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -319,7 +322,10 @@ $scope.getChatImage = function (sport)
 
   var suggestedGames =  user.getSuggestedGames().then(function(response){
       $scope.suggestedGames = response.data;
-            //console.log($scope.suggestedGames.length);
+
+      for(var i=0; i < $scope.suggestedGames.length; i++){
+      
+         
 
 
       for(var i=0; i < $scope.suggestedGames.length; i++){
@@ -329,7 +335,7 @@ $scope.getChatImage = function (sport)
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-      //console.log(time);
+      
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -350,7 +356,7 @@ $scope.getChatImage = function (sport)
         }
 
       $scope.suggestedGames[i].time = $scope.newTime;
-      //console.log( $scope.suggestedGames[i].time);
+
     }
 
 

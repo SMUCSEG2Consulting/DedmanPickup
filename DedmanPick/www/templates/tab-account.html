@@ -9,14 +9,7 @@
         
         <div class="col">
           
-          <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
-        <img ng-src="http://www.proprofs.com/quiz-school/topic_images/p18lq7ediepl816p6s04171vo23.jpg">
-        <h2>{{searchResult.sport}}</h2>
-       
-        <p>{{searchResult.time}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-        
-      </ion-item>
+  
   
 
   
@@ -25,10 +18,18 @@
 
     <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="gameJoined in gamesJoined" ng-click = "getGame({{gameJoined.id}})" href="#/tab/chats/{{gameJoined.id}}" ng-controller = "ChatDetailCtrl">
       <img ng-src="{{getImage(gameJoined.sport)}}" height="50" width = "50">
+
       <strong> <h3>  {{gameJoined.sport}}</h3></strong> <h4>at <strong>{{gameJoined.location}}
       </strong> starting at <strong>{{gameJoined.time}}</strong> </h4> 
       <i class="icon ion-chevron-right icon-accessory m-l-3"></i>
        </ion-item>
+
+      <strong> <h2>  {{gameJoined.sport}}</h2><h4></strong>starting at <strong>{{gameJoined.time}}</strong> </h4> </a>
+
+</div>
+   
+ 
+
 
            
           <h1> Suggested Games </h1>

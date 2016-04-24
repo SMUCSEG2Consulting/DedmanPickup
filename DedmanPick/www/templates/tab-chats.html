@@ -5,7 +5,7 @@
                <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
                 <div class = headbutton>
           <button class="button button-light button-sm" >
-            <font color= "black">Create New Game</font>
+            <i class="icon ion-plus-round"></i>
           </button>
         </div>
       </form>
@@ -16,19 +16,17 @@
   <ion-content>
     <ion-list>
      
-     <ion-checkbox ng-model="form.Showname">Search by sport</ion-checkbox>
-      <div ng-show= "form.Showname">
-        <div class="list">
-          <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-              <input type="text" ng-model = "form.name" placeholder="input search sport">
+    
+   
+    <div class="list">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+              <input type="text" ng-model = "searchGames" placeholder="search">
+
             </label>
-            <form ng-click = "search()">
-              <button class="button button-positive">
-                Search
-                </button>
-              </form>    
+<i class="icon ion-ios-search item-icon-right"></i> 
           </div>
+
 
 
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
@@ -44,7 +42,7 @@
   </div>
 
 
-<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats | filter: searchGames" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
        <img ng-src= "{{getChatImage(chat.sport)}}" height="50" width = "50">
         <h2>{{chat.sport}}</h2>
         <p>{{chat.date}}</p>
