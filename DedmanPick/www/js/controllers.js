@@ -140,12 +140,50 @@ $scope.newGame = function newGame(){
 
 .controller('AccountCtrl', function($scope, $state, user, games) {
   $scope.userName = "Katy";
-  //console.log('acct ctrl');
+  console.log('acct ctrl');
   //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
       $scope.gamesJoined = response.data;
-      //$scope.$apply();
+      console.log($scope.gamesJoined.length);
+
+      console.log($scope.gamesJoined[0]);
+
+      time = $scope.gamesJoined[2].time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      newTime = "";
+    
+      intHour = parseInt(hour);
+      if(intHour>=12){
+        if(intHour > 12)
+          intHour = intHour - 12;
+
+        hour = intHour.toString();
+        newTime = newTime.concat(hour);
+        newTime = hour.concat(":");
+        newTime = newTime.concat(min);
+        newTime = newTime.concat(" PM");
+      }
+      else {
+        newTime = hour.concat(":");
+        newTime = newTime.concat(min);
+        newTime = newTime.concat(" AM");
+      }
+
+      $scope.gamesJoined[2].time = newTime;
+      console.log( $scope.gamesJoined[2].time);
+
+
+
+
+     // $scope.$apply();
     })
+
+
+
 
 
 
