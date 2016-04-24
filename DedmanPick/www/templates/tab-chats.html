@@ -17,18 +17,13 @@
     <ion-list>
      
     
-   <ion-checkbox ng-mdoel="form.Showname">Search by sport</ion-checkbox>
-   <div ng-show= "form.Showname">
+   
     <div class="list">
         <div class="item item-input-inset">
           <label class="item-input-wrapper">
-              <input type="text" ng-model = "form.name" placeholder="search"> 
+              <input type="text" ng-model = "searchGames" placeholder="search"> 
             </label>
-            <form ng-click = "search()">
-           <button class="button button-positive">
-             Search
-                </button>
-              </form>    
+
           </div>
 
 
@@ -46,7 +41,7 @@
   </div>
 
 
-<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+<ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="chat in chats | filter: searchGames" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
        <img ng-src= "{{getChatImage(chat.sport)}}" height="50" width = "50">
         <h2>{{chat.sport}}</h2>
         <p>{{chat.time}}</p>

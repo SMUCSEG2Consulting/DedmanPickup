@@ -3,7 +3,7 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, $http, Chats, user,games) {
+.controller('ChatsCtrl', function($scope, $http, Chats, user,games) { 
 console.log('in send game data');
 $scope.form = {};
 $scope.getChatImage = function (sport)
@@ -180,6 +180,7 @@ $scope.newGame = function newGame(){
 })
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
+
   //$scope.chat = Chats.get($stateParams.chatId);
   //console.log('in send game data');
   $scope.search = function()
@@ -207,6 +208,7 @@ $scope.newGame = function newGame(){
 })
 
 .controller('SearchCtrl', function($scope, $state) {
+
     //console.log('(search controller)');
 })
 
@@ -220,6 +222,7 @@ $scope.getChatImage = function (sport)
   }
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
+
       $scope.chat = response.data;
          console.log($scope.chat.length);
 
