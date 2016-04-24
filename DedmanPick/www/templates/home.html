@@ -25,7 +25,7 @@
                 <span>
                    <h3>{{next_game.sport}} in {{next_game.time}}</h3>
                    <img src="{{next_game.img_path}}" height="100" width="100"></img>
-                   <a href="#/tab/chats/{{next_game.id}}">details</a>
+                   <a href="#/game_lobby/{{next_game.id}}">details</a>
                 </span>
                   <!-- <img src="{{next_game.img_path}}" height="100" width="150"></img> -->
   
@@ -51,7 +51,7 @@
             <!--display results-->
             <div class="card-block">
               <ul class="list-group list-group-flush">
-                <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/tab/chats/{{result.id}}">
+                <ion-item class ng-repeat="result in searchResults"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/game_lobby/{{result.id}}">
                   <li class="list-group-item"> 
                     <img src="{{result.img_path}}" height="50" width = "50">
                     <strong> <h3> {{result.sport}}</h3></strong> <h4>at <strong>{{result.location}}
@@ -81,7 +81,7 @@
                       <h3>Games Starting Soon</h3>
                       <ul class="list-group list-group-flush">
 
-                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/tab/chats/{{suggestedGame.id}}">
+                        <ion-item class ng-repeat="suggestedGame in suggestedGames"  type="item-text-wrap" type="item-text-wrap" ng-controller = "HomeCtrl" href="#/game_lobby/{{suggestedGame.id}}">
                           <li class="list-group-item" > 
                               <!--{{suggestedGame.id}}-->
                             <img src="{{suggestedGame.img_path}}" height="50" width = "50">

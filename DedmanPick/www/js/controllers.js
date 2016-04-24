@@ -426,6 +426,84 @@ $scope.getChatImage = function (sport)
 })
 
 /*
+  Game Lobby Controller ("Chats")
+*/
+                                                    //need own factories as well
+.controller('GameLobbyCtrl', function($scope, $stateParams, $state, account, game) {
+
+    //Pull name from local storage
+    $scope.username = window.localStorage.getItem('username');
+
+    //pull game information from database
+        //retrieve gameID form url/$stateParams (defined in apps.js)
+    account.getGame($stateParams.gameID).then(
+      function(response){
+        $scope.pickup_game = response.data;
+
+        var image_path = game.getImagePath($scope.pickup_game.sport);
+        $scope.pickup_game.img_path = image_path;
+      }
+    )
+
+    //Leave Game
+    $scope.leaveGame = function(){
+      console.log("leaveGame()");
+    }
+
+
+    //  $scope.chat = games.getGame($stateParams.chatId).then(function(response){
+    //  $scope.chat = response.data;
+/*
+    var chats = Chats.all();
+
+
+    //this must be importaint
+    chats.then(
+
+      function successCallback(data){
+        console.log(data);
+        $scope.chats = data;
+      }
+      
+    )
+
+    //not sure vvv
+    $scope.form = {};
+    $scope.getChatImage = function (sport)
+    {
+      return $scope.suggestedImage = games.getImage(sport);
+    }
+
+    $scope.search = function()
+    {
+      $scope.searchParam = $scope.form.name;
+      var searchResults =  user.searchGame($scope.searchParam).then(function(response){
+        $scope.searchResults = response.data;
+        console.log($scope.searchResults[0]);
+        //console.log($scope.users);
+      })
+      
+    };
+
+      $scope.createNewGame = function (){
+        //console.log("in get game");
+        console.log("create new game")
+          //console.log($scope.gamesJoined);
+      };
+
+      $scope.remove = function(chat) {
+        Chats.remove(chat);
+      };
+
+      //console.log(Chats.get($stateParams.chatId));
+      $scope.gameData = function sendGameData(sport, id, location, time){
+        console.log('in send game data');
+      }
+      //not sure ^^^
+*/
+})
+
+/*
       Login Controller
 */
 .controller('LoginCtrl', function($scope, $state, $http, login_functions) {
