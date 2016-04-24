@@ -272,6 +272,7 @@ $scope.getChatImage = function (sport)
     //Start A Game
     $scope.startGame = function(){
       console.log("startGame()");
+      $state.go("createGame");
     }
 
     //Search By sport
