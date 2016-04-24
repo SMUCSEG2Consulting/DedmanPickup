@@ -429,7 +429,7 @@ $scope.getChatImage = function (sport)
   Game Lobby Controller ("Chats")
 */
                                                     //need own factories as well
-.controller('GameLobbyCtrl', function($scope, $stateParams, $state, account, game, chat_functions) {
+.controller('GameLobbyCtrl', function($scope, $stateParams, $state, account, game, chat_functions, $window) {
 
     //Pull name from local storage
     $scope.username = window.localStorage.getItem('username');
@@ -449,11 +449,16 @@ $scope.getChatImage = function (sport)
 
     //Message board
       //returns format : {"username":"PaigeFontenot24","message":"See you all in 10.0"}
-    chat_functions.get_chat($stateParams.gameID).then(
-       function(response){
-        $scope.chat_data = response;
+     $scope.getMesseges = function(){
+        chat_functions.get_chat($stateParams.gameID).then(
+           function(response){
+            $scope.chat_data = response;
+          }
+        )
       }
-    )
+
+    //fill messages ***
+    $scope.getMesseges();
 
     //Send Message
     $scope.sendMessage = function(){
@@ -462,6 +467,9 @@ $scope.getChatImage = function (sport)
 
       //uses chat_functions to send your message
       chat_functions.send_message($scope.username, $stateParams.gameID, $scope.message_ui);
+
+      //update
+      $scope.getMesseges();
     }
 
 

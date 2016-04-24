@@ -2,21 +2,13 @@
   <ion-content class="padding">
 
     <img ng-src= "{{pickup_game.img_path}}" height="50" width = "50">     
-    <p>
     <h1>{{pickup_game.sport}}</h1>
-      Place of game:
-      {{pickup_game.location}}
-    </p>
 
-    <p>
-      Date of game:
-      {{pickup_game.date}}
-    </p>
+    <form ng-controller = "GameLobbyCtrl">
+      <button class="button button-positive">Leave Game</button>
+    </form>
 
-    <p>
-      Time of game: (should be time until game)
-      {{pickup_game.time}}
-    </p>
+    <br>
 
     <a ng-click="showPlayers()" ng-controller="GameLobbyCtrl" >Players in lobby ({{pickup_game.playerCount}})</a>
     <div ng-show="{{showPlayersInLobby}}" ng-controller="GameLobbyCtrl">
@@ -25,11 +17,14 @@
       </ion-item>
     </div>
 
-    <form ng-controller = "GameLobbyCtrl">
-      <button class="button button-positive">Leave Game</button>
-    </form>
+    <br>
+    <br>
 
-    <p>chat</p>
+    <p>
+      Games at  <strong>{{pickup_game.location}}</strong> at <strong>{{pickup_game.time}}</strong> on <strong>{{pickup_game.date}}  </strong>
+    </p>
+
+    <h2>Message Board:</h2>
     <ion-item class ng-repeat="message in chat_data" ng-controller = "GameLobbyCtrl">
       <li class="list-group-item">{{message.username}} : {{message.message}}</li>
     </ion-item>
