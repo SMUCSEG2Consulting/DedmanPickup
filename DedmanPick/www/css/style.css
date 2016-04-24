@@ -2,6 +2,10 @@
 /*#home_next_game{
 	background-image: url('../pictures/{{next_game.img_path}}');
 }*/
+.button{
+	background:#CB1313;
+
+}
 
 .view-container{
 
@@ -12,6 +16,8 @@
   	-webkit-background-size: cover;
 
 }
+
+
 
 #login_card_background{
 	/*from please login to underneath the login button*/

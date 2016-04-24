@@ -7,7 +7,7 @@
 <ion-view view-title="{{chat.sport}}">
   <ion-content class="padding">
     <img ng-src= "{{getChatImage(chat.sport)}}" height="50" width = "50">     <p>
-    <h1>{{chat.sport}}</h1>
+    <font color = "white"><h1>{{chat.sport}}</h1>
       Place of game:
       {{chat.location}}
     </p>
@@ -24,15 +24,15 @@
     <p>
       Number of players needed:
       {{chat.playerCount}}
-    </p>
+    </p></font>
 
       
 
     <form ng-submit ="joinGame(chat)" ng-controller = "JoinGameCtrl">
-    <button class="button button-positive">
-
+    <button class="button button-danger">
+<font color = "white">
   Join this game!
-</button>
+</button></font>
 </form>
   </ion-content>
 </ion-view>
