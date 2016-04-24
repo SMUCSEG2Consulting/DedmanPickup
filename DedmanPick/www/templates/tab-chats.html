@@ -1,9 +1,16 @@
 
-<ion-view view-title="Game Lobby"  >
-          <button class="button button-positive">
-            Click to create a new game
+<ion-view view-title="Game Lobby">
+<ion-nav-bar class = "bar-dark">
+          <ion-nav-buttons >
+               <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
+                <div class = headbutton>
+          <button class="button button-light button-sm" >
+            <font color= "black">Create New Game</font>
           </button>
-      </form>>
+        </div>
+      </form>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
 
   <ion-content>
@@ -49,12 +56,7 @@
       </ion-item>
     </ion-list>
     
-     <form ng-click = "newGame()" href="#/tab/dash" ng-controller = "CreateGameCtrl" >
-          <button class="button">
-            <font color= "white">Create New Game</font>
-          </button>
-      </form>
-        
+     
       </ion-item>
     </ion-list>
     

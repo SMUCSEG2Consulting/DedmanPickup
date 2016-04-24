@@ -3,9 +3,7 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('DashCtrl', function($scope) {})
 
-
-
-.controller('ChatsCtrl', function($scope, $http, Chats, user, games) {
+.controller('ChatsCtrl', function($scope, $http, Chats, user,games) {
 console.log('in send game data');
 $scope.form = {};
 $scope.getChatImage = function (sport)
@@ -18,7 +16,7 @@ $scope.getChatImage = function (sport)
     $scope.searchParam = $scope.form.name;
     var searchResults =  user.searchGame($scope.searchParam).then(function(response){
       $scope.searchResults = response.data;
-      console.log($scope.searchResults.length);
+            console.log($scope.searchResults.length);
 
 
       for(var i=0; i < $scope.searchResults.length; i++){
@@ -191,10 +189,10 @@ $scope.newGame = function newGame(){
   }
   //console.log(Chats.get($stateParams.chatId));
   $scope.gameData = function sendGameData(sport, id, location, time){
+     
     //console.log('in send game data');
       }
-
-
+ 
   $scope.createNewGame = function (){
     //console.log("in get game");
     console.log("create new game")
@@ -223,8 +221,9 @@ $scope.getChatImage = function (sport)
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
       $scope.chat = response.data;
-      console.log($scope.chat.length);
+         console.log($scope.chat.length);
 
+      
       console.log(response.data);
 
       console.log($scope.chat.length);
@@ -260,8 +259,6 @@ $scope.getChatImage = function (sport)
       console.log( $scope.chat.time);
     
 
-  
-    
 
       //console.log($scope.chat[0].image);
   //console.log(Chats[$stateParams.chatId]);

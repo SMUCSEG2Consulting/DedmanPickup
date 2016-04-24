@@ -8,6 +8,26 @@
 
 }
 
+.ion-nav-bar, .bar{
+	background:#CB1313;
+
+}
+.ion-view, .title{
+	font-color:white;
+	
+}
+.item{
+	width:80%;
+	margin-left:10%;
+
+
+}
+
+.headbutton{
+
+	
+}
+
 .view-container{
 
 	background: url('../img/image2.jpg') no-repeat 50% 50% fixed; 
@@ -18,7 +38,12 @@
 
 }
 
-
+.icon{
+	color:#CB1313;
+	outline:black;
+	font-color:black;
+	
+}
 
 #login_card_background{
 	/*from please login to underneath the login button*/
@@ -83,12 +108,14 @@ h1{
 
 /*controls the design for text "Upcoming Games" and all h1s*/
 	
-font-family: 'Lato', sans-serif;
-
+	font-family: 'Lato', sans-serif;
+	position:relative;
 	color:#CB1313 ;
 	margin: 0;
+	margin-bottom: 20px;
 	padding: 0px 0px 6px 0px;
-	font-size: 51px;
+	font-size: 35px;
+	margin-left: 27%;
 	line-height: 44px;
 	letter-spacing: -2px;
 	font-weight: lighter;
@@ -100,11 +127,7 @@ font-family: 'Lato', sans-serif;
 	background-color: rgba(170,170,170,0.2);
 
 }
-.item{
 
-	background-color: rgba(234,234,234,0.8);
-
-}
 
 .item-divider{
 
