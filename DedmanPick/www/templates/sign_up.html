@@ -1,8 +1,19 @@
-  <div class = "container" id="sign_up_background">
+    <div class = "container" id="login_background">
+    <div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4
+  <img src="logo.png" height = "250"></div>
+  <div class="col-md-4"></div>
+</div>
+
+  <!--<div class = "container" id="sign_up_background">
   <div class="card m-t-3">
-  
+<div class="col-md-4">.col-md-4
+  <img src="logo.png" height = "250"></div>
+  <div class="col-md-4"></div>
+ --> 
+  <div class="card m-t-3">
   <div class="card-block" id="sign_up_card_background">
-    <h4 class="card-title">Please Sign Up</h4>
 
     <div class="wrapper">
     <form class="form-signin">       
@@ -10,7 +21,9 @@
       <input type="text" ng-model="data.username" placeholder="Username" />
       <input type="password" ng-model="data.password" placeholder="Password" /> 
       <input type="text" ng-model="data.email" placeholder="Email" />
-      <button class="btn btn-primary" ng-click="toggle_prefrences()">Pick Prefrences</button>
+     
+
+      <button class="button" ng-click="toggle_prefrences()"><font color="white">Pick Prefrences</button> </font>
       <div ng-show="show_preferences">
         <ion-checkbox ng-model="football_checkbox">Football</ion-checkbox>
         <ion-checkbox ng-model="indoorSoccer_checkbox">Indoor Soccer</ion-checkbox>
@@ -22,11 +35,12 @@
         <ion-checkbox ng-model="pool_checkbox">Pool</ion-checkbox>
         <ion-checkbox ng-model="sandVolleyball_checkbox">Sand Volleyball</ion-checkbox>   
       </div>
-       <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click = "sign_up()">Sign Up</button>  
+
+       <button class="button button-lg button-block" type="submit" ng-click = "sign_up()"><font color= "white">Sign Up</button>  </font>
     </form>
 
     <h6 ng-model="data.username"></h6>
-    <button class="btn" type="submit" ng-click = "login_state()">Login</button> 
+    <button class="button" type="submit" ng-click = "login_state()"><font color="white">Login</button> </font>
 
   </div>
   </div>
