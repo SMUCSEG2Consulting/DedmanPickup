@@ -3,7 +3,19 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, $http, Chats, user,games) {
+
+.directive('sort', function() {
+  return{
+    restrict: 'E',
+    scope: {
+      name: "@",
+      sort: "="
+    },
+    template: '<i class="fa fa-sort" ng-click="sort =\'name\'" ng-hide="sort == \'name\' || sort == \'-\+name\' "></i><i class="fa fa-sort-desc" ng-click="sort =\'name\'" ng-show="sort == \'-\+name\'"></i><i class="fa fa-sort-asc" ng-click="sort =\'-\+name\'" ng-show="sort == \'name\'"></i>'
+  }
+})
+
+.controller('ChatsCtrl', function($scope, $http, Chats, user, games) {
 console.log('in send game data');
 $scope.form = {};
 $scope.getChatImage = function (sport)
@@ -16,7 +28,7 @@ $scope.getChatImage = function (sport)
     $scope.searchParam = $scope.form.name;
     var searchResults =  user.searchGame($scope.searchParam).then(function(response){
       $scope.searchResults = response.data;
-            console.log($scope.searchResults.length);
+      console.log($scope.searchResults.length);
 
 
       for(var i=0; i < $scope.searchResults.length; i++){
@@ -85,9 +97,50 @@ console.log('in chats');
         function successCallback(data){
           console.log(data);
           $scope.chats = data;
+          console.log($scope.chats.length);
+
+
+      for(var i=0; i < $scope.chats.length; i++){
+      // console.log(response.data[i]);
+
+      console.log($scope.chats.length);
+
+      console.log($scope.chats[i]);
+
+      time = $scope.chats[i].time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
         }
-        
-      )
+
+      $scope.chats[i].time = $scope.newTime;
+      console.log( $scope.chats[i].time);
+    }
+
+      //$scope.$apply();
+   
+          
+    
+    })
 
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -150,7 +203,8 @@ $scope.newGame = function newGame(){
   $scope.gameData = function sendGameData(sport, id, location, time){
     //console.log('in send game data');
       }
- 
+
+
   $scope.createNewGame = function (){
     //console.log("in get game");
     console.log("create new game")
@@ -179,7 +233,45 @@ $scope.getChatImage = function (sport)
 
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
       $scope.chat = response.data;
+      console.log($scope.chat.length);
 
+      console.log(response.data);
+
+      console.log($scope.chat.length);
+
+      console.log($scope.chat);
+
+      time = $scope.chat.time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
+        }
+
+      $scope.chat.time = $scope.newTime;
+      console.log( $scope.chat.time);
+    
+
+  
+    
 
       //console.log($scope.chat[0].image);
   //console.log(Chats[$stateParams.chatId]);

@@ -9,19 +9,31 @@
   <ion-content>
     <ion-list>
      
-     <ion-checkbox ng-model="form.Showname">Search by sport</ion-checkbox>
-      <div ng-show= "form.Showname">
-        <div class="list">
-          <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-              <input type="text" ng-model = "form.name" placeholder="input search sport">
-            </label>
+    
+    <!--   <div class="list">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+             <label for="search">Search</label>
+           </label>
+              <input type="text" class="form-control" id="search" name="search" ng-model = "search" placeholder="search">
             <form ng-click = "search()">
-              <button class="button button-positive">
-                Search
-                </button>
               </form>    
           </div>
+
+        -->
+
+        <fieldset class="form-group">
+              <label for="search" style="color:white;">Search</label>
+              <input type="text" class="form-control" id="search" name="search" placeholder="Search your todos!" ng-model="search">
+        </fieldset>
+        <table class="table">
+          <tr>
+            <th></th>
+            <th>Name
+              <sort name="name" sort="sort"></sort>
+            </th>
+          </tr>
+          <tr ng-repeat="name in names | filter:search | orderBy: sort">
 
 
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click = "sendGameData(sport, id, location, time)" ng-repeat="searchResult in searchResults" type="item-text-wrap" href="#/tab/chats/{{searchResult.id}}" >
