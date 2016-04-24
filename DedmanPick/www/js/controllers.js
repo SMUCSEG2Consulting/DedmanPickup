@@ -5,6 +5,7 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('ChatsCtrl', function($scope, $http, Chats, user,games) { 
 console.log('in send game data');
+
 $scope.form = {};
 $scope.getChatImage = function (sport)
   {
@@ -20,8 +21,10 @@ $scope.getChatImage = function (sport)
 
 
       for(var i=0; i < $scope.searchResults.length; i++){
-      //console.log(response.data[i]);
+     // console.log(response.data[i]);
+
       //console.log($scope.searchResults.length);
+
       //console.log($scope.searchResults[i]);
 
       time = $scope.searchResults[i].time;
@@ -140,14 +143,15 @@ console.log('in chats');
 })
 
 .controller('CreateGameCtrl', function($scope, $state, games, $ionicHistory) {
-  $scope.createGame = function createGame(time, location, sport, playerCount){
-    $scope.createGame = games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
-      console.log(response);
-      $ionicHistory.clearCache().then(function(){
-        $state.go('tab.chats',{},{ reload: true });
-      })
-      
-    })};
+  $scope.createGame = function createGame(time, location, sport, playerCount){
+    $scope.createGame = games.createGame($scope.time, $scope.location, $scope.sport, $scope.playerCount).then(function(response){
+      console.log(response);
+      $ionicHistory.clearCache().then(function(){
+        $state.go('tab.chats',{},{ reload: true });
+      })
+      
+    })};
+
 $scope.newGame = function newGame(){
   
       $state.go('tab.dash');
@@ -171,15 +175,17 @@ $scope.newGame = function newGame(){
   };
   })
 //***************************************
-.controller('JoinGameCtrl', function($scope, $state, $http, $ionicHistory, user) {  
-  $scope.joinGame = function joinGame(chat){
-    console.log(chat);
-  $scope.addToGame = user.addUserToGame(chat).then(function(response){
-      $ionicHistory.clearCache().then(function(){
-        $state.go('tab.account', {}, {reload:true});
-      })
-    });
-  };
+.controller('JoinGameCtrl', function($scope, $state, $http, $ionicHistory, user) {  
+  $scope.joinGame = function joinGame(chat){
+    console.log(chat);
+  $scope.addToGame = user.addUserToGame(chat).then(function(response){
+      $ionicHistory.clearCache().then(function(){
+        $state.go('tab.account', {}, {reload:true});
+      })
+    });
+  //$scope.fromFactory = addGameFactory.addGame(chat);
+ 
+};
 })
 
 .controller('GameLobbyCtrl', function($scope, $stateParams, GameData, games) {
@@ -188,7 +194,7 @@ $scope.newGame = function newGame(){
   //console.log('in send game data');
   $scope.search = function()
   {
-    console.log("in search");
+    //console.log("in search");
     //$scope.searchParam = $scope.form.name;
   }
   //console.log(Chats.get($stateParams.chatId));
@@ -199,7 +205,7 @@ $scope.newGame = function newGame(){
  
   $scope.createNewGame = function (){
     //console.log("in get game");
-    console.log("create new game")
+    //console.log("create new game")
       //console.log($scope.gamesJoined);
   };
 
@@ -227,14 +233,6 @@ $scope.getChatImage = function (sport)
   $scope.chat = games.getGame($stateParams.chatId).then(function(response){
 
       $scope.chat = response.data;
-     //    console.log($scope.chat.length);
-
-      
-    //  console.log(response.data);
-
-    //  console.log($scope.chat.length);
-
-     // console.log($scope.chat);
 
       time = $scope.chat.time;
 
@@ -276,6 +274,7 @@ $scope.getChatImage = function (sport)
 
 .controller('AccountCtrl', function($scope, $state, user, games) {
   $scope.userName = "Katy";
+  console.log(" here in account ctrl");
   //console.log('acct ctrl');
   //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
@@ -284,18 +283,13 @@ $scope.getChatImage = function (sport)
 
 
       for(var i=0; i < $scope.gamesJoined.length; i++){
-     // console.log(response.data[i]);
-
-     // console.log($scope.gamesJoined.length);
-
-      //console.log($scope.gamesJoined[i]);
 
       time = $scope.gamesJoined[i].time;
 
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-     // console.log(time);
+
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -328,22 +322,20 @@ $scope.getChatImage = function (sport)
 
   var suggestedGames =  user.getSuggestedGames().then(function(response){
       $scope.suggestedGames = response.data;
-          //  console.log($scope.suggestedGames.length);
+
+      for(var i=0; i < $scope.suggestedGames.length; i++){
+      
+         
 
 
       for(var i=0; i < $scope.suggestedGames.length; i++){
-      //console.log(response.data[i]);
-
-      //console.log($scope.suggestedGames.length);
-
-     // console.log($scope.suggestedGames[i]);
-
+      
       time = $scope.suggestedGames[i].time;
 
       hour = time.substring(0,2);
       min = time.substring(3,5);
 
-      //console.log(time);
+      
       $scope.newTime = "";
     
       intHour = parseInt(hour);
@@ -364,7 +356,7 @@ $scope.getChatImage = function (sport)
         }
 
       $scope.suggestedGames[i].time = $scope.newTime;
-     // console.log( $scope.suggestedGames[i].time);
+
     }
 
 
@@ -377,7 +369,10 @@ $scope.getChatImage = function (sport)
         //})
       //console.log($scope.suggestedGames[0].sport);
       //console.log($scope.users);
-    })
+    }})
+
+
+
   $scope.getImage = function (sport)
   {
     //console.log("here");
@@ -861,9 +856,20 @@ $scope.getChatImage = function (sport)
 /*
       Sign up Controller
 */
-.controller('sign_up_Ctrl', function($scope, $state, $http, sign_up_functions) {
+.controller('sign_up_Ctrl', function($scope, $state, $http, sign_up_functions, account) {
     console.log('(sign_up_Ctrl controller)');
     console.log(sign_up_functions)
+
+    $scope.show_preferences=false;
+
+    //toggle show prefrences
+    $scope.toggle_prefrences = function(){
+      if($scope.show_preferences){
+        $scope.show_preferences = false;
+      }else{
+         $scope.show_preferences = true;
+      }
+    }
     
     //on click
     $scope.sign_up = function() {
@@ -883,6 +889,57 @@ $scope.getChatImage = function (sport)
                 function() 
                 {
                     console.log("success");
+
+                    //var sports_prefs = ["football_checkbox", "indoorSoccer_checkbox", "ultimateFrisbee_checkbox", "basketball_checkbox","soccer_checkbox",
+                    //"tennis_checkbox", "pingPong_checkbox","pool_checkbox","sandVolleyball_checkbox"];
+
+                    //send sports prefrences
+
+                    //football
+                    if($scope.football_checkbox = true){
+                      account.updatePreferences($scope.data.username, "football");
+                    }
+
+                    //indoor soccer
+                    if($scope.indoorSoccer_checkbox = true){
+                      account.updatePreferences($scope.data.username, "indoor_soccer");
+                    }
+
+                    //ultimate frisbee
+                    if($scope.ultimateFrisbee_checkbox = true){
+                      account.updatePreferences($scope.data.username, "ultimate_frisbee");
+                    }
+
+                    //basketball
+                    if($scope.basketball_checkbox = true){
+                      account.updatePreferences($scope.data.username, "basketball");
+                    }
+
+                    //soccer
+                    if($scope.soccer_checkbox = true){
+                      account.updatePreferences($scope.data.username, "soccer");
+                    }
+                    
+                    //tennis
+                    if($scope.tennis_checkbox = true){
+                      account.updatePreferences($scope.data.username, "tennis");
+                    }
+
+                    //ping pong
+                    if($scope.pingPong_checkbox = true){
+                      account.updatePreferences($scope.data.username, "ping_pong");
+                    }
+                    
+                    //ping pong
+                    if($scope.pool_checkbox = true){
+                      account.updatePreferences($scope.data.username, "pool");
+                    }
+
+                    //sand volleyball
+                    if($scope.sandVolleyball_checkbox = true){
+                      account.updatePreferences($scope.data.username, "sand_volleyball");
+                    }
+                    
 
                     //change state
                     $state.go('tab.account');
@@ -906,5 +963,4 @@ $scope.getChatImage = function (sport)
         
     }
 })
-
 
