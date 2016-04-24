@@ -27,12 +27,12 @@ angular.module('starter.factories', [])
       console.log("in user data");    
       return $http({
         method:'GET',
-        url: "http://104.236.10.218/public/index.php/user/MarkJohnson99"
+        url: "http://104.236.10.218/public/index.php/user/JonathanCohen12"
       })
     },
 
       updatePreferences : function(sport){
-        var username = "MarkJohnson99";
+        var username = "JonathanCohen12";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addSportForUser',
@@ -53,7 +53,7 @@ angular.module('starter.factories', [])
     },
 
     addUserToGame : function(sport){
-        var username = "MarkJohnson99";
+        var username = "JonathanCohen12";
         return $http({
            method: 'POST',
            url: 'http://104.236.10.218/public/index.php/addUserToGame',
@@ -71,7 +71,7 @@ angular.module('starter.factories', [])
       
     },
     getSuggestedGames : function(sport){
-        var username = "TomBanbury0";
+        var username = "JonathanCohen12";
         return $http({
            method: 'GET',
            url: 'http://104.236.10.218/public/index.php/gamesByUserPref/'+username
@@ -87,7 +87,7 @@ angular.module('starter.factories', [])
       
     },
      getGamesForUser : function(){
-        var username = "MarkJohnson99";
+        var username = "JonathanCohen12";
            return $http({
               method:'GET',
               url: 'http://104.236.10.218/public/index.php/gamesForUser/'+username
@@ -121,6 +121,21 @@ angular.module('starter.factories', [])
 
     
      image = hashtable[sport];
+      //console.log(image);
+      return image;
+      
+    },
+
+     getHeroImage : function(location){
+        //console.log(sport);
+      hashtable['Dedman Rec Center'] =  "dedman.jpg";
+      hashtable['Intramural Field'] =  "intra.png";
+      hashtable['Sand Volleyball Courts'] =  "sand.png";
+      hashtable['Track'] =  "track.png";
+      hashtable['Lacrosse Field'] =  "lax.png";
+      
+    
+     image = hashtable[location];
       //console.log(image);
       return image;
       
