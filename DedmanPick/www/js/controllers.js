@@ -16,6 +16,44 @@ $scope.getChatImage = function (sport)
     $scope.searchParam = $scope.form.name;
     var searchResults =  user.searchGame($scope.searchParam).then(function(response){
       $scope.searchResults = response.data;
+            console.log($scope.searchResults.length);
+
+
+      for(var i=0; i < $scope.searchResults.length; i++){
+      console.log(response.data[i]);
+
+      console.log($scope.searchResults.length);
+
+      console.log($scope.searchResults[i]);
+
+      time = $scope.searchResults[i].time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
+        }
+
+      $scope.gamesJoined[i].time = $scope.newTime;
+      console.log( $scope.searchResults[i].time);
+    }
       console.log($scope.searchResults[0]);
       //console.log($scope.users);
     })
@@ -156,8 +194,46 @@ $scope.getChatImage = function (sport)
   //console.log('acct ctrl');
   //console.log(games.images);
   var gamesJoined = user.getGamesForUser().then(function(response){
-      $scope.gamesJoined = response.data
-      console.log(response.data[0]);
+      $scope.gamesJoined = response.data;
+      console.log($scope.gamesJoined.length);
+
+
+      for(var i=0; i < $scope.gamesJoined.length; i++){
+      console.log(response.data[i]);
+
+      console.log($scope.gamesJoined.length);
+
+      console.log($scope.gamesJoined[i]);
+
+      time = $scope.gamesJoined[i].time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
+        }
+
+      $scope.gamesJoined[i].time = $scope.newTime;
+      console.log( $scope.gamesJoined[i].time);
+    }
+
       //$scope.$apply();
     })
 
@@ -167,6 +243,47 @@ $scope.getChatImage = function (sport)
 
   var suggestedGames =  user.getSuggestedGames().then(function(response){
       $scope.suggestedGames = response.data;
+            console.log($scope.suggestedGames.length);
+
+
+      for(var i=0; i < $scope.suggestedGames.length; i++){
+      console.log(response.data[i]);
+
+      console.log($scope.suggestedGames.length);
+
+      console.log($scope.suggestedGames[i]);
+
+      time = $scope.suggestedGames[i].time;
+
+      hour = time.substring(0,2);
+      min = time.substring(3,5);
+
+      console.log(time);
+      $scope.newTime = "";
+    
+      intHour = parseInt(hour);
+          if(intHour>=12){
+            if(intHour > 12)
+              intHour = intHour - 12;
+
+           hour = intHour.toString();
+           $scope.newTime = $scope.newTime.concat(hour);
+           $scope.newTime = hour.concat(":");
+           $scope.newTime = $scope.newTime.concat(min);
+           $scope.newTime = $scope.newTime.concat(" PM");
+       }
+        else {
+          $scope.newTime = hour.concat(":");
+          $scope.newTime = $scope.newTime.concat(min);
+          $scope.newTime = $scope.newTime.concat(" AM");
+        }
+
+      $scope.suggestedGames[i].time = $scope.newTime;
+      console.log( $scope.suggestedGames[i].time);
+    }
+
+
+
       //$scope.apply();
       //for (i = 0; i < suggestedGames.length; i++) { 
       $scope.suggestedImage = games.getImage($scope.suggestedGames[0].sport)//.then(function(response){
