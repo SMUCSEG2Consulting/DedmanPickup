@@ -109,15 +109,15 @@ angular.module('starter.factories', [])
 
       getImage : function(sport){
         //console.log(sport);
-      hashtable['basketball'] =  "basketball.png";
-      hashtable['soccer'] =  "insoccer.png";
-      hashtable['football'] =  "football.png";
-      hashtable['tennis'] =  "tennis.png";
-      hashtable['indoor soccer'] =  "soccer.png";
-      hashtable['sand volleyball'] =  "vb.png";
-      hashtable['ultimate frisbee'] =  "frisbee.png";
-      hashtable['pool'] =  "pool.png";
-      hashtable['ping pong'] =  "pp.png";
+      hashtable['Basketball'] =  "basketball.png";
+      hashtable['Soccer'] =  "insoccer.png";
+      hashtable['Football'] =  "football.png";
+      hashtable['Tennis'] =  "tennis.png";
+      hashtable['Indoor Soccer'] =  "soccer.png";
+      hashtable['Sand Volleyball'] =  "vb.png";
+      hashtable['Ultimate Frisbee'] =  "frisbee.png";
+      hashtable['Pool'] =  "pool.png";
+      hashtable['Ping Pong'] =  "pp.png";
 
     
      image = hashtable[sport];
@@ -339,16 +339,16 @@ angular.module('starter.factories', [])
 
         var hashtable = {};
 
-        hashtable['basketball'] =  "pictures/basketball.png";
-        hashtable['soccer'] =  "pictures/soccer.png";
-        hashtable['soccer_large'] =  "pictures/soccer_large.png";
-        hashtable['football'] =  "pictures/football.png";
-        hashtable['tennis'] =  "pictures/tennis.png";
-        hashtable['indoor soccer'] =  "pictures/insoccer.png";
-        hashtable['sand volleyball'] =  "pictures/vb.png";
-        hashtable['ultimate frisbee'] =  "pictures/frisbee.png";
-        hashtable['pool'] =  "pictures/pool.png";
-        hashtable['ping pong'] = "pictures/pp.png";
+        hashtable['Basketball'] =  "pictures/basketball.png";
+        hashtable['Soccer'] =  "pictures/soccer.png";
+        
+        hashtable['Football'] =  "pictures/football.png";
+        hashtable['Tennis'] =  "pictures/tennis.png";
+        hashtable['Indoor Soccer'] =  "pictures/insoccer.png";
+        hashtable['Sand Volleyball'] =  "pictures/vb.png";
+        hashtable['Ultimate Frisbee'] =  "pictures/frisbee.png";
+        hashtable['Pool'] =  "pictures/pool.png";
+        hashtable['Ping Pong'] = "pictures/pp.png";
 
         return hashtable[sport];
       },

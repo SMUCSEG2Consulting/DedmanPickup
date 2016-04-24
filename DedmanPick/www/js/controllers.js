@@ -226,7 +226,7 @@ $scope.newGame = function newGame(){
   //console.log($stateParams.chatId);
 $scope.getChatImage = function (sport)
   {
-    //console.log("here");
+    console.log("here");
     return $scope.suggestedImage = games.getImage(sport);
   }
 
