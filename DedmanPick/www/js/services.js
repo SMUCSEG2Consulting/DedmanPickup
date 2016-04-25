@@ -8,7 +8,7 @@ angular.module('starter.services', [])
     all: function() {
 
       //var getGames_url = 'http://dev.ianjjohnson.com/public/index.php/games';
-      var getGames_url = 'http://104.236.10.218/public/index.php/games';
+      var getGames_url = 'http://104.236.33.141/public/index.php/games';
       
 
       return $http({
